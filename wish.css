@@ -1,0 +1,598 @@
+body {
+    font-family: iransans;
+}
+
+a {
+    color: #018abe;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+    color: #014762;
+    text-decoration: none;
+}
+
+.btn-rec-lg {
+    border-radius: 22.5px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.btn-rec {
+    border-radius: 0;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.btn-rec-sm {
+    border-radius: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #009942;
+    border-color: #009942;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #007031;
+    border-color: #007031;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #018abe;
+    border-color: #018abe;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #014762;
+    border-color: #014762;
+}
+
+.bg-light {
+    background-color: #fff !important;
+}
+
+.navbar {
+    border-bottom: 1px solid #dedede;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-weight: 300;
+    color: rgba(125, 125, 125, 1);
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+    color: rgba(75, 75, 75, 1);
+}
+
+section.signup {
+    background-color: #f1f1f1;
+    padding-bottom: 75px;
+}
+
+section.signup .con-title {
+    padding: 75px 0;
+}
+
+section.signup .con-title h4 {
+    font-weight: 300;
+    text-align: center;
+    color: #555;
+}
+
+section.signup .con-body {
+    text-align: center;
+    color: #555;
+}
+
+section.signup .con-body div {
+    padding: 40px 15px;
+}
+
+section.signup .con-body h6 {
+    padding: 10px 0 30px;
+    font-weight: 300;
+}
+
+section.signup .con-body .col-right {
+    border-left: 1px solid #555;
+}
+
+@media (max-width: 576px) {
+    section.signup .con-body .col-right {
+        border-left: none;
+        border-bottom: 1px solid #555;
+    }
+}
+
+section.signup-form {
+    background-color: #f1f1f1;
+    padding-bottom: 75px;
+}
+
+section.signup-form .con-title {
+    padding: 75px 0;
+}
+
+section.signup-form .con-title h4 {
+    font-weight: 300;
+    text-align: center;
+    color: #555;
+}
+
+section.signup-form .con-body {
+    color: #555;
+}
+
+section.signup-form .con-body label {
+    font-weight: 300;
+}
+
+section.signup-form .con-body button {
+    display: block;
+    margin-top: 30px;
+}
+
+footer {
+    min-height: 150px;
+    background-color: #222;
+}
+
+section.signin {
+    background-color: #f1f1f1;
+    padding-bottom: 75px;
+    padding-top: 50px;
+}
+
+section.signin .con-title {
+    padding: 50px 0;
+}
+
+section.signin .con-title h4 {
+    font-weight: 300;
+    text-align: center;
+    color: #555;
+}
+
+section.signin .con-body {
+    color: #555;
+}
+
+section.signin .con-body label {
+    font-weight: 400;
+}
+
+section.signin .con-body .btn-rec {
+    display: block;
+    margin: 10px 0 20px 0;
+}
+
+.has-danger .col-form-label,
+.has-danger .custom-control,
+.has-danger .form-check-label,
+.has-danger .form-control-feedback,
+.has-danger .form-control-label {
+    color: #d9534f;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+.has-danger .form-control-danger {
+    background-image: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' f…%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E);
+}
+
+.has-danger .form-control {
+    border: 3px solid #d9534f;
+}
+
+.form-control-danger,
+.form-control-success,
+.form-control-warning {
+    background-repeat: no-repeat;
+    background-position: center right .5625rem;
+    -webkit-background-size: 1.125rem 1.125rem;
+    background-size: 1.125rem 1.125rem;
+}
+
+.has-danger .col-form-label,
+.has-danger .custom-control,
+.has-danger .form-check-label,
+.has-danger .form-control-feedback,
+.has-danger .form-control-label {
+    color: #d9534f;
+}
+
+label.form-check-label span {
+    position: relative;
+    left: -20px;
+    top: -2px;
+}
+
+span.error-msg {
+    display: block;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 0;
+    border: 3px solid #c52622;
+    color: #c52622;
+    font-weight: 500;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.con-body .email i {
+    font-size: 100px;
+    padding-bottom: 35px;
+}
+
+.con-body .email {
+    text-align: center;
+}
+
+.con-body .email h6 {
+    font-weight: 300;
+    padding: 15px 0;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0;
+    vertical-align: 0;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-left: .3em solid transparent;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.25;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 0;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control:focus {
+    color: #495057;
+    border: 3px solid #08b0f0;
+    outline: 0;
+}
+
+
+/*label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    margin-right: 25px;
+}
+
+.has-danger .col-form-label, .has-danger .custom-control, .has-danger .form-check-label, .has-danger .form-control-feedback, .has-danger .form-control-label {
+    color: #d9534f;
+    font-weight: 300;
+    margin-top: 5px;
+    margin-right: 25px;
+}*/
+
+.con {
+    padding: 25px;
+    background: #fff;
+}
+
+@media (min-width: 1200px) {
+    section.signin .container {
+        max-width: calc(1140px - 600px);
+    }
+}
+
+@media (min-width: 992px) {
+    section.signin .container {
+        max-width: calc(960px - 800px);
+    }
+}
+
+@media (min-width: 768px) {
+    section.signin .container {
+        max-width: calc(720px - 200px);
+    }
+}
+
+@media (max-width: 576px) {
+    section.signin .container {
+        max-width: calc(540px - 200px);
+    }
+}
+
+.con-body .input-group {
+    display: block;
+}
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    margin-right: -1px;
+    margin-left: auto;
+    margin-top: 0;
+}
+
+.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group>.btn, .input-group-btn:last-child>.dropdown-toggle, .input-group-btn:first-child>.btn:not(:first-child), .input-group-btn:first-child>.btn-group:not(:first-child)>.btn {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.dropdown-menu {
+    border-radius: 0;
+}
+
+.bootstrap-select.show>.dropdown-menu>.dropdown-menu {
+    display: block;
+}
+
+.bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden{
+    display:none;
+}
+
+.bootstrap-select > .dropdown-menu > .dropdown-menu li a{
+    display: block;
+    width: 100%;
+    padding: 3px 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #292b2c;
+    text-align: inherit;
+    white-space: nowrap;
+    background: 0 0;
+    border: 0;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+    text-align: right;
+}
+
+.bootstrap-select.btn-group .dropdown-menu li:hover,
+.bootstrap-select.btn-group .dropdown-menu li:focus {
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group>.btn, .input-group-btn:first-child>.dropdown-toggle, .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child>.btn-group:not(:last-child)>.btn {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.btn-rec .fa , .error-msg .fa{
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+.input-group .form-control {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+section.signin .con-body .sub-label {
+    font-size: 15px;
+    padding: 0;
+    font-weight: 300;
+    color: #868686;
+    padding-bottom: 10px;
+}
+
+textarea.form-control {
+    min-height: 100px;
+}
+
+.navbar-toggler {
+    border-radius: 0;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #00cd59;
+}
+
+.tooltip {
+    font-family: iransans;
+    font-weight: 300;
+    font-size: 15px;
+    padding: 2px 5px;
+}
+
+.dash-profile-item {
+    background: #000;
+    height: 100px;
+}
+
+.fa {
+    vertical-align: middle;
+}
+
+
+.sub-heading {
+    display: block;
+    line-height: 1.75rem;
+    font-size: 13px;
+    padding-top: 2px;
+    color: #777;
+    font-weight: 300;
+}
+
+.sub-heading .tag {
+    background: #e9ecef;
+    padding: 0 5px;
+    color: #495057;
+}
+
+.sub-heading .tag:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #727b84;
+    border-color: #6c757d;
+    transition: all .15s ease-in-out;
+}
+
+section.profile {
+    background-color: #f1f1f1;
+    padding-bottom: 75px;
+    padding-top: 50px;
+}
+
+.navbar-toggler {
+    padding: 0 .4rem;
+}
+
+.divider {
+    height: 0;
+    margin: .75rem 0;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+}
+
+.project-title {
+    display: inline;
+    font-weight: 400;
+    line-height: 1.75rem;
+}
+
+.modal-content {
+    border-radius: 0;
+    border: 0;
+}
+
+.project-discript {
+    font-weight: 300;
+    line-height: 1.5rem;
+}
+#biddingBtn {
+    width: 100%;
+}
+
+.profile .sub-heading {
+    font-size: 15px;
+}
+
+.sub-heading a {
+    color: #777;
+}
+
+.not-inline {
+    display: block;
+}
+
+.fl-wrap {
+}
+
+.fl-discript {
+    display: block;
+    font-weight: 300;
+    font-size: 15px;
+    margin: 5px 0 3px 0;
+}
+
+.fl-wrap .btn-rec .fa {
+    padding:0 ;
+}
+
+.fl-wrap .btn-rec {
+    padding: 1px 10px;
+}
+
+.fl-name {
+    padding-right: 5px;
+    color: #212529;
+}
+
+.bidding-price {
+    background: #D77000;
+    padding: 0 5px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.price-badge {
+    background: #D77000;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    width: 30px;
+    vertical-align: middle;
+}
+
+.time-badge {
+    background: #08b0f0;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    width: 30px;
+    vertical-align: middle;
+}
+
+.profile .dropdown {
+    display: inline;
+}
+
+.btn-secondary {
+    color: #555;
+    background-color: #fff;
+    border-color: #868e96;
+}
+
+.btn-small {
+    padding: 5px 10px;
+}
+
+.fl-p h5.name {
+
+}
+
+.fl-p h6.s-discript {
+    font-weight: 400;
+}
+
+.fl-p .discript {
+    font-weight: 300;
+}
+
+#inviteBtn {
+    width:100%;
+}
+
+#followBtn {
+    width:100%;
+}
+
+.card {
+    border-radius: 0;
+}
+
+p.card-text {
+    font-weight: 300;
+}
+
+h4.card-title {
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+h4.card-title a {
+
+}
