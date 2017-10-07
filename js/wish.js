@@ -57,12 +57,12 @@ var form = $('#signup-form');
 
 
 var checkPassword = function(passText){
-	if (passText.length < 6 && passText.search(/\dd/) == -1 && passText.search(/[A-Z]/) == -1){
-		return "پسورد شما باید شامل ۶ حرف انگلیسی باشد";
+	if (passText.length < 8 && passText.search(/\dd/) == -1 && passText.search(/[A-Z]/) == -1){
+		return "پسورد شما باید شامل ۸ حرف انگلیسی باشد";
 	}
-	else if (passText.length < 6)
+	else if (passText.length < 8)
 	{
-		 return "پسورد شما باید حداقل شامل ۶ حرف انگلیسی باشد";
+		 return "پسورد شما باید حداقل شامل ۸ حرف انگلیسی باشد";
     }
 	else if (passText.length > 50)
 	{
@@ -79,7 +79,7 @@ var checkPassword = function(passText){
 	else if (passText.search(/[!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
          return "پسورد شما دارای نماد های نامعتبر است";
     }
-    else if(passText.search(/[\u0600-\u06FF]/) != -1) {
+    if(passText.search(/[\u0600-\u06FF]/) != -1) {
         return "لطفا پسورد خود را انگلیسی وارد نمایید!";
     }
 	else return "okpass";
@@ -97,18 +97,18 @@ password.on('input' ,function(){
 	else if(passStatus === "لطفا پسورد خود را انگلیسی وارد نمایید!")
 	{
 
-        $('#errorText').text(passStatus);
 		$('#form-control-feedback-pass').show();
+    $('#passwordTextError').text(passStatus);
 		$('#pas').addClass('has-danger');
 
     }
     else if(passStatus === "پسورد شما دارای نماد های نامعتبر است"){
-        $('#errorText').text(passStatus);
+        $('#passwordTextError').text(passStatus);
         $('#form-control-feedback-pass').show();
         $('#pas').addClass('has-danger');
     }
     else{
-        $('#errorText').text(passStatus);
+        $('#passwordTextError').text(passStatus);
         $('#form-control-feedback-pass').show();
         $('#pas').addClass('has-danger');
     }
@@ -124,8 +124,7 @@ var checkUserName = function (userText){
     }
     if(userText.match(/^[0-9a-zA-Z]/))
         return "okusername";
-    if(userText.length < 4 )
-        return "نام کاربری شما باید حداقل شامل ۴ کاراکتر باشد";
+
 
     else
         return " نام کاربری شما دارای نماد های نامعتبر است(نام کاربری باید تنها شامل حروف انگلیسی باشد";
@@ -147,8 +146,8 @@ username.on('input' ,function (){
         console.log("this", this);
 
         if (UserNameX !== "okusername") {
-
-            $('#form-control-feedback-username').css('display' , 'block');
+            $('#form-control-feedback-username').show()
+            $('#userNameTextError').text(UserNameX);
             $('#usn').addClass('has-danger');
 
 
@@ -156,7 +155,7 @@ username.on('input' ,function (){
 
         }
         else {
-            $("#form-control-feedback-username").css('display', 'none');
+            $("#form-control-feedback-username").hide();
             $('#usn').removeClass('has-danger');
         }
     }
@@ -166,7 +165,10 @@ function firstNameValidation(strr){
     if(strr.match(/^[\u0600-\u06FF]/)) {
         return "ok";
     }
-        else
+    if(strr ===""){
+        return "لطفا نام خود را وارد کنید.";
+    }
+    else
         return 'لطفا نام خود را فارسی وارد کنید.';
 }
 firstName.on('input' ,function () {
@@ -174,7 +176,7 @@ firstName.on('input' ,function () {
     if(firstNameValidation(checkFirstName) !== "ok" ) {
         $('#nameError').show();
         $('#fname').addClass('has-danger');
-        $('#errorTextFirstName').text(firstNameValidation(checkFirstName));
+        $('#fNameTextError').text(firstNameValidation(checkFirstName));
     }
     else {
         $('#nameError').hide();
@@ -187,18 +189,19 @@ function lastNameValidation(strr){
     if(strr.match(/^[\u0600-\u06FF]/)) {
         return "ok";
     }
-    else if (strr ===""){
+    if (strr ===""){
         return "لطفا نام خانوادگی خود را وارد کنید.";
     }
-    else
-        return 'لطفا نام خود را فارسی وارد کنید.';
+    else {
+        return 'لطفا نام خانوادگی خود را فارسی وارد کنید.';
+    }
 }
 lastName.on('input' ,function () {
     var checkLastName = this.value;
     if(lastNameValidation(checkLastName) !== "ok" ) {
         $('#LnameError').show();
         $('#lname').addClass('has-danger');
-        $('#errorTextLastName').text(lastNameValidation(checkLastName));
+        $('#lNameTextError').text(lastNameValidation(checkLastName));
     }
     else {
         $('#LnameError').hide();
@@ -262,7 +265,7 @@ VEmail.on('input' , function(){
 	if(!validateEmail(checkMail)){
 		$('#EmailError').show();
         $('#eml').addClass('has-danger');
-        $('#errorTextEmail').text('ایمیل شما نامعتبر می باشد')
+        $('#emailTextError').text('ایمیل شما نامعتبر می باشد.');
 	}
 	else{
 		$('#EmailError').css('display' , 'none');
@@ -321,6 +324,7 @@ function gotonext(){
     var CheckBox = document.getElementById("checkBox");
     if(username.val() ===""){
         validityUser = "EmptyUsername";
+        console.log( 'X',validityPass , validityUser , CheckBox)
     }
 
     if(validityPass === "okpass" && validityUser ==="okusername" && CheckBox.checked === true){
@@ -329,34 +333,41 @@ function gotonext(){
         //checkUserNameAndPasswordValidation();
     }
     else {
-        if(CheckBox.checked != true && validityPass != "okpass" && validityUser ==="okusername"){
-            $('#error-msg').text('لطفا پسورد خود را صحیح وارد کنید و قوانین را تایید کنید.').css('display' , 'block');
+        if(CheckBox.checked !== true && validityPass !== "okpass" && validityUser ==="okusername"){
+            $('#error-msg').show();
             $('#pas').addClass('has-danger');
+            $('#error-msg-text').text('لطفا پسورد خود را صحیح وارد کنید و قوانین را تایید کنید.');
           }
-        if (CheckBox.checked != true && validityUser ==="okusername" && validityPass === "okpass"){
-            $('#error-msg').text('لطفا قوانین را تایید کنید.').css('display' , 'block');
+        if (CheckBox.checked !== true && validityUser ==="okusername" && validityPass === "okpass"){
+            $('#error-msg').show();
+            $('#error-msg-text').text('لطفا قوانین را تایید کنید.').css('display' , 'block');
           }
-        if(CheckBox.checked != true && validityUser !="okusername" && validityPass === "okpass"){
-            $('#error-msg').text('لطفا نام کاربری را صحیح وارد کنید و قوانین را تایید کنید.').css('display' , 'block');
+        if(CheckBox.checked !== true && validityUser !=="okusername" && validityPass === "okpass"){
+            $('#error-msg').show()
+            $('#error-msg-text').text('لطفا نام کاربری را صحیح وارد کنید و قوانین را تایید کنید.').css('display' , 'block');
             $('#usn').addClass('has-danger');
           }
-        if (CheckBox.checked === true && validityUser !="okusername" && validityPass != "okpass"){
-            $('#error-msg').text('لطفا نام کاربری و پسورد خود را صحیح وارد کنید.').css('display' , 'block');
-            $('#pas').addClass('has-danger');
-            $('#usn').addClass('has-danger');
-          }
-        if(CheckBox.checked === true && validityUser ==="okusername" && validityPass != "okpass"){
-            $('#error-msg').text('لطفا پسورد خود را صحیح وارد کنید.').css('display' , 'block');
-            $('#pas').addClass('has-danger');
-          }
-        if (CheckBox.checked != true && validityUser !="okusername" && validityPass != "okpass"){
-            $('#error-msg').text('انتخاب نام کاربری و رمز عبور مناسب و همچنین تایید قوانین الزامی است!').css('display' , 'block');
+        if (CheckBox.checked === true && validityUser !=="okusername" && validityPass !== "okpass"){
+            $('#error-msg').show()
+            $('#error-msg-text').text('لطفا نام کاربری و پسورد خود را صحیح وارد کنید.').css('display' , 'block');
             $('#pas').addClass('has-danger');
             $('#usn').addClass('has-danger');
           }
-        if(CheckBox.checked === true && validityUser !="okusername" && validityPass === "okpass"){
-              $('#error-msg').text('لطفا نام کاربری را صحیح وارد کنید.').css('display' , 'block');
-              $('#usn').addClass('has-danger');
+        if(CheckBox.checked === true && validityUser ==="okusername" && validityPass !== "okpass"){
+            $('#error-msg').show();
+            $('#error-msg-text').text('لطفا پسورد خود را صحیح وارد کنید.');
+            $('#pas').addClass('has-danger');
+          }
+        if (CheckBox.checked !== true && validityUser !=="okusername" && validityPass !== "okpass"){
+            $('#error-msg').show();
+            $('#error-msg-text').text('انتخاب نام کاربری و رمز عبور مناسب و همچنین تایید قوانین الزامی است!').css('display' , 'block');
+            $('#pas').addClass('has-danger');
+            $('#usn').addClass('has-danger');
+          }
+        if(CheckBox.checked === true && validityUser !=="okusername" && validityPass === "okpass"){
+            $('#error-msg').show();
+            $('#error-msg-text').text('لطفا نام کاربری را صحیح وارد کنید.');
+            $('#usn').addClass('has-danger');
         }
     }
 }
@@ -387,28 +398,28 @@ function gotonext2(){
         if(checkingName === "") {
             $('#nameError').show();
             $('#fname').addClass('has-danger');
-            $('#errorTextFirstName').text(firstNameValidation(checkingName));
+            $('#fNameTextError').text(firstNameValidation(checkingName));
         }
         if(EMail ===""){
             $('#EmailError').show();
             $('#eml').addClass('has-danger');
-            $('#errorTextEmail').text('لطفا ایمیل خود را وارد کنید.')
+            $('#emailTextError').text('لطفا ایمیل خود را وارد کنید.')
         }
         if(validateEmail(EMail) === false && EMail !== ""){
             $('#EmailError').show();
             $('#eml').addClass('has-danger');
-            $('#errorTextEmail').text('ایمیل شما نامعتبر است.')
+            $('#emailTextError').text('ایمیل شما نامعتبر است.')
         }
         if(checkingMobile !== 'ok'){
             $('#mobileError').show()
             $('#mobilenmbr').addClass('has-danger');
-            $('#errorTextMobile').text(checkingMobile);
+            $('#mobileTextError').text(checkingMobile);
         }
         if(checkingLastName ===""){
 
             $('#LnameError').show();
             $('#lname').addClass('has-danger');
-            $('#errorTextLastName').text(lastNameValidation(checkingLastName));
+            $('#lNameTextError').text(lastNameValidation(checkingLastName));
         }
         $("#ErrorMessage").show();
     }
