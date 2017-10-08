@@ -177,10 +177,56 @@ header.masthead .intro-text .intro-heading {
     text-transform: uppercase;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
+    .responsive{
+      display: none;
+    }
     header.masthead .intro-text {
         padding-top: 250px;
         padding-bottom: 200px;
+    }
+    header.masthead .intro-text .intro-lead-in {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 25px;
+        }
+    header.masthead .intro-text .intro-heading {
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 75px;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+    }
+}
+@media (max-width: 1024px) and (min-width:768px){
+  .responsive{
+    display: none;
+  }
+  header.masthead .intro-text {
+      padding-top: 125px;
+      padding-bottom: 70px;
+  }
+  header.masthead .intro-text .intro-lead-in {
+      font-size: 21px;
+      line-height: 40px;
+      margin-bottom: 25px;
+      }
+  header.masthead .intro-text .intro-heading {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 75px;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+  }
+}
+
+@media (max-width: 767px){
+    .onlap{
+      display: none;
+    }
+    header.masthead .intro-text {
+      padding-top: 150px;
+      padding-bottom: 150px;
     }
     header.masthead .intro-text .intro-lead-in {
         font-size: 21px;
@@ -405,4 +451,3 @@ ul.social-buttons li a:hover {
  .footer-item a:hover {
     color: #b3b3b3;
  }
-
