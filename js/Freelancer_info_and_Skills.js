@@ -121,11 +121,27 @@ $('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
 function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
+    var imageValidation ;
     var tmppath = URL.createObjectURL(event.target.files[0]);
+    // Checking Size ;)
+    if(event.target.files[0].size > 1000000){
+        imageValidation = false
+    }
+    if(event.target.files[0].size <= 1000000){
+        imageValidation = true
+    }
+    // console.log(event.target.files[0].name , 'target');
+    // console.log(tmppath);
+    $(".file-holder").hide();
+    $('.fa-camera').hide();
 
     reader.onload = function (e) {
       $('#freelancer-Img').attr('src', e.target.result);
-      $('#img-Path').val(tmppath);
+      $('#freelancer-Img').attr('height', '100px');
+      $('#freelancer-Img').attr('width', '100px');
+
+    //  $('#img-Path').val(tmppath);
+
     }
 
     reader.readAsDataURL(input.files[0]);
@@ -134,10 +150,35 @@ function readURL(input) {
 
 $(".uploader").change(function(){
   readURL(this);
+
 });
 
+if (imageValidation === true) {
+  
+}
 
-
-
+//-------------------------------------------------
+//                  Ajax
+//-------------------------------------------------
+// function sendInfoAndSkillsOfFreelancerDataToServer(){
+//   var signUpDataInfoAndSkills ={
+//     var FreelancerSkills = skills,
+//   //  var IMG?
+//     var freelancerJob = $('#job'),
+//     var freelancerDegree = $('#degree'),
+//   }
+//   $.ajax({
+//     type : "POST",
+//     url  :
+//     dataType : 'json',
+//     data : signUpDataInfoAndSkills,
+//     success : function(data){
+//       console.log('mersi !');
+//     }
+//     error : function(data){
+//       console.log('Error');
+//     }
+//   })
+// }
 var Email = localStorage.getItem('EmailVerification');
 document.getElementById('EmailofClientOrFreelancer').innerHTML = Email;
