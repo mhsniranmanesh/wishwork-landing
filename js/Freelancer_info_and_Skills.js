@@ -59,12 +59,12 @@ if(!is_skill_present(skill) && translatefrom.selectedIndex != 0 && translateto.s
 		remove_tag(skill);
 	}
 }
-	
+
 }
-	
+
 function is_skill_present(skill) {
   for (var i = 0; i < skills.length; i++) {
-   
+
 	  if (skills[i].from === skill.from && skills[i].to === skill.to) {
       return true;
     }
@@ -76,7 +76,7 @@ function remove_tag(skill){
 		if(skills[i].from === skill.from && skills[i].to === skill.to){
 			skills[i].htmlElement.remove();
 			skills.splice(i,1);
-			
+
 		}
 	}
 }
@@ -92,13 +92,52 @@ function gotonext(){
 				$('#ErrorMessage').show();
 				$('#errorText').text('لطفا حداقل یک مهارت را وارد کنید');
 }
-function gotoVerificationMsg(){ 
+$('#submitButton').click(function(){
 	window.location.href = "signup-verification-msg.html";
-}
+})
 // var Name = localStorage.getItem('userFirstAndLastName');
 // document.getElementById('userlogin').innerHTML = Name;
+var SITE = SITE || {};
+SITE.fileInputs = function (){
+  var $this = $(this),
+     $val = $this.val(),
+     valArray = $val.split("\\"),
+     newVal = valArray[valArray.length - 1],
+     $button = $this.siblings("#imageButton"),
+     $fakeFile = $this.siblings(".file-holder");
+      if(newVal !== '') {
+    $button.text('تغییر عکس');
+    if($fakeFile.length === 0) {
+      $button.after('<span class="file-holder">' + newVal + '</span>');
+    } else {
+      $fakeFile.text(newVal);
+    }
+  }
+};
+
+
+$('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    var tmppath = URL.createObjectURL(event.target.files[0]);
+
+    reader.onload = function (e) {
+      $('#freelancer-Img').attr('src', e.target.result);
+      $('#img-Path').val(tmppath);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$(".uploader").change(function(){
+  readURL(this);
+});
+
+
 
 
 var Email = localStorage.getItem('EmailVerification');
 document.getElementById('EmailofClientOrFreelancer').innerHTML = Email;
-

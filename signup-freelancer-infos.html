@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="css/fontiran.css">
   <!-- Custom styles for this template -->
   <link href="css/wish.css" rel="stylesheet">
+
+
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -50,7 +52,7 @@
             <h4>اطلاعات شخصی خود را تکمیل کنید.</h4>
         </div> -->
     <div class="con-body">
-      <form class="signup-form" action="javascript:gotoVerificationMsg();">
+      <form class="signup-form" action="javascript:void(0);" >
         <div class="input-group">
           <label for="profilePicture" class="col-form-label">
                         عکس خود را آپلود کنید.
@@ -60,18 +62,24 @@
                           <i class="fa fa-quote-left quote" aria-hidden="true"></i>
                               <span class="quote">آپلود عکس باعث افزایش درصد اطمینان کارفرمایان می شود</span>
                       </label>
+                      <div class="left">
           <a href="#" class="">
-                      <img class="rounded-circle d-flex ml-3" src="http://via.placeholder.com/100x100">
+                      <img id="freelancer-Img" class="rounded-circle d-flex ml-3" src="http://via.placeholder.com/100x100">
                       <i class="fa fa-camera"></i>
                     </img>
                   </a>
+                </div>
           <!-- <br /> -->
           <label for="profilePicture" class="col-form-label max-vol">
                         <h6>حداکثر حجم قابل قبول 2 مگابایت می باشد</h6>
                     </label>
-          <button type="submit" class="btn btn-success btn-rec">
-                        <i class="fa fa-plus"></i>انتخاب عکس
-                    </button>
+                    <span class="file-wrapper">
+    <input type="file" name="photo" id="imgInp" class="uploader" placeholder="I" />
+    <span   id="imageButton" class="btn btn-success btn-rec">
+                  <i class="fa fa-plus"></i>انتخاب عکس
+              </span>  </span>
+
+
         </div>
         <div class="input-group">
           <label for="" class="col-form-label">
@@ -98,7 +106,7 @@
           <input type="text" class="form-control" id="" placeholder="مدرک تحصیلی">
           <input type="text" class="form-control" id="" placeholder="دانشگاه">
         </div>
-        <button type="submit" class="btn btn-primary btn-rec" onclick="gotoVerificationMsg();">
+        <button id="submitButton" type="submit" class="btn btn-primary btn-rec">
                     ارسال
                 </button>
       </form>

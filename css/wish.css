@@ -979,3 +979,49 @@ ul.social-buttons li a:hover {
 padding:29px 0 55px 0;
 
 }
+.file-wrapper {
+cursor: pointer;
+display: inline-block;
+overflow: hidden;
+position: relative;
+}
+.file-wrapper:hover .btn {
+background-color: #33adff !important;
+}
+
+.file-wrapper input {
+cursor: pointer;
+font-size: 100px;
+height: 100%;
+filter: alpha(opacity=1);
+-moz-opacity: 0.01;
+opacity: 0.01;
+position: absolute;
+right: 0;
+top: 0;
+z-index: 9;
+}
+.left, .right {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.left {
+  width: 6em;
+  min-width: 6em;
+  padding-right: 1em;
+}
+.left img {
+  width: 100%;
+}
+
+.img-holder {
+  display: block;
+  vertical-align: middle;
+  width: 2em;
+  height: 2em;
+}
+.img-holder img {
+  width: 100%;
+  max-width: 100%;
+}
