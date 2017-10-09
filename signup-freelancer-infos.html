@@ -70,9 +70,10 @@
                   </a>
                 </div>
           <!-- <br /> -->
-          <label for="profilePicture" class="col-form-label max-vol">
-              
-                        <h6>حداکثر حجم قابل قبول ۱ مگابایت می باشد</h6>
+          <label id="imageAlertPart" for="profilePicture" class="col-form-label max-vol">
+            <i class="fa fa-level-up" aria-hidden="true"></i>
+
+                        <span id="imageAlert" style="font-size:8pt">حداکثر حجم قابل قبول ۱ مگابایت می باشد</span>
                     </label>
                     <span class="file-wrapper">
     <input type="file" name="photo" id="imgInp" class="uploader" placeholder="I" />
@@ -86,7 +87,7 @@
           <label for="" class="col-form-label">
                        عنوان حرفه ای خود را انتخاب کنید
                     </label>
-          <input type="text" class="form-control" id="" placeholder="مثال: مترجم فارسی به انگلیسی">
+          <input type="text" class="form-control" id="Career" placeholder="مثال: مترجم فارسی به انگلیسی">
           <br />
           <label for="" class="col-form-label">
                         خلاصه ای از فعالیت هایتان را بنویسید
@@ -97,7 +98,7 @@
                             <span class="quote"> برداشت اول کارفرما از شما در این بخش شکل می گیرد؛ پس بیشتر به مهارت های اصلی، تجربیات و علایق خود بپردازید.</span>
                       </label>
 
-          <textarea type="text" class="form-control" id="" placeholder="500 کلمه برای مشخص کردن تفاوتتان فرصت دارید"></textarea>
+          <textarea type="text" class="form-control" id="aboutFreelancer" placeholder="۵۰۰ کلمه برای مشخص کردن تفاوتتان فرصت دارید"></textarea>
         </div>
         <div class="input-group">
           <label for="" class="col-form-label">
@@ -144,7 +145,7 @@
 <!-- Bootstrap-Select -->
 <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 <!-- Custom scripts for this template -->
-<script src="js/Freelancer_info_and_Skills.js"></script>
+<script src="js/Freelancer_infos.js"></script>
 
 </body>
 

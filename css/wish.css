@@ -1025,3 +1025,9 @@ z-index: 9;
   width: 100%;
   max-width: 100%;
 }
+input.tag{
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}

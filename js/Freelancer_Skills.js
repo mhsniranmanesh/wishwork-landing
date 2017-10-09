@@ -42,22 +42,26 @@ if(!is_skill_present(skill) && translatefrom.selectedIndex != 0 && translateto.s
 	skills.push(skill);
 	var child = document.createElement('div');
 	skill.htmlElement = child;
-    var childInnerText = document.createElement('input');
-	childInnerText.readOnly = true;
+  var childInnerText = document.createElement('input');
+  childInnerText.id = "tag"
+  childInnerText.readOnly = true;
 	child.className = "col-sm-6";
-	childInnerText.placeholder = skill.text;
+  childInnerText.setAttribute('style' , 'font-family:FontAwesome;')
+	childInnerText.placeholder =   skill.text;
     childInnerText.dir = "rtl";
-	childInnerText.className="form-control";
+	childInnerText.className="form-control tag";
     childInnerText.style.display = "inline";
+    child.setAttribute("style", "display: inline;white-space:nowrap;");
     childInnerText.style.fontsize = "5px";
     child.appendChild(childInnerText);
 	skillsbox.appendChild(child);
-	var removeButton = document.createElement('span');
-	removeButton.innerHTML = 'X';
-	child.appendChild(removeButton);
-	removeButton.onclick = function(){
-		remove_tag(skill);
-	}
+	// var removeButton = document.createElement('span');
+	// removeButton.innerHTML = 'X';
+
+
+  childInnerText.ondblclick = function(){
+    remove_tag(skill);
+  }
 }
 
 }
@@ -92,70 +96,10 @@ function gotonext(){
 				$('#ErrorMessage').show();
 				$('#errorText').text('لطفا حداقل یک مهارت را وارد کنید');
 }
-$('#submitButton').click(function(){
-	window.location.href = "signup-verification-msg.html";
-})
+
 // var Name = localStorage.getItem('userFirstAndLastName');
 // document.getElementById('userlogin').innerHTML = Name;
-var SITE = SITE || {};
-SITE.fileInputs = function (){
-  var $this = $(this),
-     $val = $this.val(),
-     valArray = $val.split("\\"),
-     newVal = valArray[valArray.length - 1],
-     $button = $this.siblings("#imageButton"),
-     $fakeFile = $this.siblings(".file-holder");
-      if(newVal !== '') {
-    $button.text('تغییر عکس');
-    if($fakeFile.length === 0) {
-      $button.after('<span class="file-holder">' + newVal + '</span>');
-    } else {
-      $fakeFile.text(newVal);
-    }
-  }
-};
 
-
-$('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
-
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    var imageValidation ;
-    var tmppath = URL.createObjectURL(event.target.files[0]);
-    // Checking Size ;)
-    if(event.target.files[0].size > 1000000){
-        imageValidation = false
-    }
-    if(event.target.files[0].size <= 1000000){
-        imageValidation = true
-    }
-    // console.log(event.target.files[0].name , 'target');
-    // console.log(tmppath);
-    $(".file-holder").hide();
-    $('.fa-camera').hide();
-
-    reader.onload = function (e) {
-      $('#freelancer-Img').attr('src', e.target.result);
-      $('#freelancer-Img').attr('height', '100px');
-      $('#freelancer-Img').attr('width', '100px');
-
-    //  $('#img-Path').val(tmppath);
-
-    }
-
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-$(".uploader").change(function(){
-  readURL(this);
-
-});
-
-if (imageValidation === true) {
-  
-}
 
 //-------------------------------------------------
 //                  Ajax
@@ -166,6 +110,8 @@ if (imageValidation === true) {
 //   //  var IMG?
 //     var freelancerJob = $('#job'),
 //     var freelancerDegree = $('#degree'),
+//     var freelancerAbout = $('#aboutFreelancer'),
+//     var freelancerCareer = $('#Career')
 //   }
 //   $.ajax({
 //     type : "POST",
@@ -180,5 +126,3 @@ if (imageValidation === true) {
 //     }
 //   })
 // }
-var Email = localStorage.getItem('EmailVerification');
-document.getElementById('EmailofClientOrFreelancer').innerHTML = Email;
