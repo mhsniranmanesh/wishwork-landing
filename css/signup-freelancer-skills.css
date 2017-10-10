@@ -239,6 +239,17 @@ section.signin .con-body .sub-label {
     background-color: #007031;
     border-color: #007031;
 }
+.btn-primary {
+    color: #fff;
+    background-color: #018abe;
+    border-color: #018abe;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #014762;
+    border-color: #014762;
+}
 
 .btn-rec .fa,
 .error-msg .fa {
