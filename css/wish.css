@@ -74,7 +74,7 @@ a:hover {
 .navbar-light .navbar-nav .nav-link:hover {
     color: rgba(75, 75, 75, 1);
 }
-
+/**/
 section.signup {
     background-color: #f1f1f1;
     /*max-height: 91.52vh;*/
@@ -979,6 +979,8 @@ ul.social-buttons li a:hover {
 padding:29px 0 55px 0;
 
 }
+
+/*getting image  ------> freelancer-infos */
 .file-wrapper {
 cursor: pointer;
 display: inline-block;
@@ -1001,27 +1003,31 @@ right: 0;
 top: 0;
 z-index: 9;
 }
-.left, .right {
-  display: table-cell;
-  vertical-align: middle;
-}
+/*.left, .right {*/
+  /*display: table-cell;*/
+  /*display: block;*/
+  /*vertical-align: middle;*/
+/*}*/
 
-.left {
+/*.left {
   width: 6em;
   min-width: 6em;
   padding-right: 1em;
 }
 .left img {
   width: 100%;
+}*/
+.pad-img{
+  padding-right: 10px;
 }
 
-.img-holder {
-  display: block;
-  vertical-align: middle;
-  width: 2em;
-  height: 2em;
+.thumbnail {
+    position: relative;
 }
-.img-holder img {
-  width: 100%;
-  max-width: 100%;
+
+.caption {
+    position: absolute;
+    top: 40%;
+    left: 13%;
+    width: 100%;
 }
