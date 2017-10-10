@@ -28,6 +28,11 @@ h6 {
 
 
 /*navigation bar*/
+.tabbar-img{
+  height: 30px;
+  width: 30px;
+}
+
 .navbar {
     border-bottom: 1px solid #dedede;
 }
@@ -257,4 +262,3 @@ footer {
  ul.social-buttons li a:hover {
      background-color: #018abe;
  }
- 
