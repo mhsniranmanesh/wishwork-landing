@@ -336,6 +336,7 @@ function gotonext(){
         if(CheckBox.checked !== true && validityPass !== "okpass" && validityUser ==="okusername"){
             $('#error-msg').show();
             $('#pas').addClass('has-danger');
+            $('#passwordTextError').text(validityPass);
             $('#error-msg-text').text('لطفا پسورد خود را صحیح وارد کنید و قوانین را تایید کنید.');
           }
         if (CheckBox.checked !== true && validityUser ==="okusername" && validityPass === "okpass"){
