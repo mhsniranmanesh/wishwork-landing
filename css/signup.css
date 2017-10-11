@@ -184,6 +184,7 @@ h6 {
 /*main content*/
 
 section.signup {
+
     background-color: #f1f1f1;
     padding: 50px 0;
     min-height: calc(100vh - 16vh - 60px);
@@ -245,6 +246,7 @@ section.signup .con-body .col-right {
 
 #body {
   padding: 0 ;
+
 }
 
 #footer {
@@ -296,7 +298,7 @@ section.signup .con-body .col-right {
      border-radius: 100%;
      outline: none;
      background-color: white;
-     padding-top: 2.5px;
+     padding: 2.5px 2.5px;
      margin:0 2.5px;
  }
 

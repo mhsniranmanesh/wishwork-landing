@@ -140,6 +140,8 @@ footer {
      border-radius: 100%;
      outline: none;
      background-color: #222;
+     padding: 1px 2.5px;
+     margin:0 2.5px;
  }
 
  ul.social-buttons li a:active,

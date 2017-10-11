@@ -435,7 +435,8 @@ footer {
      border-radius: 100%;
      outline: none;
      background-color: white;
-     padding-top: 2.5px;
+     padding: 1px 2.5px;
+     margin:0 2.5px;
  }
 
  ul.social-button li a:active,
