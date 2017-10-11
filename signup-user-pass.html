@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-
-	<title>Wish-Work</title>
+    <link rel="shortcut icon" href="img/tab-img.png"/>
+    <title>Wish Work</title>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap-RTL CSS -->
@@ -20,149 +19,110 @@
 
     <!-- Custom styles for this template -->
     <link href="css/signup-user-pass.css" rel="stylesheet">
+
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="http://wishwork.ir">
-          <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="nav-logo">
-          <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav navbar-right">
-                <li class="nav-item">
-                    <a class="nav-link" href="signin.html">کاربر سایت هستید؟ وارد شوید.</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<section class="signin">
-    <div class="container con">
-        <div class="con-title">
-            <h4>نام کاربری و رمز عبورتان را انتخاب کنید.</h4>
-        </div>
-        <div class="con-body">
-                <form id="signup-form" class="signup-form" action="javascript:gotonext();">
-                     <div id="usn" class="form-group alert">
-    					 <!--   class="form-group has-danger"-->
-                            <!-- <label for="signupPassInput" class="col-form-label">نام کاربری</label> -->
-                            <input type="username" class="form-control form-control-danger" id="signupUsernameInput" placeholder="نام کاربری" >
-                            <div id="form-control-feedback-username" class="form-control-feedback alert-set" style="display:none;">
-                              <i class="fa fa-exclamation-triangle" aria-hidden="ture"></i>
-                                  <span id="userNameTextError">نام کاربری باید شامل حروف و اعداد انگلیسی باشد!</span>
-                            </div>
-
-    					       </div>
-                    <div id="pas" class="form-group alert">
-
-                        <!-- <label for="signupPassInput" class="col-form-label">رمز عبور</label> -->
-                        <input type="password" class="form-control form-control-danger" id="signupPassInput" placeholder="رمز عبور" >
-                        <div id="form-control-feedback-pass" class="form-control-feedback alert-set" style="display:none;">
-                          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                          <span id="passwordTextError"></span></div>
-
-					          </div>
-                    <label class="form-check-label">
-                        <input id="checkBox" class="form-check-input" type="checkbox" >
-                        <span >من تمامی <a href="privacy.html" target="_blank">قوانین Wish-Work</a> را مطالعه کرده ام و با آن ها موافق هستم.</span>
-                    </label>
-                    <div  id = "error-msg" style="display:none;">
-                      <span  id = "error-msg-text" class="error-msg">
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                          <span>انتخاب نام کاربری و رمز عبور مناسب و همچنین تایید قوانین الزامی است!</span>
-                      </span>
+<div id="wrapper">
+  <div id="header">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                  <a class="navbar-brand" href="http://wishwork.ir">
+                    <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" href="index.html" alt="nav-logo">
+                    <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
+                  </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav navbar-right">
+                          <li class="nav-item">
+                              <a class="nav-link" href="signin.html">کاربر سایت هستید؟ وارد شوید.</a>
+                          </li>
+                      </ul>
                   </div>
-                    <button id="submit-signup-btn" type="submit" class="btn btn-primary btn-rec">ثبت نام</button>
-                </form>
+              </div>
+          </nav>
         </div>
-    </div>
-</section>
+        <div id="body">
+          <section class="signin">
+              <div class="container con">
+                  <div class="con-title">
+                      <h4>نام کاربری و رمز عبورتان را انتخاب کنید.</h4>
+                  </div>
+                  <div class="con-body">
+                          <form id="signup-form" class="signup-form" action="javascript:gotonext();">
+                               <div id="usn" class="form-group alert">
+              					 <!--   class="form-group has-danger"-->
+                                      <!-- <label for="signupPassInput" class="col-form-label">نام کاربری</label> -->
+                                      <input type="username" class="form-control form-control-danger" id="signupUsernameInput" placeholder="نام کاربری" >
+                                      <div id="form-control-feedback-username" class="form-control-feedback alert-set" style="display:none;">
+                                        <i class="fa fa-exclamation-triangle" aria-hidden="ture"></i>
+                                            <span id="userNameTextError">نام کاربری باید شامل حروف و اعداد انگلیسی باشد!</span>
+                                      </div>
 
+              					       </div>
+                              <div id="pas" class="form-group alert">
 
-<!-- footer -->
-<section id="footer" class="py-5">
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-4">
-                <h3 class="footer-heading pb-2">صفحات سایت</h3>
-                <ul class="footer-items">
-                    <li class="footer-item">
-                        <a href="index.html" >خانه</a>
-                    </li>
-                    <li class="footer-item">
-                        <a href="#" >روش ویش‌ورک</a>
-                    </li>
-                    <li class="footer-item">
-                        <a href="about.html" >درباره ما</a>
-                    </li>
+                                  <!-- <label for="signupPassInput" class="col-form-label">رمز عبور</label> -->
+                                  <input type="password" class="form-control form-control-danger" id="signupPassInput" placeholder="رمز عبور" >
+                                  <div id="form-control-feedback-pass" class="form-control-feedback alert-set" style="display:none;">
+                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    <span id="passwordTextError"></span></div>
 
-                    <li class="footer-item">
-                        <a href="privacy.html" >قوانین و شرایط</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h3 class="footer-heading pb-2">تماس با ما</h3>
-                <ul class="footer-items">
-                    <li class="footer-item">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i> تهران، زیر پل سیدخندان، کوچه همدانی، پلاک ۱۵، واحد ۷
-                    </li>
-                    <li class="footer-item">
-                        <i class="fa fa-phone"></i> ۰۲۱-۸۸۴۶۶۹۵۹
-                    </li>
-                    <li class="footer-item">
-                        <i class="fa fa-at" aria-hidden="true"></i> hello@wish-work.com
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h3 class="footer-heading pb-2">ویش‌ورک</h3>
-                <ul class="footer-items">
-                    <li class="footer-item">
-                        ویش‌ورک پلتفرمی برای انجام پروژه از راه دور است.  چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-                    </li>
-                    <li class="footer-item pt-2">
-                        ساخته شد با <i class="fa fa-heart"></i> در <a href="#">WishWork.ir</a>
-                    </li>
-                </ul>
-            </div>
+          					          </div>
+                              <label class="form-check-label">
+                                  <input id="checkBox" class="form-check-input" type="checkbox" >
+                                  <span >من تمامی <a href="privacy.html" target="_blank">قوانین Wish-Work</a> را مطالعه کرده ام و با آن ها موافق هستم.</span>
+                              </label>
+                              <div  id = "error-msg" style="display:none;">
+                                <span  id = "error-msg-text" class="error-msg">
+                                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    <span>انتخاب نام کاربری و رمز عبور مناسب و همچنین تایید قوانین الزامی است!</span>
+                                </span>
+                            </div>
+                              <button id="submit-signup-btn" type="submit" class="btn btn-primary btn-rec">ثبت نام</button>
+                          </form>
+                  </div>
+              </div>
+          </section>
         </div>
-    </div>
-</section>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <ul class="list-inline social-buttons">
-                    <li class="list-inline-item">
-                        <a href="#" target="_blank">
-                          <i class="fa fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://t.me/WishWork" target="_blank">
-                          <i class="fa fa-paper-plane"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.instagram.com/wish_work/" target="_blank">
-                          <i class="fa fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.linkedin.com/company/18127878/" target="_blank">
-                          <i class="fa fa-linkedin"></i>
-                        </a>
-                    </li>
-                </ul>
+
+          <!-- footer -->
+          <div id="footer" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" style="text-align:center;">
+                        <ul class="list-inline social-button">
+                            <li class="list-inline-item">
+                                <a href="https://twitter.com/work_wish" target="_blank">
+                                  <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://t.me/WishWork" target="_blank">
+                                  <i class="fa fa-paper-plane"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.instagram.com/wish_work/" target="_blank">
+                                  <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/company/18127878/" target="_blank">
+                                  <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                          <li class="footer-item copyright list-inline-item">
+                              <a href="#">تمامی حقوق این سایت متعلق به ویش ورک می باشد</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</footer>
+          </div>
+  </div>
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/popper/popper.min.js"></script>

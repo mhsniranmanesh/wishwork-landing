@@ -55,8 +55,8 @@ h6 {
 
 section.signin {
     background-color: #f1f1f1;
-    padding-bottom: 75px;
-    padding-top: 50px;
+    padding: 50px 0;
+    min-height: calc(100vh - 16vh - 60px);
 }
 section.signin .con-title {
     padding: 27.5px 0;
@@ -234,6 +234,19 @@ section.signin .con-body .btn-rec {
     display: block;
     margin: 10px 0 20px 0;
 }
+
+.btn-primary {
+    color: #fff;
+    background-color: #018abe;
+    border-color: #018abe;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #014762;
+    border-color: #014762;
+}
+
 .btn-rec .fa,
 .error-msg .fa {
     vertical-align: middle;
@@ -247,15 +260,31 @@ section.signin .con-body .btn-rec {
 
 
 /*footer*/
-footer {
-    padding: 25px 0;
+#wrapper {
+  min-height:100%;
+   position:relative;
+}
+
+#header{
+
+}
+
+#body {
+  padding: 0 ;
+}
+
+#footer {
+    padding:15px 0 0 0;
     text-align: center;
+    height:16vh;
+    position:relative;
+    bottom:0;
+    width:100vw;
+    height:16vh;   /* Height of the footer */
+    background-color: #222222;
+
 }
-.footer-heading {
-    color: #fff;
-    font-weight: 300;
-    font-size: 17px;
-}
+
 
 .footer-items {
     padding: 0;
@@ -276,24 +305,11 @@ footer {
     color: #b3b3b3;
  }
 
- section#footer {
-     background-color: #222;
+ ul.social-button {
+     margin-bottom: 5px;
  }
 
- section#footer .section-heading {
-     color: white;
- }
-
- .list-inline-item: {
-     margin-left: 5px;
-     margin-right: 0;
- }
-
- ul.social-buttons {
-     margin-bottom: 0;
- }
-
- ul.social-buttons li a {
+ ul.social-button li a {
      font-size: 20px;
      line-height: 40px;
      display: block;
@@ -302,14 +318,20 @@ footer {
      -webkit-transition: all 0.3s;
      -moz-transition: all 0.3s;
      transition: all 0.3s;
-     color: white;
+     color: #222222;
      border-radius: 100%;
      outline: none;
-     background-color: #222;
+     background-color: white;
+     padding: 1px 2.5px;
+     margin:0 2.5px;
  }
 
- ul.social-buttons li a:active,
- ul.social-buttons li a:focus,
- ul.social-buttons li a:hover {
+ ul.social-button li a:active,
+ ul.social-button li a:focus,
+ ul.social-button li a:hover {
      background-color: #018abe;
+ }
+
+ ul.social-button li.copyright{
+   display:block;
  }
