@@ -38,30 +38,32 @@ skill.text =  ' از ' + skill.from + ' به ' + skill.to ;
 		$('#errorText').text('لطفا زبان مبدا و مقصد خود را متفاوت انتخاب کنید!');
 	}
 if(!is_skill_present(skill) && translatefrom.selectedIndex != 0 && translateto.selectedIndex != 0 && TT != TF){
-	 $('#ErrorMessage').hide();
-	skills.push(skill);
-	var child = document.createElement('div');
-	skill.htmlElement = child;
-  var childInnerText = document.createElement('input');
-  childInnerText.id = "tag"
-  childInnerText.readOnly = true;
-	child.className = "col-sm-6";
-  childInnerText.setAttribute('style' , 'font-family:FontAwesome;')
-	childInnerText.placeholder =   skill.text;
+	  $('#ErrorMessage').hide();
+	  skills.push(skill);
+	  var child = document.createElement('div');
+	  skill.htmlElement = child;
+    var childInnerText = document.createElement('label');
+    childInnerText.innerHTML = skill.text;
+    childInnerText.id = "tag";
+//    childInnerText.readOnly = true;
+  	child.className = "col-sm-6";
+    childInnerText.setAttribute('style' , 'font-family:FontAwesome;')
+	  //childInnerText =   skill.text;
     childInnerText.dir = "rtl";
-	childInnerText.className="form-control tag";
+	  childInnerText.className="form-control tag";
     childInnerText.style.display = "inline";
     child.setAttribute("style", "display: inline;white-space:nowrap;");
     childInnerText.style.fontsize = "5px";
     child.appendChild(childInnerText);
-	skillsbox.appendChild(child);
+	  skillsbox.appendChild(child);
+    $('.tag').prepend('<i id="removeTagButton" class="fa fa-times-circle" aria-hidden="true"></i>');
 	// var removeButton = document.createElement('span');
 	// removeButton.innerHTML = 'X';
 
 
-  childInnerText.ondblclick = function(){
+  $('#removeTagButton').click( function(){
     remove_tag(skill);
-  }
+  })
 }
 
 }
