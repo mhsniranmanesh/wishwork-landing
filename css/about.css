@@ -347,6 +347,32 @@ section h2.section-heading {
     margin-left: 5px;
     margin-right: 0;
 }
+ul.social-buttons {
+    margin-bottom: 0;
+}
+
+ul.social-buttons li a {
+    font-size: 20px;
+    line-height: 40px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    color: white;
+    border-radius: 100%;
+    outline: none;
+    background-color: #222222;
+    padding-top: 2.5px;
+}
+
+ul.social-buttons li a:active,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:hover {
+    background-color: #018abe;
+}
+
 
 
 /*footer*/
@@ -392,11 +418,11 @@ footer {
      margin-right: 0;
  }
 
- ul.social-buttons {
-     margin-bottom: 0;
+ ul.social-button {
+     margin-bottom: 20px;
  }
 
- ul.social-buttons li a {
+ ul.social-button li a {
      font-size: 20px;
      line-height: 40px;
      display: block;
@@ -405,15 +431,15 @@ footer {
      -webkit-transition: all 0.3s;
      -moz-transition: all 0.3s;
      transition: all 0.3s;
-     color: white;
+     color: #222222;
      border-radius: 100%;
      outline: none;
-     background-color: #222222;
+     background-color: white;
      padding-top: 2.5px;
  }
 
- ul.social-buttons li a:active,
- ul.social-buttons li a:focus,
- ul.social-buttons li a:hover {
+ ul.social-button li a:active,
+ ul.social-button li a:focus,
+ ul.social-button li a:hover {
      background-color: #018abe;
  }

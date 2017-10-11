@@ -192,14 +192,11 @@ span.error-msg {
 
 /*footer*/
 footer {
-    padding: 25px 0;
+    padding:25px 0;
     text-align: center;
+    height:18vh;
 }
-.footer-heading {
-    color: #fff;
-    font-weight: 300;
-    font-size: 17px;
-}
+
 
 .footer-items {
     padding: 0;
@@ -220,24 +217,16 @@ footer {
     color: #b3b3b3;
  }
 
- section#footer {
-     background-color: #222;
+footer#footer {
+     background-color: #222222;
  }
 
- section#footer .section-heading {
-     color: white;
+
+ ul.social-button {
+     margin-bottom: 10px;
  }
 
- .list-inline-item: {
-     margin-left: 5px;
-     margin-right: 0;
- }
-
- ul.social-buttons {
-     margin-bottom: 0;
- }
-
- ul.social-buttons li a {
+ ul.social-button li a {
      font-size: 20px;
      line-height: 40px;
      display: block;
@@ -246,14 +235,20 @@ footer {
      -webkit-transition: all 0.3s;
      -moz-transition: all 0.3s;
      transition: all 0.3s;
-     color: white;
+     color: #222222;
      border-radius: 100%;
      outline: none;
-     background-color: #222;
+     background-color: white;
+     padding-top: 2.5px;
+     margin:0 2.5px;
  }
 
- ul.social-buttons li a:active,
- ul.social-buttons li a:focus,
- ul.social-buttons li a:hover {
+ ul.social-button li a:active,
+ ul.social-button li a:focus,
+ ul.social-button li a:hover {
      background-color: #018abe;
+ }
+
+ ul.social-button li.copyright{
+   display:block;
  }
