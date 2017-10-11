@@ -185,8 +185,7 @@ h6 {
 
 section.signup {
     background-color: #f1f1f1;
-    /*max-height: 91.52vh;*/
-    padding-bottom: 91px;
+    height: calc(100vh - 16vh - 60px);
 }
 
 section.signup .con-title {
