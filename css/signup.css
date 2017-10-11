@@ -3,24 +3,8 @@ body {
     overflow-x: hidden;
     font-family: iransans, Helvetica, Arial, sans-serif;
     margin:0;
-    padding:0;
-    height:100%
-
-}
-
-#wrapper {
-   min-height:100%;
+   padding:0;
    height:100%;
-   position:relative;
-}
-
-#body {
-  height:100%
-}
-
-#footer {
-   position:absolute;
-   width:100%;
 }
 
 a {
@@ -250,10 +234,30 @@ section.signup .con-body .col-right {
 
 
 /*footer*/
-footer {
+#wrapper {
+  min-height:100vh;
+   position:relative;
+}
+
+#header{
+
+}
+
+#body {
+  padding:0 0 10px 0;
+   padding-bottom:16vh;   /* Height of the footer */
+}
+
+#footer {
     padding:15px 0 0 0;
     text-align: center;
     height:16vh;
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    height:16vh;   /* Height of the footer */
+    background-color: #222222;
+
 }
 
 
@@ -275,11 +279,6 @@ footer {
  .footer-item a:hover {
     color: #b3b3b3;
  }
-
-footer#footer {
-     background-color: #222222;
- }
-
 
  ul.social-button {
      margin-bottom: 5px;
