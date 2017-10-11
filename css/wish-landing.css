@@ -111,7 +111,7 @@ section h3.section-subheading {
 }
 
 #mainNav .navbar-nav .nav-item a.nav-link {
-    font-size: 90%;
+    font-size: 95%;
     font-weight: 400;
     padding: 0.75em 0;
     letter-spacing: 1px;
@@ -119,8 +119,7 @@ section h3.section-subheading {
     text-transform: uppercase;
 }
 
-#mainNav .navbar-nav .nav-item a.nav-link.active,
-#mainNav .navbar-nav .nav-item a.nav-link:hover {
+#mainNav .navbar-nav .nav-item a.nav-link.active {
     color: #014762;
 }
 
