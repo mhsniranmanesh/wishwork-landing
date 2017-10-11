@@ -55,7 +55,8 @@ h6 {
 
 section.signup-form {
     background-color: #f1f1f1;
-    padding-bottom: 75px;
+    padding: 50px 0;
+    min-height: calc(100vh - 16vh - 60px);
 }
 
 section.signup-form .con-title {
@@ -145,12 +146,31 @@ footer {
      margin-right: 0;
  }
 
+
  /*footer*/
- /*footer*/
- footer {
-     padding:25px 0;
+ #wrapper {
+   min-height:100%;
+    position:relative;
+ }
+
+ #header{
+
+ }
+
+ #body {
+   padding: 0 ;
+ }
+
+ #footer {
+     padding:15px 0 0 0;
      text-align: center;
-     height:18vh;
+     height:16vh;
+     position:relative;
+     bottom:0;
+     width:100vw;
+     height:16vh;   /* Height of the footer */
+     background-color: #222222;
+
  }
 
 
@@ -173,13 +193,8 @@ footer {
      color: #b3b3b3;
   }
 
- footer#footer {
-      background-color: #222222;
-  }
-
-
   ul.social-button {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
   }
 
   ul.social-button li a {

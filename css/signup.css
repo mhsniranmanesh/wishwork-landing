@@ -185,7 +185,8 @@ h6 {
 
 section.signup {
     background-color: #f1f1f1;
-    height: calc(100vh - 16vh - 60px);
+    padding: 50px 0;
+    min-height: calc(100vh - 16vh - 60px);
 }
 
 section.signup .con-title {
@@ -234,7 +235,7 @@ section.signup .con-body .col-right {
 
 /*footer*/
 #wrapper {
-  min-height:100vh;
+  min-height:100%;
    position:relative;
 }
 
@@ -243,14 +244,14 @@ section.signup .con-body .col-right {
 }
 
 #body {
-  padding: 0;
+  padding: 0 ;
 }
 
 #footer {
     padding:15px 0 0 0;
     text-align: center;
     height:16vh;
-    position:absolute;
+    position:relative;
     bottom:0;
     width:100vw;
     height:16vh;   /* Height of the footer */

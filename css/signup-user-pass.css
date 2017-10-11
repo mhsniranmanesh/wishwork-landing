@@ -54,8 +54,8 @@ h6 {
 /* main content*/
 section.signin {
     background-color: #f1f1f1;
-    padding-bottom: 75px;
-    padding-top: 50px;
+    padding: 50px 0;
+    min-height: calc(100vh - 16vh - 60px);
 }
 
 
@@ -238,66 +238,79 @@ span.error-msg {
 
 
 
- /*footer*/
- /*footer*/
- footer {
-     padding:25px 0;
-     text-align: center;
-     height:18vh;
+/*footer*/
+#wrapper {
+  min-height:100%;
+   position:relative;
+}
+
+#header{
+
+}
+
+#body {
+  padding: 0 ;
+}
+
+#footer {
+    padding:15px 0 0 0;
+    text-align: center;
+    height:16vh;
+    position:relative;
+    bottom:0;
+    width:100vw;
+    height:16vh;   /* Height of the footer */
+    background-color: #222222;
+
+}
+
+
+.footer-items {
+    padding: 0;
+}
+
+.footer-item {
+    color: #c7c7c7;
+    list-style: none;
+    font-weight: 200;
+    font-size: 14px;
+}
+
+.footer-item a {
+    color: #c7c7c7;
  }
 
-
- .footer-items {
-     padding: 0;
+ .footer-item a:hover {
+    color: #b3b3b3;
  }
 
- .footer-item {
-     color: #c7c7c7;
-     list-style: none;
-     font-weight: 200;
-     font-size: 14px;
+ ul.social-button {
+     margin-bottom: 5px;
  }
 
- .footer-item a {
-     color: #c7c7c7;
-  }
+ ul.social-button li a {
+     font-size: 20px;
+     line-height: 40px;
+     display: block;
+     width: 40px;
+     height: 40px;
+     -webkit-transition: all 0.3s;
+     -moz-transition: all 0.3s;
+     transition: all 0.3s;
+     color: #222222;
+     border-radius: 100%;
+     outline: none;
+     background-color: white;
+     padding-top: 2.5px;
+     margin:0 2.5px;
+ }
 
-  .footer-item a:hover {
-     color: #b3b3b3;
-  }
+ ul.social-button li a:active,
+ ul.social-button li a:focus,
+ ul.social-button li a:hover {
+     background-color: #018abe;
+ }
 
- footer#footer {
-      background-color: #222222;
-  }
-
-
-  ul.social-button {
-      margin-bottom: 10px;
-  }
-
-  ul.social-button li a {
-      font-size: 20px;
-      line-height: 40px;
-      display: block;
-      width: 40px;
-      height: 40px;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
-      color: #222222;
-      border-radius: 100%;
-      outline: none;
-      background-color: white;
-      padding-top: 2.5px;
-      margin:0 2.5px;
-  }
-
-  ul.social-button li a:active,
-  ul.social-button li a:focus,
-  ul.social-button li a:hover {
-      background-color: #018abe;
-  }
-
-  ul.social-button li.copyright{
-    display:block;
-  }
+ ul.social-button li.copyright{
+   display:block;
+ }

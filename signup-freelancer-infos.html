@@ -22,155 +22,160 @@
 
 
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="http://wishwork.ir">
-          <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" href="index.html" alt="nav-logo">
-          <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
-        </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav navbar-right">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30">
-                        وحید علوی
-                    </a>
-          <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
-            <a class="dropdown-item" href="#">پنل کاربری</a>
-            <a class="dropdown-item" href="#">خروج</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<section class="signin text-justify">
-  <div class="container con">
-    <!-- <div class="con-title">
-            <h4>اطلاعات شخصی خود را تکمیل کنید.</h4>
-        </div> -->
-    <div class="con-body">
-      <form class="signup-form" action="javascript:void(0);" >
-        <div class="input-group">
-          <label for="profilePicture" class="col-form-label">
-                        عکس خود را آپلود کنید.
-                    </label>
-
-          <label for="profilePicture" class="col-form-label sub-label">
-                          <i class="fa fa-quote-left quote" aria-hidden="true"></i>
-                              <span class="quote">آپلود عکس باعث افزایش درصد اطمینان کارفرمایان می شود</span>
-                      </label>
-                      <div class="row" id="box-search">
-                        <div class="col-sm-4"></div>
-                        <div class="text-center col-sm-4">
-                        <!-- <a href="#"> -->
-                          <div class="thumbnail">
-                            <img id="freelancer-Img" class="rounded-circle d-flex ml-3" src="http://via.placeholder.com/100x100">
-                            <div class="caption">
-                                  <i class="fa fa-camera"></i>
-                            </div>
-                          </div>
-
-
+<div id="wrapper">
+  <div id="header">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="http://wishwork.ir">
+                        <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" href="index.html" alt="nav-logo">
+                        <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
+                      </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                      </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav navbar-right">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <img class="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30">
+                                      وحید علوی
+                                  </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
+                          <a class="dropdown-item" href="#">پنل کاربری</a>
+                          <a class="dropdown-item" href="#">خروج</a>
                         </div>
-                        <!-- </a> -->
-                        <div class="col-sm-4"></div>
-                      </div>
-                      <!-- botton  -->
-                      <div class="col-sm-3"></div>
-                      <div class="col-sm-4">
-                        <div class="file-wrapper pad-img">
-                          <input type="file" name="photo" id="imgInp" class="uploader" placeholder="I" />
-                          <span   id="imageButton" class="btn btn-success btn-rec">
-                                        <i class="fa fa-plus"></i>انتخاب عکس
-                          </span>
-                        </div>
-                      </div>
-                      <div class="col-sm-5"></div>
-
-          <!-- <br /> -->
-          <label id="imageAlertPart" for="profilePicture" class="col-form-label max-vol">
-            <i class="fa fa-level-up" aria-hidden="true"></i>
-
-                        <span id="imageAlert" style="font-size:8pt">حداکثر حجم قابل قبول ۱ مگابایت می باشد</span>
-                    </label>
-
-
-
-        </div>
-        <div class="input-group">
-          <label for="" class="col-form-label">
-                       عنوان حرفه ای خود را انتخاب کنید
-                    </label>
-          <input type="text" class="form-control" id="Career" placeholder="مثال: مترجم فارسی به انگلیسی">
-          <br />
-          <label for="" class="col-form-label">
-                        خلاصه ای از فعالیت هایتان را بنویسید
-                    </label>
-
-          <label for="profilePicture" class="col-form-label sub-label">
-                          <i class="fa fa-quote-left quote" aria-hidden="true"></i>
-                            <span class="quote"> برداشت اول کارفرما از شما در این بخش شکل می گیرد؛ پس بیشتر به مهارت های اصلی، تجربیات و علایق خود بپردازید.</span>
-                      </label>
-
-          <textarea type="text" class="form-control" id="aboutFreelancer" placeholder="۵۰۰ کلمه برای مشخص کردن تفاوتتان فرصت دارید"></textarea>
-        </div>
-        <div class="input-group">
-          <label for="" class="col-form-label">
-                        تحصیلات و سابقه کاری
-                    </label>
-          <input type="text" class="form-control" id="job" placeholder="شغل">
-          <input type="text" class="form-control" id="degree" placeholder="مدرک تحصیلی">
-          <input type="text" class="form-control" id="university" placeholder="دانشگاه">
-        </div>
-        <button id="submitButton" type="submit" class="btn btn-primary btn-rec">
-                    ارسال
-                </button>
-      </form>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
     </div>
-  </div>
-</section>
+            <div id="body">
+              <section class="signin text-justify">
+                <div class="container con">
+                  <!-- <div class="con-title">
+                          <h4>اطلاعات شخصی خود را تکمیل کنید.</h4>
+                      </div> -->
+                  <div class="con-body">
+                    <form class="signup-form" action="javascript:void(0);" >
+                      <div class="input-group">
+                        <label for="profilePicture" class="col-form-label">
+                                      عکس خود را آپلود کنید.
+                                  </label>
+
+                        <label for="profilePicture" class="col-form-label sub-label">
+                                        <i class="fa fa-quote-left quote" aria-hidden="true"></i>
+                                            <span class="quote">آپلود عکس باعث افزایش درصد اطمینان کارفرمایان می شود</span>
+                                    </label>
+                                    <div class="row" id="box-search">
+                                      <div class="col-sm-4"></div>
+                                      <div class="text-center col-sm-4">
+                                      <!-- <a href="#"> -->
+                                        <div class="thumbnail">
+                                          <img id="freelancer-Img" class="rounded-circle d-flex ml-3" src="http://via.placeholder.com/100x100">
+                                          <div class="caption">
+                                                <i class="fa fa-camera"></i>
+                                          </div>
+                                        </div>
 
 
-<!-- footer -->
-<footer id="footer" >
-  <div class="container">
-      <div class="row">
-          <div class="col-md-12" style="text-align:center;">
-              <ul class="list-inline social-button">
-                  <li class="list-inline-item">
-                      <a href="https://twitter.com/work_wish" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                      </a>
-                  </li>
-                  <li class="list-inline-item">
-                      <a href="https://t.me/WishWork" target="_blank">
-                        <i class="fa fa-paper-plane"></i>
-                      </a>
-                  </li>
-                  <li class="list-inline-item">
-                      <a href="https://www.instagram.com/wish_work/" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                      </a>
-                  </li>
-                  <li class="list-inline-item">
-                      <a href="https://www.linkedin.com/company/18127878/" target="_blank">
-                        <i class="fa fa-linkedin"></i>
-                      </a>
-                  </li>
-              </ul>
-              <ul class="list-inline">
-                <li class="footer-item copyright list-inline-item">
-                    <a href="#">تمامی حقوق این سایت متعلق به ویش ورک می باشد</a>
-                </li>
-              </ul>
-          </div>
-      </div>
-  </div>
-</footer>
+                                      </div>
+                                      <!-- </a> -->
+                                      <div class="col-sm-4"></div>
+                                    </div>
+                                    <!-- botton  -->
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-4">
+                                      <div class="file-wrapper pad-img">
+                                        <input type="file" name="photo" id="imgInp" class="uploader" placeholder="I" />
+                                        <span   id="imageButton" class="btn btn-success btn-rec">
+                                                      <i class="fa fa-plus"></i>انتخاب عکس
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-5"></div>
+
+                        <!-- <br /> -->
+                        <label id="imageAlertPart" for="profilePicture" class="col-form-label max-vol">
+                          <i class="fa fa-level-up" aria-hidden="true"></i>
+
+                                      <span id="imageAlert" style="font-size:8pt">حداکثر حجم قابل قبول ۱ مگابایت می باشد</span>
+                                  </label>
+
+
+
+                      </div>
+                      <div class="input-group">
+                        <label for="" class="col-form-label">
+                                     عنوان حرفه ای خود را انتخاب کنید
+                                  </label>
+                        <input type="text" class="form-control" id="Career" placeholder="مثال: مترجم فارسی به انگلیسی">
+                        <br />
+                        <label for="" class="col-form-label">
+                                      خلاصه ای از فعالیت هایتان را بنویسید
+                                  </label>
+
+                        <label for="profilePicture" class="col-form-label sub-label">
+                                        <i class="fa fa-quote-left quote" aria-hidden="true"></i>
+                                          <span class="quote"> برداشت اول کارفرما از شما در این بخش شکل می گیرد؛ پس بیشتر به مهارت های اصلی، تجربیات و علایق خود بپردازید.</span>
+                                    </label>
+
+                        <textarea type="text" class="form-control" id="aboutFreelancer" placeholder="۵۰۰ کلمه برای مشخص کردن تفاوتتان فرصت دارید"></textarea>
+                      </div>
+                      <div class="input-group">
+                        <label for="" class="col-form-label">
+                                      تحصیلات و سابقه کاری
+                                  </label>
+                        <input type="text" class="form-control" id="job" placeholder="شغل">
+                        <input type="text" class="form-control" id="degree" placeholder="مدرک تحصیلی">
+                        <input type="text" class="form-control" id="university" placeholder="دانشگاه">
+                      </div>
+                      <button id="submitButton" type="submit" class="btn btn-primary btn-rec">
+                                  ارسال
+                              </button>
+                    </form>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+              <!-- footer -->
+              <div id="footer" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12" style="text-align:center;">
+                            <ul class="list-inline social-button">
+                                <li class="list-inline-item">
+                                    <a href="https://twitter.com/work_wish" target="_blank">
+                                      <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://t.me/WishWork" target="_blank">
+                                      <i class="fa fa-paper-plane"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://www.instagram.com/wish_work/" target="_blank">
+                                      <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://www.linkedin.com/company/18127878/" target="_blank">
+                                      <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                              <li class="footer-item copyright list-inline-item">
+                                  <a href="#">تمامی حقوق این سایت متعلق به ویش ورک می باشد</a>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+</div>
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/popper/popper.min.js"></script>
