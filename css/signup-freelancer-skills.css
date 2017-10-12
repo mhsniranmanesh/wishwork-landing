@@ -392,3 +392,8 @@ span.error-msg {
  ul.social-button li.copyright{
    display:block;
  }
+
+.skills:hover{
+  color: #014762;
+
+}
