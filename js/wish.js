@@ -385,7 +385,7 @@ function gotonext2(){
     var EMail = $('#signupEmailInput').val();
     var checkingLastName = $('#signupLastNameInput').val();
     var Name = checkingName + " " + checkingLastName;
-    console.log( "SSS",Name);
+  //  console.log( "SSS",Name);
     //storage Email of client for signup-verification-msg.html
     localStorage.setItem('EmailVerification' , EMail );
     localStorage.setItem("userFirstAndLastName" , Name);
