@@ -63,15 +63,16 @@ ul.social li i{
   float: none;
   margin-right: 10px;
   color: #fff;
-  padding: 5px 0 0 0;
+  padding: 7px 0 0 0;
 }
 
-ul.social li#facebook i{
+ul.social li#instagram i{
 	background: #018abe;
 }
 
-ul.social li#twitter i{
+ul.social li#telegram i{
 	background: #018abe;
+  padding-right: 3px;
 }
 
 ul.social li#linkedin i{
