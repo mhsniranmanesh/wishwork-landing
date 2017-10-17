@@ -329,8 +329,8 @@ function gotonext(){
 
     if(validityPass === "okpass" && validityUser ==="okusername" && CheckBox.checked === true){
         console.log('salam asal');
-        window.location.href = "signup-form.html";
-        //checkUserNameAndPasswordValidation();
+      //  window.location.href = "signup-form.html";
+        checkUserNameAndPasswordValidation();
     }
     else {
         if(CheckBox.checked !== true && validityPass !== "okpass" && validityUser ==="okusername"){
@@ -391,8 +391,8 @@ function gotonext2(){
     localStorage.setItem("userFirstAndLastName" , Name);
 
     if(lastNameValidation(checkingLastName) === "ok" && firstNameValidation(checkingName)==="ok" && checkingLastName!=="" && checkingMobile === 'ok' && checkingName !== "" && EMail !=="" && validateEmail(EMail) === true){
-        //sendForm2DataToServer();
-        window.location.href ='signup-freelancer-skills.html';
+        sendForm2DataToServer();
+      //  window.location.href ='signup-freelancer-skills.html';
     }
 
     else if (checkingMobile !== 'ok' || checkingName==="" || EMail==="" || checkingLastName ===""){
@@ -469,63 +469,80 @@ $("#submit-signup-btn2").click(function () {
     gotonext2();
 });
 
-// function sendForm2DataToServer() {
-//     var signUpDataPage2and1 = {
-//         username :$('#signupUsernameInput').val(),
-//         password :  $('#signupPassInput').val(),
-//         first_name : $('#signupFirstNameInput').val() ,
-//         last_name : $('#signupLastNameInput').val(),
-//         email: $('#signupEmailInput').val() ,
-//         phone_number : $('#mobilePassInput').val(),
-//         type : "",
-//     }
-//     if (localStorage.getItem('registertype') === 'freelancer') {
-//         signUpDataPage2and1.type = "freelancer";
-//     }
-//     else
-//         signUpDataPage2and1.type = "client";
-//
-//     $.ajax({
-//         type:  "POST",
-//         url: 'http://rest.learncode.academy/api/learncode/amirh',
-//         dataType:'json',
-//         data : signUpDataPage2and1,
-//         success : function (data) {
-//             console.log('mersii!' );
-//             window.location.href = "signup-verification-msg.html";
-//
-//         },
-//         error : function (data) {
-//             console.log('erorr');
-//         }
-//     });
-// }
-//
-//
-// function checkUserNameAndPasswordValidation() {
-//     var signUpDataPage2and1 = {
-//         username: $('#signupUsernameInput').val(),
-//         password: $('#signupPassInput').val(),
-//     }
-//     $.ajax({
-//         type : "GET",
-//         url : '/api/v1/auth/check_user_pass/',
-//         data: signUpDataPage2and1,
-//         success : function (result) {
-//             window.location.href = "signup-form.html";
-//
-//     },
-//         error : function(err) {
-//             if(err.username !== "This field is required."){
-//
-//             }
-//             if(err.password === "This field is required."){
-//
-//             }
-//
-//         }
-//     });
-// }
+function sendForm2DataToServer() {
+    var signUpDataPage2and1 = {
+        username :$('#signupUsernameInput').val(),
+        password :  $('#signupPassInput').val(),
+        first_name : $('#signupFirstNameInput').val() ,
+        last_name : $('#signupLastNameInput').val(),
+        email: $('#signupEmailInput').val() ,
+        phone_number : $('#mobilePassInput').val(),
+        type : "",
+    }
+    if (localStorage.getItem('registertype') === 'freelancer') {
+        signUpDataPage2and1.type = "freelancer";
+    }
+    else
+        signUpDataPage2and1.type = "client";
+
+    $.ajax({
+        type:  "POST",
+        url: 'http://rest.learncode.academy/api/learncode/amirh',
+        dataType:'json',
+        data : signUpDataPage2and1,
+        success : function (data) {
+            console.log('mersii!' );
+            window.location.href = "signup-verification-msg.html";
+
+        },
+        error : function (data) {
+            console.log('erorr');
+            if(data.first_name === "This field may not be blank."){
+
+            }
+            if(data.last_name === "This field may not be blank."){
+
+            }
+            if(data.password === "This field may not be blank."){
+
+            }
+
+        }
+    });
+}
+
+
+function checkUserNameAndPasswordValidation() {
+    var validationURL = 'http://192.168.1.43:8000/api/v1/profiles/userexists/' + $('#signupUsernameInput').val();
+    var signUpDataPage2and1 = {
+        username: $('#signupUsernameInput').val(),
+        password: $('#signupPassInput').val(),
+    }
+    $.ajax({
+        type : "GET",
+        url : validationURL,
+        data: signUpDataPage2and1,
+        success : function (result) {
+          if(result.message==="User Already Exists"){
+            //erorr
+          }
+          else{
+            window.location.href = "signup-form.html";
+          }
+
+    },
+        error : function(err) {
+            console.log('Err, existance!');
+            if(err.username !== "This field is required."){
+
+            }
+            if(err.password === "This field is required."){
+
+            }
+
+        }
+    });
+}
 
 
 // $.AJAX({
