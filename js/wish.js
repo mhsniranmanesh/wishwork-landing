@@ -58,11 +58,11 @@ var form = $('#signup-form');
 
 var checkPassword = function(passText){
 	if (passText.length < 8 && passText.search(/\dd/) == -1 && passText.search(/[A-Z]/) == -1){
-		return "پسورد شما باید شامل ۸ حرف انگلیسی باشد";
+		return "پسورد شما باید حداقل ۸ حرف شامل حروف انگلیسی و اعداد ، علامت های متعارف مانند ( ـ ) باشد ";
 	}
 	else if (passText.length < 8)
 	{
-		 return "پسورد شما باید حداقل شامل ۸ حرف انگلیسی باشد";
+    return "پسورد شما باید حداقل ۸ حرف شامل حروف انگلیسی و اعداد ، علامت های متعارف مانند ( ـ ) باشد ";
     }
 	else if (passText.length > 50)
 	{
@@ -119,13 +119,15 @@ var checkUserName = function (userText){
     console.log(userText);
     if (userText.search(/[!\@\#\$\%\^\&\*\(\)\+\;\']/) != -1)
         return "نام کاربری شما دارای نماد های نامعتبر است";
+    if(userText.length > 50){
+      return "نام کاربری شما باید حداکثر شامل ۵۰ حرف باشد"
+    }
     if(userText === ""){
         return "لطفا نام کاربری خود را وارد کنید."
     }
-    if(userText.match(/^[0-9a-zA-Z]/))
+    if(userText.match(/^[0-9a-zA-Z]/)){
         return "okusername";
-
-
+      }
     else
         return " نام کاربری شما دارای نماد های نامعتبر است(نام کاربری باید تنها شامل حروف انگلیسی باشد";
 
@@ -196,6 +198,9 @@ function lastNameValidation(strr){
         return 'لطفا نام خانوادگی خود را فارسی وارد کنید.';
     }
 }
+
+
+
 lastName.on('input' ,function () {
     var checkLastName = this.value;
     if(lastNameValidation(checkLastName) !== "ok" ) {
@@ -217,15 +222,20 @@ function isValidMobileNumber(str) {
     if(numStr[0] != '0' && numStr[0] != '9'){
         return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
-    else if(numStr[0] == '0' && numStr.length !== 11){
+    else if(numStr[0] === '0' && numStr.length !== 11){
         return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
-    else if(numStr[0] == '9' && numStr.length !== 10){
+    else if(numStr[0] === '9' && numStr.length !== 10){
         return "لطفا شماره ی خود را صحیح وارد کنید.";
+    }
+    else if(numStr[0] === '+' && numStr.length !== 13 ){
+      return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
     return "ok";
-
 }
+
+
+
 
 function isStrContainsJustDigit(str){
     for(var i=0; i < str.length ; i++){
@@ -254,6 +264,7 @@ var checkmobile = function(signUpForm) {
     }
     return 'ok';
 }
+
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -468,7 +479,19 @@ $('#submit-signup-btn').click(function(){
 $("#submit-signup-btn2").click(function () {
     gotonext2();
 });
+function sendMobileNumbleToServer(strr){
+    var numStr = persianToEnglish(strr);
+    if (numStr[0] === '0'){
+      numStr.shift();
+      numStr.unshift("+98");
+    }
+    if(numStr[0]) === '9'){
+      numStr.unshift('+98');
+    }
+    retun numStr ;
+}
 
+var mobileNumberForSendToServer = sendMobileNumbleToServer(mobileNumber.val());
 function sendForm2DataToServer() {
     var signUpDataPage2and1 = {
         username :$('#signupUsernameInput').val(),
@@ -476,14 +499,14 @@ function sendForm2DataToServer() {
         first_name : $('#signupFirstNameInput').val() ,
         last_name : $('#signupLastNameInput').val(),
         email: $('#signupEmailInput').val() ,
-        phone_number : $('#mobilePassInput').val(),
-        type : "",
+        phone_number : sendMobileNumbleToServer,
+        is_freelancer : 0 ,
     }
     if (localStorage.getItem('registertype') === 'freelancer') {
-        signUpDataPage2and1.type = "freelancer";
+        signUpDataPage2and1.type = 1;
     }
     else
-        signUpDataPage2and1.type = "client";
+        signUpDataPage2and1.type = 0;
 
     $.ajax({
         type:  "POST",
@@ -497,14 +520,174 @@ function sendForm2DataToServer() {
         },
         error : function (data) {
             console.log('erorr');
-            if(data.first_name === "This field may not be blank."){
-
+            if(data.username === "This field may not be blank."){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام کاربری خود را وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
             }
-            if(data.last_name === "This field may not be blank."){
-
+            else if(data.username === "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام کاربری خود را صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
             }
             if(data.password === "This field may not be blank."){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا پسورد خود را صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            else if(data.password === "Ensure this field has at least 8 characters."){
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: پسورد شما باید حداقل شامل ۸ کاراکتر باشد'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox);
+            }
+            if(data.first_name === "This field may not be blank."){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام خود را وارد کنید';
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            else if(data.first_name === 'Name must have only persian characters.'){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام خود را صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            if(data.last_name === "This field may not be blank."){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام خانوادگی خود را وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            else if(data.last_name === 'Name must have only persian characters.'){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام خانوادگی خود را صحیح وارد کنید';
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
 
+            if(data.phone_number === "This field may not be blank."){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا شماره تلفن همراه خود را وارد کنید';
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            else if(data.phone_number === 'Phone number must be in this format : +989xxxxxxxxx'){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا شماره تلفن همراه خود را به صورت صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            if(data.email === "This field may not be blank."){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا ایمیل خود را وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            else if(data.email === 'Enter a valid email address.'){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا ایمیل خود را صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            else if(data.email === 'user with this email address already exists.'){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: اکانت با این ایمیل موجود است'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signup-form').append(errorBox);
             }
 
         }
@@ -523,21 +706,25 @@ function checkUserNameAndPasswordValidation() {
         url : validationURL,
         data: signUpDataPage2and1,
         success : function (result) {
-          if(result.message==="User Already Exists"){
-            //erorr
-          }
-          else{
+
             window.location.href = "signup-form.html";
-          }
+
 
     },
         error : function(err) {
             console.log('Err, existance!');
-            if(err.username !== "This field is required."){
-
-            }
-            if(err.password === "This field is required."){
-
+            if(err.username === "A user with that username already exists."){
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: این نام کاربری قبلا ثبت شده است'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
             }
 
         }
