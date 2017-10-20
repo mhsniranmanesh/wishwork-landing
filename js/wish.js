@@ -144,8 +144,6 @@ $(function() {
 username.on('input' ,function (){
 	if(this.value !== undefined) {
         var UserNameX = checkUserName(this.value)
-        console.log("KU", this.value);
-        console.log("this", this);
 
         if (UserNameX !== "okusername") {
             $('#form-control-feedback-username').show()
@@ -322,7 +320,17 @@ function persianToEnglish(value) {
   }
   return newValue;
 }
-
+function sendMobileNumberToServer(strr){
+    var numStr = persianToEnglish(strr);
+    if (numStr.charAt(0) === '0'){
+      numStr = numStr.substr(1);
+      numStr = '+98' + numStr;
+    }
+    if(numStr.charAt(0) === '9'){
+      numStr = '+98' + numStr ;
+    }
+    return numStr ;
+}
 
 //------------------------------------------------------------------------------
 
@@ -333,13 +341,14 @@ function gotonext(){
     var validityPass = checkPassword(password.val());
     var validityUser = checkUserName(username.val());
     var CheckBox = document.getElementById("checkBox");
+    localStorage.setItem('username' , username.val());
+    localStorage.setItem('password' , password.val());
     if(username.val() ===""){
         validityUser = "EmptyUsername";
         console.log( 'X',validityPass , validityUser , CheckBox)
     }
 
     if(validityPass === "okpass" && validityUser ==="okusername" && CheckBox.checked === true){
-        console.log('salam asal');
       //  window.location.href = "signup-form.html";
         checkUserNameAndPasswordValidation();
     }
@@ -396,12 +405,14 @@ function gotonext2(){
     var EMail = $('#signupEmailInput').val();
     var checkingLastName = $('#signupLastNameInput').val();
     var Name = checkingName + " " + checkingLastName;
+    var sendMobileNumberForServer = sendMobileNumberToServer(mobileNumber.val())
   //  console.log( "SSS",Name);
     //storage Email of client for signup-verification-msg.html
     localStorage.setItem('EmailVerification' , EMail );
     localStorage.setItem("userFirstAndLastName" , Name);
 
     if(lastNameValidation(checkingLastName) === "ok" && firstNameValidation(checkingName)==="ok" && checkingLastName!=="" && checkingMobile === 'ok' && checkingName !== "" && EMail !=="" && validateEmail(EMail) === true){
+
         sendForm2DataToServer();
       //  window.location.href ='signup-freelancer-skills.html';
     }
@@ -479,47 +490,42 @@ $('#submit-signup-btn').click(function(){
 $("#submit-signup-btn2").click(function () {
     gotonext2();
 });
-function sendMobileNumbleToServer(strr){
-    var numStr = persianToEnglish(strr);
-    if (numStr[0] === '0'){
-      numStr.shift();
-      numStr.unshift("+98");
-    }
-    if(numStr[0]) === '9'){
-      numStr.unshift('+98');
-    }
-    retun numStr ;
-}
 
-var mobileNumberForSendToServer = sendMobileNumbleToServer(mobileNumber.val());
+
 function sendForm2DataToServer() {
+  var mobileNumberForSendToServer = sendMobileNumberToServer(mobileNumber.val());
+  console.log(mobileNumberForSendToServer);
+    var username  = localStorage.getItem('username');
+    var password = localStorage.getItem('password');
     var signUpDataPage2and1 = {
-        username :$('#signupUsernameInput').val(),
-        password :  $('#signupPassInput').val(),
+        username :username,
+        password :  password,
         first_name : $('#signupFirstNameInput').val() ,
         last_name : $('#signupLastNameInput').val(),
         email: $('#signupEmailInput').val() ,
-        phone_number : sendMobileNumbleToServer,
+        phone_number : mobileNumberForSendToServer,
         is_freelancer : 0 ,
     }
     if (localStorage.getItem('registertype') === 'freelancer') {
         signUpDataPage2and1.type = 1;
     }
-    else
+    else{
         signUpDataPage2and1.type = 0;
-
+    }
+    console.log(signUpDataPage2and1);
     $.ajax({
         type:  "POST",
-        url: 'http://rest.learncode.academy/api/learncode/amirh',
+        url: 'api/v1/profiles/',
         dataType:'json',
         data : signUpDataPage2and1,
         success : function (data) {
             console.log('mersii!' );
-            window.location.href = "signup-verification-msg.html";
+            //window.location.href = "signup-verification-msg.html";
 
         },
         error : function (data) {
-            console.log('erorr');
+            console.log('erorr' ,data);
+
             if(data.username === "This field may not be blank."){
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -696,7 +702,7 @@ function sendForm2DataToServer() {
 
 
 function checkUserNameAndPasswordValidation() {
-    var validationURL = 'http://192.168.1.43:8000/api/v1/profiles/userexists/' + $('#signupUsernameInput').val();
+    var validationURL = 'api/v1/profiles/userexists/' + $('#signupUsernameInput').val();
     var signUpDataPage2and1 = {
         username: $('#signupUsernameInput').val(),
         password: $('#signupPassInput').val(),
@@ -706,41 +712,28 @@ function checkUserNameAndPasswordValidation() {
         url : validationURL,
         data: signUpDataPage2and1,
         success : function (result) {
-
-            window.location.href = "signup-form.html";
+          if(result.username === "A user with that username already exists."){
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML = 'خطا: این نام کاربری قبلا ثبت شده است'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#signup-form').append(errorBox)
+          }
+          else
+             window.location.href = "signup-form.html";
 
 
     },
         error : function(err) {
-            console.log('Err, existance!');
-            if(err.username === "A user with that username already exists."){
-              var errorCross = document.createElement('i');
-              errorCross.setAttribute('class', 'fa fa-times-circle');
-              errorCross.setAttribute('aria-hidden', 'true');
-              var errorBox = document.createElement('span');
-              errorBox.setAttribute('class' , 'error-msg');
-              errorBox.appendChild(errorCross);
-              var errorMessage = document.createElement('span');
-              errorMessage.innerHTML = 'خطا: این نام کاربری قبلا ثبت شده است'
-              errorBox.appendChild(errorMessage);
-              $(errorMessage).prepend(errorCross);
-              $('#signUpForm').append(errorBox)
-            }
+            console.log('User Exists:', err);
+
 
         }
     });
 }
-
-
-// $.AJAX({
-//   type:     "GET",
-//                     url: 'http://172.25.0.195:8000/bucketlists/3/',
-//                     contentType: "application/json",
-//                     data : 'SignUpDataPage2',
-//                     success: function(results){
-//                         console.log("Friend added!", data)
-//                     },
-//                     error: function(error){
-//
-//                     }
-// });
