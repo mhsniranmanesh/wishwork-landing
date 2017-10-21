@@ -504,13 +504,13 @@ function sendForm2DataToServer() {
         last_name : $('#signupLastNameInput').val(),
         email: $('#signupEmailInput').val() ,
         phone_number : mobileNumberForSendToServer,
-        is_freelancer : 0 ,
+        is_freelancer : false ,
     }
     if (localStorage.getItem('registertype') === 'freelancer') {
-        signUpDataPage2and1.type = 1;
+        signUpDataPage2and1.is_freelancer = true;
     }
     else{
-        signUpDataPage2and1.type = 0;
+        signUpDataPage2and1.is_freelancer = false;
     }
     console.log(signUpDataPage2and1);
     $.ajax({
@@ -520,7 +520,7 @@ function sendForm2DataToServer() {
         data : signUpDataPage2and1,
         success : function (data) {
             console.log('mersii!' );
-            //window.location.href = "signup-verification-msg.html";
+            window.location.href = "signup-verification-msg.html";
 
         },
         error : function (data) {
