@@ -460,11 +460,11 @@ function gotonext2(){
 
 
 
-
-$('#submit-signup-btn').click(function(){
-    console.log("SUBMITTTT");
-    gotonext();
-});
+//
+// $('#submit-signup-btn').click(function(){
+//     console.log("SUBMITTTT");
+//     gotonext();
+// });
 
 // function sendForm1DataToServer() {
 //     var signUpDataPage1 = {
@@ -487,9 +487,9 @@ $('#submit-signup-btn').click(function(){
 //     });
 // }
 
-$("#submit-signup-btn2").click(function () {
-    gotonext2();
-});
+// $("#submit-signup-btn2").click(function () {
+//     gotonext2();
+// });
 
 
 function sendForm2DataToServer() {
@@ -729,6 +729,7 @@ function sendForm2DataToServer() {
 
 function checkUserNameAndPasswordValidation() {
     var validationURL = 'api/v1/profiles/userexists/' + $('#signupUsernameInput').val();
+    $('#errorBox').remove();
     var signUpDataPage2and1 = {
         username: $('#signupUsernameInput').val(),
         password: $('#signupPassInput').val(),
@@ -738,11 +739,13 @@ function checkUserNameAndPasswordValidation() {
         url : validationURL,
         data: signUpDataPage2and1,
         success : function (result) {
+          $('#errorBoxx').remove();
           if(result.username === "A user with that username already exists."){
             var errorCross = document.createElement('i');
             errorCross.setAttribute('class', 'fa fa-times-circle');
             errorCross.setAttribute('aria-hidden', 'true');
             var errorBox = document.createElement('span');
+            errorBox.setAttribute('id' ,'errorBoxx');
             errorBox.setAttribute('class' , 'error-msg');
             errorBox.appendChild(errorCross);
             var errorMessage = document.createElement('span');
