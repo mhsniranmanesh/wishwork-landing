@@ -2,6 +2,8 @@ var aboutFreelancer = $('#aboutFreelancer').val();
 var job = $('#job').val();
 var degree = $('#degree').val();
 var university = $('#university').val();
+var freelancerImage = null ;
+
 
 var SITE = SITE || {};
 SITE.fileInputs = function (){
@@ -51,7 +53,8 @@ function readURL(input) {
       $('.fa-level-up').remove();
       $('.fa-times').remove();
       $('#imageAlert').text('اندازه ی فایل شما مناسب می باشد').css('color' , 'green');
-
+      freelancerImage = $('#imgInp') ;
+      console.log(freelancerImage);
     }
     else if(imageSizeValidation === false && imageTypeValidation === true){
       $('.fa-times').remove();
@@ -59,6 +62,7 @@ function readURL(input) {
       $('.fa-level-up').remove();
       $('.fa-check-circle').remove()
       $('#imageAlertPart').prepend('<i class="fa fa-times" aria-hidden="true"></i>').css('color' , 'red');
+      freelancerImage = null ;
     }
     if(imageTypeValidation === false){
       $('.fa-times').remove();
@@ -66,6 +70,7 @@ function readURL(input) {
       $('.fa-level-up').remove();
       $('.fa-check-circle').remove()
       $('#imageAlertPart').prepend('<i class="fa fa-times" aria-hidden="true"></i>').css('color' , 'red');
+      freelancerImage = null ;
     }
     }
   //  else if ()
@@ -98,22 +103,28 @@ $(".uploader").change(function(){
 $('#submitButton').click(function(){
 	//window.location.href = "signup-verification-msg.html";
 })
-var Email = localStorage.getItem('EmailVerification');
-document.getElementById('EmailofClientOrFreelancer').innerHTML = Email;
 
 function sendInfoFreelancerToSever(){
+  var freelancerInfo = {
+    freelancer_image : freelancerImage,
+    about_freelancer : aboutFreelancer,
+    job : university,
+    degree : degree,
+    university : university,
+  }
   $.ajax({
     type: "POST",
     url: 'http://rest.learncode.academy/api/learncode/amirh',
     dataType:'json',
-    data : signUpDataPage2and1,
+    data : freelancerInfo,
     success : function (data) {
-        //console.log('mersii!' );
-        //window.location.href = "signup-verification-msg.html";
+        //console.log('mersii!');
+        window.location.href = "after-signin.html";
+
+    },
+    error : function(data){
+      console.log('erorr' ,data);
 
     }
-    error : function(result){
-
-    }
-  })
+  });
 }
