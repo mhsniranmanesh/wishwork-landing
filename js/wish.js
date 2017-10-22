@@ -527,12 +527,12 @@ function sendForm2DataToServer() {
             console.log('erorr' ,data);
 
             if(data.username === "This field may not be blank."){
-              $('#errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+          //    errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -542,27 +542,27 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             else if(data.username === "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."){
-              $('#errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+          //    errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
-              errorMessage.innerHTML = 'خطا: لطفا نام کاربری خود را صحیح وارد کنید'
+              errorMessage.innerHTML = 'خطا: لطفا نام کاربری خود را صحیح وارد کنید';
               errorBox.appendChild(errorMessage);
               $(errorMessage).prepend(errorCross);
-              $('#signUpForm').append(errorBox)
+              $('#signUpForm').append(errorBox);
             }
             if(data.password === "This field may not be blank."){
-              $('#errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+          //    errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -572,11 +572,11 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             else if(data.password === "Ensure this field has at least 8 characters."){
-              $('#errorBox').remove();
+              $('.error-msg').remove();
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+          //    errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -586,12 +586,13 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox);
             }
             if(data.first_name === "This field may not be blank."){
-              $('#errorBox').remove();
+
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+            //  errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -601,12 +602,13 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             else if(data.first_name === 'Name must have only persian characters.'){
-              $('#errorBox').remove();
+              console.log('persianError');
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+            //  errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -616,12 +618,12 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             if(data.last_name === "This field may not be blank."){
-              $('#errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+              //errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -631,12 +633,12 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             else if(data.last_name === 'Name must have only persian characters.'){
-              $('errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+            //  errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -647,12 +649,12 @@ function sendForm2DataToServer() {
             }
 
             if(data.phone_number === "This field may not be blank."){
-              $('errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+            //  errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -662,12 +664,12 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             else if(data.phone_number === 'Phone number must be in this format : +989xxxxxxxxx'){
-              $('errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+            //  errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -677,12 +679,12 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             if(data.email === "This field may not be blank."){
-              $('errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+          //    errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -692,12 +694,12 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             else if(data.email === 'Enter a valid email address.'){
-              $('errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+            //  errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
@@ -707,12 +709,12 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox)
             }
             else if(data.email === 'user with this email address already exists.'){
-              $('errorBox').remove();
+              $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
               var errorBox = document.createElement('span');
-              errorBox.id = 'errorBox';
+            //  errorBox.id = 'errorBox';
               errorBox.setAttribute('class' , 'error-msg');
               errorBox.appendChild(errorCross);
               var errorMessage = document.createElement('span');
