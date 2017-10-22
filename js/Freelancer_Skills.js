@@ -1,3 +1,38 @@
+function checkUserLogin(){
+  var username = localStorage.getItem('current_login_username')
+  var token = localStorage.getItem('current_login_token')
+  var firstName = localStorage.getItem('current_login_first_name')
+  var lastName = localStorage.getItem('current_login_last_name')
+  if(firstName && lastName)
+    $("#navbar-user-name").text(firstName + ' ' + lastName);
+  else
+    $("#navbar-user-name").text("");
+  if (token) {
+    $.ajax({
+      type: "POST",
+      url: '/api/v1/auth/token/verify/',
+      data: {
+        token: token
+      },
+      success: function(result) {
+        console.log('LOGIN SUCCESS: ', result)
+      },
+      error: function(err) {
+        console.log('LOGIN FAILED: ', err)
+        window.location.href = 'signin.html'
+      }
+    });
+  }
+  else {
+    console.log('LOGIN FAILED: No token');
+    window.location.href = 'signin.html'
+  }
+}
+
+$(function() {
+  checkUserLogin();
+});
+
 var skills = [];
 var skillsServer = [];
 var isMedical = false;
@@ -31,8 +66,8 @@ function add_translation_tags() {
   var skill = {};
   skill.from = TF;
   skill.to = TT;
-  skillServer.from = TF ;
-  skillServer.to = TT ;
+  skillServer.from = TF;
+  skillServer.to = TT;
   skill.text = ' از ' + skill.from + ' به ' + skill.to;
   if (translatefrom.selectedIndex === 0 || translateto.selectedIndex === 0) {
     $('#ErrorMessage').show();
@@ -95,6 +130,7 @@ function is_skill_present(skill) {
   }
   return false;
 }
+
 function is_skillServer_present(skill) {
   for (var i = 0; i < skillsServer.length; i++) {
 
@@ -104,6 +140,7 @@ function is_skillServer_present(skill) {
   }
   return false;
 }
+
 function remove_tag(skill) {
   for (var i = 0; i < skills.length; i++) {
     if (skills[i].from === skill.from && skills[i].to === skill.to) {
@@ -112,12 +149,13 @@ function remove_tag(skill) {
     }
   }
 }
-function remove_tag_server(skillServer){
+
+function remove_tag_server(skillServer) {
   for (var i = 0; i < skillsServer.length; i++) {
-      if (skillsServer[i].from === skillServer.from && skillsServer[i].to === skillServer.to) {
-        skillsServer.splice(i, 1);
-      }
+    if (skillsServer[i].from === skillServer.from && skillsServer[i].to === skillServer.to) {
+      skillsServer.splice(i, 1);
     }
+  }
 }
 
 function gotonext() {
@@ -144,51 +182,51 @@ function gotonext() {
 //-------------------------------------------------
 
 
-function sendSkillsToServer(){
-  var selectedFatherTag ;
+function sendSkillsToServer() {
+  var selectedFatherTag;
   //console.log(skills);
   //console.log(skillsServer);
   var arrayOfFatherTags = [];
-  for(selectedFatherTag=0 ; selectedFatherTag<4 ; selectedFatherTag++){
-    if(fatherTag.options[selectedFatherTag].selected === true ){
-  console.log(selectedFatherTag);
-  arrayOfFatherTags.push(selectedFatherTag);
-  console.log(arrayOfFatherTags);
+  for (selectedFatherTag = 0; selectedFatherTag < 4; selectedFatherTag++) {
+    if (fatherTag.options[selectedFatherTag].selected === true) {
+      console.log(selectedFatherTag);
+      arrayOfFatherTags.push(selectedFatherTag);
+      console.log(arrayOfFatherTags);
 
     }
   }
-  if(arrayOfFatherTags.indexOf(0) !== -1 ){
-    isMedical = true ;
+  if (arrayOfFatherTags.indexOf(0) !== -1) {
+    isMedical = true;
   }
-  if(arrayOfFatherTags.indexOf(1) !== -1 ){
-    isTechnical = true ;
+  if (arrayOfFatherTags.indexOf(1) !== -1) {
+    isTechnical = true;
   }
-  if(arrayOfFatherTags.indexOf(2) !== -1 ){
-    isLegal = true ;
+  if (arrayOfFatherTags.indexOf(2) !== -1) {
+    isLegal = true;
   }
-  if(arrayOfFatherTags.indexOf(3) !== -1 ){
-    isGeneral = true ;
+  if (arrayOfFatherTags.indexOf(3) !== -1) {
+    isGeneral = true;
   }
-  console.log(isMedical , isTechnical , isLegal , isGeneral);
+  console.log(isMedical, isTechnical, isLegal, isGeneral);
   // var i = 0;
   // for(i ; i<)
-    var freelancersSkills = {
-      category : 'translation',
-      is_general : isGeneral,
-      is_legal : isLegal,
-      is_medical : isMedical,
-      is_technical : isTechnical,
-      languageset : skillsServer,
-    }
+  var freelancersSkills = {
+    category: 'translation',
+    is_general: isGeneral,
+    is_legal: isLegal,
+    is_medical: isMedical,
+    is_technical: isTechnical,
+    languageset: skillsServer,
+  }
   $.ajax({
-    type : "POST",
-    url : 'http://rest.learncode.academy/api/learncode/amirh',
-    dataType : 'json',
-    data : freelancersSkills,
-    success : function(result){
+    type: "POST",
+    url: 'http://rest.learncode.academy/api/learncode/amirh',
+    dataType: 'json',
+    data: freelancersSkills,
+    success: function(result) {
       // window.location.href = "signup-freelancer-infos.html";
     },
-    error : function(data){
+    error: function(data) {
 
     },
   })

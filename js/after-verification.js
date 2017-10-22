@@ -23,6 +23,8 @@ $(function() {
       });
       localStorage.setItem('current_login_username', result.username)
       localStorage.setItem('current_login_token', result.token)
+      localStorage.setItem('current_login_first_name', result.first_name)
+      localStorage.setItem('current_login_last_name', result.last_name)
       window.setTimeout(function(){
         window.location.href = "signup-freelancer-skills.html";
       }, 2000);

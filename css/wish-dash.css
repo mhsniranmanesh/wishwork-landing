@@ -679,3 +679,122 @@ span.notif-cat {
 .drag-drop .form-control-file:hover:before {
   border: 0.2em solid rgba(0, 0, 0, .15);
 }
+
+
+/*
+Temporary Items For Register
+These should remove later
+*/
+
+
+.wrapper{
+    -webkit-filter: blur(8px);
+    -ms-filter: blur(8px);
+    -moz-filter: blur(8px);
+    -o-filter: blur(8px);
+    filter: blur(8px);
+}
+/* Reset */
+
+.modal-content{
+  border-radius: 25px;
+  background-color: #D6D7D7;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+html{
+	background-color: #fcf9f7;
+}
+
+
+.wrapperr{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 40px 40px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.header{
+  text-align: center;
+  margin: 20px 5px;
+}
+
+.media{
+width: 100%;
+text-align: center;
+}
+
+ul.social{
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+ul.social li{
+	display: inline-block;
+}
+
+
+ul.social li i{
+	font-size: 20px;
+  border-radius: 100%;
+  width: 42px;
+  border: 4px solid #fff;
+  height: 42px;
+  float: none;
+  margin-right: 10px;
+  color: #fff;
+  padding: 7px 0 0 0;
+}
+
+ul.social li#instagram i{
+	background: #018abe;
+}
+
+ul.social li#telegram i{
+	background: #018abe;
+  padding-right: 3px;
+}
+
+ul.social li#linkedin i{
+	background: #018abe;
+}
+
+
+ul.social li i:hover{
+	opacity: 0.7;
+}
+
+ul.info{
+	width: 100%;
+	float: right;
+}
+
+ul.info i{
+	width: 30px;
+	font-size: 20px;
+	color: #000;
+}
+
+ul.info li{
+	margin-bottom: 15px;
+  float: right;
+  display: block;
+}
+
+ul.info li a{
+	color: #4a4a4a;
+	text-decoration: none;
+}
+
+ul.info li a:hover{
+	text-decoration: underline;
+}
