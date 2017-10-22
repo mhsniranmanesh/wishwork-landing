@@ -525,7 +525,7 @@ function sendForm2DataToServer() {
         },
         error : function (data) {
             console.log('erorr' ,data);
-
+            console.log('data.responseJSON',data.responseJSON);
             if(data.responseJSON.username === "This field may not be blank."){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
@@ -630,7 +630,7 @@ function sendForm2DataToServer() {
               errorMessage.innerHTML = 'خطا: لطفا نام خانوادگی خود را وارد کنید'
               errorBox.appendChild(errorMessage);
               $(errorMessage).prepend(errorCross);
-              $('#signUpForm').append(errorBox)
+              $('#signUpForm').append(errorBox);
             }
             if(data.responseJSON.last_name === 'Name must have only persian characters.'){
               $('.error-msg').remove();
@@ -645,7 +645,7 @@ function sendForm2DataToServer() {
               errorMessage.innerHTML = 'خطا: لطفا نام خانوادگی خود را صحیح وارد کنید';
               errorBox.appendChild(errorMessage);
               $(errorMessage).prepend(errorCross);
-              $('#signUpForm').append(errorBox)
+              $('#signUpForm').append(errorBox);
             }
 
             if(data.responseJSON.phone_number === "This field may not be blank."){
