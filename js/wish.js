@@ -541,7 +541,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            else if(data.username === "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."){
+            if(data.username === "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -571,7 +571,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            else if(data.password === "Ensure this field has at least 8 characters."){
+            if(data.password === "Ensure this field has at least 8 characters."){
               $('.error-msg').remove();
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
@@ -601,7 +601,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            else if(data.first_name === 'Name must have only persian characters.'){
+              if(data.first_name === 'Name must have only persian characters.'){
               console.log('persianError');
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
@@ -632,7 +632,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            else if(data.last_name === 'Name must have only persian characters.'){
+            if(data.last_name === 'Name must have only persian characters.'){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -663,7 +663,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            else if(data.phone_number === 'Phone number must be in this format : +989xxxxxxxxx'){
+            if(data.phone_number === 'Phone number must be in this format : +989xxxxxxxxx'){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -693,7 +693,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            else if(data.email === 'Enter a valid email address.'){
+            if(data.email === 'Enter a valid email address.'){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -708,7 +708,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            else if(data.email === 'user with this email address already exists.'){
+            if(data.email === 'user with this email address already exists.'){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
