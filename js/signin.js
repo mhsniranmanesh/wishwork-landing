@@ -12,6 +12,8 @@ var userName = $('#loginUserNameInput');
 var pass = $('#loginPassInput');
 
 function LogIn(){
+  $('.error-msg').remove();
+
   var data = {
     username : userName.val(),
     password : pass.val(),
@@ -26,13 +28,14 @@ function LogIn(){
       window.location.href = "dashboard.html";
     },
     error : function (err) {
+      $('.error-msg').remove();
       if(err.responseJSON.username &&  err.responseJSON.username.contains("This field is required.")){
-        $('#errorBox').remove();
+        $('.error-msg').remove();
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');
         errorCross.setAttribute('aria-hidden', 'true');
         var errorBox = document.createElement('span');
-        errorBox.id = 'errorBox';
+      //  errorBox.id = 'errorBox';
         errorBox.setAttribute('class' , 'error-msg');
         errorBox.appendChild(errorCross);
         var errorMessage = document.createElement('span');
@@ -42,12 +45,12 @@ function LogIn(){
         $('#signUpForm').append(errorBox);
       }
       if(err.responseJSON.password &&  err.responseJSON.password.contains("This field is required.")){
-        $('#errorBox').remove();
+        $('.error-msg').remove();
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');
         errorCross.setAttribute('aria-hidden', 'true');
         var errorBox = document.createElement('span');
-        errorBox.id = 'errorBox';
+    //    errorBox.id = 'errorBox';
         errorBox.setAttribute('class' , 'error-msg');
         errorBox.appendChild(errorCross);
         var errorMessage = document.createElement('span');
@@ -57,12 +60,12 @@ function LogIn(){
         $('#signUpForm').append(errorBox);
       }
       if(err.responseJSON.non_field_errors &&  err.responseJSON.non_field_errors.contains("Unable to log in with provided credentials.")){
-        $('#errorBox').remove();
+        $('.error-msg').remove();
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');
         errorCross.setAttribute('aria-hidden', 'true');
         var errorBox = document.createElement('span');
-        errorBox.id = 'errorBox';
+    //    errorBox.id = 'errorBox';
         errorBox.setAttribute('class' , 'error-msg');
         errorBox.appendChild(errorCross);
         var errorMessage = document.createElement('span');
@@ -72,6 +75,7 @@ function LogIn(){
         $('#signUpForm').append(errorBox);
       }
       else {
+        $('.error-msg').remove();
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');
         errorCross.setAttribute('aria-hidden', 'true');

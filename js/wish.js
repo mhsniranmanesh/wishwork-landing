@@ -784,7 +784,8 @@ function checkUserNameAndPasswordValidation() {
 
     },
         error : function(err) {
-            console.log('User Exists:', err);
+            $('.error-msg').remove();
+            //console.log('User Exists:', err);
             var errorCross = document.createElement('i');
             errorCross.setAttribute('class', 'fa fa-times-circle');
             errorCross.setAttribute('aria-hidden', 'true');
