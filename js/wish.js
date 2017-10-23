@@ -57,7 +57,7 @@ $(document).ready(function(client , freelancer){
 
 
 
-var form = $('#signup-form');
+// var form = $('#signup-form');
 
 
 //------------------------------------------------------
@@ -79,7 +79,7 @@ var checkPassword = function(passText){
 	{
          return "پسورد شما باید حداکثر شامل ۵۰ حرف باشد";
 
-    }
+}
 	// else if (passText.search(/\d/) == -1) {
  	// 	return "پسورد شما باید حداقل شامل یک عدد باشد";
 	// }
@@ -160,10 +160,6 @@ username.on('input' ,function (){
             $('#form-control-feedback-username').show()
             $('#userNameTextError').text(UserNameX);
             $('#usn').addClass('has-danger');
-
-
-
-
         }
         else {
             $("#form-control-feedback-username").hide();
@@ -173,7 +169,7 @@ username.on('input' ,function (){
 });
 function firstNameValidation(strr){
 
-    if(strr.match(/^[\u0600-\u06FF]/)) {
+    if(strr.match(/^[\u0600-\u06FF\s]+$/)) {
         return "ok";
     }
     if(strr ===""){
@@ -197,7 +193,7 @@ firstName.on('input' ,function () {
 
 function lastNameValidation(strr){
 
-    if(strr.match(/^[\u0600-\u06FF]/)) {
+    if(strr.match(/^[\u0600-\u06FF\s]+$/)) {
         return "ok";
     }
     if (strr ===""){
