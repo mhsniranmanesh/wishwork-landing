@@ -1,3 +1,14 @@
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 //-------------------------------------------------
 //                 Global Values
 //-------------------------------------------------
@@ -524,9 +535,10 @@ function sendForm2DataToServer() {
 
         },
         error : function (data) {
+          $('.error-msg').remove();
             console.log('erorr' ,data);
-            console.log('data.responseJSON', data.responseJSON);
-            if(data.responseJSON.username === "This field may not be blank."){
+            console.log('data.responseJSON',data.responseJSON);
+            if(data.responseJSON.username && data.responseJSON.username.contains("This field may not be blank.")){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -541,7 +553,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            if(data.responseJSON.username === "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."){
+            if(data.responseJSON.username && data.responseJSON.username.contains("Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.")){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -556,7 +568,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox);
             }
-            if(data.responseJSON.password === "This field may not be blank."){
+            if(data.responseJSON.password && data.responseJSON.password.contains("This field may not be blank.")){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -571,7 +583,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            if(data.responseJSON.password === "Ensure this field has at least 8 characters."){
+            if(data.responseJSON.password && data.responseJSON.password.contains("Ensure this field has at least 8 characters.")){
               $('.error-msg').remove();
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
@@ -585,7 +597,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox);
             }
-            if(data.responseJSON.first_name === "This field may not be blank."){
+            if(data.responseJSON.first_name && data.responseJSON.first_name.contains("This field may not be blank.")){
 
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
@@ -601,7 +613,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-              if(data.responseJSON.first_name === 'Name must have only persian characters.'){
+              if(data.responseJSON.first_name && data.responseJSON.first_name.contains('Name must have only persian characters.')){
               console.log('persianError');
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
@@ -617,7 +629,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            if(data.responseJSON.last_name === "This field may not be blank."){
+            if(data.responseJSON.last_name && data.responseJSON.last_name.contains("This field may not be blank.")){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -632,7 +644,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox);
             }
-            if(data.responseJSON.last_name === 'Name must have only persian characters.'){
+            if(data.responseJSON.last_name && data.responseJSON.last_name.contains('Name must have only persian characters.')){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -648,7 +660,7 @@ function sendForm2DataToServer() {
               $('#signUpForm').append(errorBox);
             }
 
-            if(data.responseJSON.phone_number === "This field may not be blank."){
+            if(data.responseJSON.phone_number && data.responseJSON.phone_number.contains("This field may not be blank.")){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -663,7 +675,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            if(data.responseJSON.phone_number === 'Phone number must be in this format : +989xxxxxxxxx'){
+            if(data.responseJSON.phone_number && data.responseJSON.phone_number.contains('Phone number must be in this format : +989xxxxxxxxx')){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -678,7 +690,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            if(data.responseJSON.email === "This field may not be blank."){
+            if(data.responseJSON.email && data.responseJSON.email.contains("This field may not be blank.")){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -693,7 +705,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            if(data.responseJSON.email === 'Enter a valid email address.'){
+            if(data.responseJSON.email && data.responseJSON.email.contains('Enter a valid email address.')){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -708,7 +720,7 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox)
             }
-            if(data.responseJSON.email === 'user with this email address already exists.'){
+            if(data.responseJSON.email && data.responseJSON.email.contains('user with this email address already exists.')){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
