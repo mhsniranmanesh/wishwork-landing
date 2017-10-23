@@ -1,6 +1,38 @@
+function checkUserLogin(){
+  var username = localStorage.getItem('current_login_username')
+  var token = localStorage.getItem('current_login_token')
+  var firstName = localStorage.getItem('current_login_first_name')
+  var lastName = localStorage.getItem('current_login_last_name')
+  if(firstName && lastName)
+    $("#navbar-user-name").text(firstName + ' ' + lastName);
+  else
+    $("#navbar-user-name").text("");
+  if (token) {
+    $.ajax({
+      type: "POST",
+      url: '/api/v1/auth/token/verify/',
+      data: {
+        token: token
+      },
+      success: function(result) {
+        console.log('LOGIN SUCCESS: ', result)
+      },
+      error: function(err) {
+        console.log('LOGIN FAILED: ', err)
+        window.location.href = 'signin.html'
+      }
+    });
+  }
+  else {
+    console.log('LOGIN FAILED: No token');
+    window.location.href = 'signin.html'
+  }
+}
+
 (function($) {
   "use strict"; // Start of use strict
-
+  checkUserLogin();
+  $('#myModal').modal('show');
   // Configure tooltips for collapsed side navigation
   $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
     template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'

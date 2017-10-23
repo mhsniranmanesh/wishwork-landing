@@ -1,3 +1,14 @@
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 //-------------------------------------------------
 //                 Global Values
 //-------------------------------------------------
@@ -46,7 +57,7 @@ $(document).ready(function(client , freelancer){
 
 
 
-var form = $('#signup-form');
+// var form = $('#signup-form');
 
 
 //------------------------------------------------------
@@ -58,17 +69,17 @@ var form = $('#signup-form');
 
 var checkPassword = function(passText){
 	if (passText.length < 8 && passText.search(/\dd/) == -1 && passText.search(/[A-Z]/) == -1){
-		return "پسورد شما باید شامل ۸ حرف انگلیسی باشد";
+		return "پسورد شما باید حداقل ۸ حرف شامل حروف انگلیسی و اعداد ، علامت های متعارف مانند ( ـ ) باشد ";
 	}
 	else if (passText.length < 8)
 	{
-		 return "پسورد شما باید حداقل شامل ۸ حرف انگلیسی باشد";
+    return "پسورد شما باید حداقل ۸ حرف شامل حروف انگلیسی و اعداد ، علامت های متعارف مانند ( ـ ) باشد ";
     }
 	else if (passText.length > 50)
 	{
          return "پسورد شما باید حداکثر شامل ۵۰ حرف باشد";
 
-    }
+}
 	// else if (passText.search(/\d/) == -1) {
  	// 	return "پسورد شما باید حداقل شامل یک عدد باشد";
 	// }
@@ -119,13 +130,15 @@ var checkUserName = function (userText){
     console.log(userText);
     if (userText.search(/[!\@\#\$\%\^\&\*\(\)\+\;\']/) != -1)
         return "نام کاربری شما دارای نماد های نامعتبر است";
+    if(userText.length > 50){
+      return "نام کاربری شما باید حداکثر شامل ۵۰ حرف باشد"
+    }
     if(userText === ""){
         return "لطفا نام کاربری خود را وارد کنید."
     }
-    if(userText.match(/^[0-9a-zA-Z]/))
+    if(userText.match(/^[0-9a-zA-Z]/)){
         return "okusername";
-
-
+      }
     else
         return " نام کاربری شما دارای نماد های نامعتبر است(نام کاربری باید تنها شامل حروف انگلیسی باشد";
 
@@ -142,17 +155,11 @@ $(function() {
 username.on('input' ,function (){
 	if(this.value !== undefined) {
         var UserNameX = checkUserName(this.value)
-        console.log("KU", this.value);
-        console.log("this", this);
 
         if (UserNameX !== "okusername") {
             $('#form-control-feedback-username').show()
             $('#userNameTextError').text(UserNameX);
             $('#usn').addClass('has-danger');
-
-
-
-
         }
         else {
             $("#form-control-feedback-username").hide();
@@ -162,7 +169,7 @@ username.on('input' ,function (){
 });
 function firstNameValidation(strr){
 
-    if(strr.match(/^[\u0600-\u06FF]/)) {
+    if(strr.match(/^[\u0600-\u06FF\s]+$/)) {
         return "ok";
     }
     if(strr ===""){
@@ -186,7 +193,7 @@ firstName.on('input' ,function () {
 
 function lastNameValidation(strr){
 
-    if(strr.match(/^[\u0600-\u06FF]/)) {
+    if(strr.match(/^[\u0600-\u06FF\s]+$/)) {
         return "ok";
     }
     if (strr ===""){
@@ -196,6 +203,9 @@ function lastNameValidation(strr){
         return 'لطفا نام خانوادگی خود را فارسی وارد کنید.';
     }
 }
+
+
+
 lastName.on('input' ,function () {
     var checkLastName = this.value;
     if(lastNameValidation(checkLastName) !== "ok" ) {
@@ -217,15 +227,20 @@ function isValidMobileNumber(str) {
     if(numStr[0] != '0' && numStr[0] != '9'){
         return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
-    else if(numStr[0] == '0' && numStr.length !== 11){
+    else if(numStr[0] === '0' && numStr.length !== 11){
         return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
-    else if(numStr[0] == '9' && numStr.length !== 10){
+    else if(numStr[0] === '9' && numStr.length !== 10){
         return "لطفا شماره ی خود را صحیح وارد کنید.";
+    }
+    else if(numStr[0] === '+' && numStr.length !== 13 ){
+      return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
     return "ok";
-
 }
+
+
+
 
 function isStrContainsJustDigit(str){
     for(var i=0; i < str.length ; i++){
@@ -254,6 +269,7 @@ var checkmobile = function(signUpForm) {
     }
     return 'ok';
 }
+
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -311,7 +327,17 @@ function persianToEnglish(value) {
   }
   return newValue;
 }
-
+function sendMobileNumberToServer(strr){
+    var numStr = persianToEnglish(strr);
+    if (numStr.charAt(0) === '0'){
+      numStr = numStr.substr(1);
+      numStr = '+98' + numStr;
+    }
+    if(numStr.charAt(0) === '9'){
+      numStr = '+98' + numStr ;
+    }
+    return numStr ;
+}
 
 //------------------------------------------------------------------------------
 
@@ -322,13 +348,14 @@ function gotonext(){
     var validityPass = checkPassword(password.val());
     var validityUser = checkUserName(username.val());
     var CheckBox = document.getElementById("checkBox");
+    localStorage.setItem('username' , username.val());
+    localStorage.setItem('password' , password.val());
     if(username.val() ===""){
         validityUser = "EmptyUsername";
         console.log( 'X',validityPass , validityUser , CheckBox)
     }
 
     if(validityPass === "okpass" && validityUser ==="okusername" && CheckBox.checked === true){
-        console.log('salam asal');
       //  window.location.href = "signup-form.html";
         checkUserNameAndPasswordValidation();
     }
@@ -385,12 +412,14 @@ function gotonext2(){
     var EMail = $('#signupEmailInput').val();
     var checkingLastName = $('#signupLastNameInput').val();
     var Name = checkingName + " " + checkingLastName;
+    var sendMobileNumberForServer = sendMobileNumberToServer(mobileNumber.val())
   //  console.log( "SSS",Name);
     //storage Email of client for signup-verification-msg.html
     localStorage.setItem('EmailVerification' , EMail );
     localStorage.setItem("userFirstAndLastName" , Name);
 
     if(lastNameValidation(checkingLastName) === "ok" && firstNameValidation(checkingName)==="ok" && checkingLastName!=="" && checkingMobile === 'ok' && checkingName !== "" && EMail !=="" && validateEmail(EMail) === true){
+
         sendForm2DataToServer();
       //  window.location.href ='signup-freelancer-skills.html';
     }
@@ -438,11 +467,11 @@ function gotonext2(){
 
 
 
-
-$('#submit-signup-btn').click(function(){
-    console.log("SUBMITTTT");
-    gotonext();
-});
+//
+// $('#submit-signup-btn').click(function(){
+//     console.log("SUBMITTTT");
+//     gotonext();
+// });
 
 // function sendForm1DataToServer() {
 //     var signUpDataPage1 = {
@@ -465,29 +494,35 @@ $('#submit-signup-btn').click(function(){
 //     });
 // }
 
-$("#submit-signup-btn2").click(function () {
-    gotonext2();
-});
+// $("#submit-signup-btn2").click(function () {
+//     gotonext2();
+// });
+
 
 function sendForm2DataToServer() {
+  var mobileNumberForSendToServer = sendMobileNumberToServer(mobileNumber.val());
+  console.log(mobileNumberForSendToServer);
+    var username  = localStorage.getItem('username');
+    var password = localStorage.getItem('password');
     var signUpDataPage2and1 = {
-        username :$('#signupUsernameInput').val(),
-        password :  $('#signupPassInput').val(),
+        username :username,
+        password :  password,
         first_name : $('#signupFirstNameInput').val() ,
         last_name : $('#signupLastNameInput').val(),
         email: $('#signupEmailInput').val() ,
-        phone_number : $('#mobilePassInput').val(),
-        type : "",
+        phone_number : mobileNumberForSendToServer,
+        is_freelancer : false ,
     }
     if (localStorage.getItem('registertype') === 'freelancer') {
-        signUpDataPage2and1.type = "freelancer";
+        signUpDataPage2and1.is_freelancer = true;
     }
-    else
-        signUpDataPage2and1.type = "client";
-
+    else{
+        signUpDataPage2and1.is_freelancer = false;
+    }
+  //  console.log(signUpDataPage2and1);
     $.ajax({
         type:  "POST",
-        url: 'http://rest.learncode.academy/api/learncode/amirh',
+        url: 'api/v1/profiles/',
         dataType:'json',
         data : signUpDataPage2and1,
         success : function (data) {
@@ -496,15 +531,219 @@ function sendForm2DataToServer() {
 
         },
         error : function (data) {
-            console.log('erorr');
-            if(data.first_name === "This field may not be blank."){
-
+          $('.error-msg').remove();
+            console.log('erorr' ,data);
+            console.log('data.responseJSON',data.responseJSON);
+            if(data.responseJSON.username && data.responseJSON.username.contains("This field may not be blank.")){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+          //    errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام کاربری خود را وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
             }
-            if(data.last_name === "This field may not be blank."){
-
+            if(data.responseJSON.username && data.responseJSON.username.contains("Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.")){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+          //    errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام کاربری خود را صحیح وارد کنید';
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox);
             }
-            if(data.password === "This field may not be blank."){
+            if(data.responseJSON.password && data.responseJSON.password.contains("This field may not be blank.")){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+          //    errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا پسورد خود را صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            if(data.responseJSON.password && data.responseJSON.password.contains("Ensure this field has at least 8 characters.")){
+              $('.error-msg').remove();
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+          //    errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: پسورد شما باید حداقل شامل ۸ کاراکتر باشد'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox);
+            }
+            if(data.responseJSON.first_name && data.responseJSON.first_name.contains("This field may not be blank.")){
 
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+            //  errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام خود را وارد کنید';
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+              if(data.responseJSON.first_name && data.responseJSON.first_name.contains('Name must have only persian characters.')){
+              console.log('persianError');
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+            //  errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام خود را صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            if(data.responseJSON.last_name && data.responseJSON.last_name.contains("This field may not be blank.")){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              //errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام خانوادگی خود را وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox);
+            }
+            if(data.responseJSON.last_name && data.responseJSON.last_name.contains('Name must have only persian characters.')){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+            //  errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا نام خانوادگی خود را صحیح وارد کنید';
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox);
+            }
+
+            if(data.responseJSON.phone_number && data.responseJSON.phone_number.contains("This field may not be blank.")){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+            //  errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا شماره تلفن همراه خود را وارد کنید';
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            if(data.responseJSON.phone_number && data.responseJSON.phone_number.contains('Phone number must be in this format : +989xxxxxxxxx')){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+            //  errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا شماره تلفن همراه خود را به صورت صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            if(data.responseJSON.email && data.responseJSON.email.contains("This field may not be blank.")){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+          //    errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا ایمیل خود را وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            if(data.responseJSON.email && data.responseJSON.email.contains('Enter a valid email address.')){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+            //  errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: لطفا ایمیل خود را صحیح وارد کنید'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox)
+            }
+            if(data.responseJSON.email && data.responseJSON.email.contains('user with this email address already exists.')){
+              $('.error-msg').remove();
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+            //  errorBox.id = 'errorBox';
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا: اکانت با این ایمیل موجود است'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signup-form').append(errorBox);
+            }
+            else {
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('id' ,'errorBoxx');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signup-form').append(errorBox);
             }
 
         }
@@ -513,7 +752,8 @@ function sendForm2DataToServer() {
 
 
 function checkUserNameAndPasswordValidation() {
-    var validationURL = 'http://192.168.1.43:8000/api/v1/profiles/userexists/' + $('#signupUsernameInput').val();
+    var validationURL = 'api/v1/profiles/userexists/' + $('#signupUsernameInput').val();
+    $('#errorBox').remove();
     var signUpDataPage2and1 = {
         username: $('#signupUsernameInput').val(),
         password: $('#signupPassInput').val(),
@@ -523,37 +763,42 @@ function checkUserNameAndPasswordValidation() {
         url : validationURL,
         data: signUpDataPage2and1,
         success : function (result) {
-          if(result.message==="User Already Exists"){
-            //erorr
+          $('#errorBoxx').remove();
+          if(result.username === "A user with that username already exists."){
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
+            errorBox.setAttribute('id' ,'errorBoxx');
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML = 'خطا: این نام کاربری قبلا ثبت شده است'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#signup-form').append(errorBox)
           }
-          else{
-            window.location.href = "signup-form.html";
-          }
+          else
+             window.location.href = "signup-form.html";
+
 
     },
         error : function(err) {
-            console.log('Err, existance!');
-            if(err.username !== "This field is required."){
-
-            }
-            if(err.password === "This field is required."){
-
-            }
+            $('.error-msg').remove();
+            //console.log('User Exists:', err);
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
+            errorBox.setAttribute('id' ,'errorBoxx');
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#signup-form').append(errorBox)
 
         }
     });
 }
-
-
-// $.AJAX({
-//   type:     "GET",
-//                     url: 'http://172.25.0.195:8000/bucketlists/3/',
-//                     contentType: "application/json",
-//                     data : 'SignUpDataPage2',
-//                     success: function(results){
-//                         console.log("Friend added!", data)
-//                     },
-//                     error: function(error){
-//
-//                     }
-// });

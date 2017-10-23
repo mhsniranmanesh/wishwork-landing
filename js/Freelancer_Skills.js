@@ -1,4 +1,44 @@
+function checkUserLogin(){
+  var username = localStorage.getItem('current_login_username')
+  var token = localStorage.getItem('current_login_token')
+  var firstName = localStorage.getItem('current_login_first_name')
+  var lastName = localStorage.getItem('current_login_last_name')
+  if(firstName && lastName)
+    $("#navbar-user-name").text(firstName + ' ' + lastName);
+  else
+    $("#navbar-user-name").text("");
+  if (token) {
+    $.ajax({
+      type: "POST",
+      url: '/api/v1/auth/token/verify/',
+      data: {
+        token: token
+      },
+      success: function(result) {
+        console.log('LOGIN SUCCESS: ', result)
+      },
+      error: function(err) {
+        console.log('LOGIN FAILED: ', err)
+        window.location.href = 'signin.html'
+      }
+    });
+  }
+  else {
+    console.log('LOGIN FAILED: No token');
+    window.location.href = 'signin.html'
+  }
+}
+
+$(function() {
+  checkUserLogin();
+});
+
 var skills = [];
+var skillsServer = [];
+var isMedical = false;
+var isTechnical = false;
+var isLegal = false;
+var isGeneral = false;
 var fatherTag = document.getElementById('skillType');
 Element.prototype.remove = function() {
   this.parentElement.removeChild(this);
@@ -22,10 +62,12 @@ function add_translation_tags() {
   var TT = translateto.options[translateto.selectedIndex].text;
   var TFvalue = translatefrom.options[translatefrom.selectedIndex].value;
   var TTvalue = translateto.options[translateto.selectedIndex].value;
-
+  var skillServer = {};
   var skill = {};
   skill.from = TF;
   skill.to = TT;
+  skillServer.from = TF;
+  skillServer.to = TT;
   skill.text = ' از ' + skill.from + ' به ' + skill.to;
   if (translatefrom.selectedIndex === 0 || translateto.selectedIndex === 0) {
     $('#ErrorMessage').show();
@@ -40,6 +82,7 @@ function add_translation_tags() {
   if (!is_skill_present(skill) && translatefrom.selectedIndex != 0 && translateto.selectedIndex != 0 && TT != TF) {
     $('#ErrorMessage').hide();
     skills.push(skill);
+    skillsServer.push(skillServer);
     var child = document.createElement('div');
     skill.htmlElement = child;
     var childInnerText = document.createElement('div');
@@ -70,6 +113,7 @@ function add_translation_tags() {
 
     $(removeButton).click(function() {
       remove_tag(skill);
+      remove_tag_server(skillServer);
     })
     counter++;
   }
@@ -87,19 +131,39 @@ function is_skill_present(skill) {
   return false;
 }
 
+function is_skillServer_present(skill) {
+  for (var i = 0; i < skillsServer.length; i++) {
+
+    if (skillsServer[i].from === skillServer.from && skillsServer[i].to === skillServer.to) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function remove_tag(skill) {
   for (var i = 0; i < skills.length; i++) {
     if (skills[i].from === skill.from && skills[i].to === skill.to) {
       skills[i].htmlElement.remove();
       skills.splice(i, 1);
+    }
+  }
+}
 
+function remove_tag_server(skillServer) {
+  for (var i = 0; i < skillsServer.length; i++) {
+    if (skillsServer[i].from === skillServer.from && skillsServer[i].to === skillServer.to) {
+      skillsServer.splice(i, 1);
     }
   }
 }
 
 function gotonext() {
   if (0 < skills.length && fatherTag.selectedIndex != -1) {
-    window.location.href = "signup-freelancer-infos.html";
+    // console.log(fatherTag.options);
+    //window.location.href = "signup-freelancer-infos.html";
+    sendSkillsToServer();
+
   } else if (skills.length != 0 && fatherTag.selectedIndex === -1) {
     $('#ErrorMessage').show();
     $('#errorText').text('لطفا زمینه(ها)ی تخصصی خود را وارد کنید');
@@ -112,9 +176,62 @@ function gotonext() {
 // document.getElementById('userlogin').innerHTML = Name;
 
 
+
 //-------------------------------------------------
 //                  Ajax
 //-------------------------------------------------
+
+function sendSkillsToServer() {
+  var selectedFatherTag;
+  //console.log(skills);
+  //console.log(skillsServer);
+  var arrayOfFatherTags = [];
+  for (selectedFatherTag = 0; selectedFatherTag < 4; selectedFatherTag++) {
+    if (fatherTag.options[selectedFatherTag].selected === true) {
+      console.log(selectedFatherTag);
+      arrayOfFatherTags.push(selectedFatherTag);
+      console.log(arrayOfFatherTags);
+
+    }
+  }
+  if (arrayOfFatherTags.indexOf(0) !== -1) {
+    isMedical = true;
+  }
+  if (arrayOfFatherTags.indexOf(1) !== -1) {
+    isTechnical = true;
+  }
+  if (arrayOfFatherTags.indexOf(2) !== -1) {
+    isLegal = true;
+  }
+  if (arrayOfFatherTags.indexOf(3) !== -1) {
+    isGeneral = true;
+  }
+
+  console.log(isMedical, isTechnical, isLegal, isGeneral);
+  // var i = 0;
+  // for(i ; i<)
+  var freelancersSkills = {
+    category: 'translation',
+    is_general: isGeneral,
+    is_legal: isLegal,
+    is_medical: isMedical,
+    is_technical: isTechnical,
+    languageset: skillsServer,
+  }
+  $.ajax({
+    type: "POST",
+    url: 'api/v1/skills/',
+    dataType: 'json',
+    headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')}
+    data: freelancersSkills,
+    success: function(result) {
+      // window.location.href = "signup-freelancer-infos.html";
+    },
+    error: function(err) {
+
+    },
+  });
+}
 // function sendInfoAndSkillsOfFreelancerDataToServer(){
 //   var signUpDataInfoAndSkills ={
 //     var FreelancerSkills = skills,
