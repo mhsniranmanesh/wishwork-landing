@@ -53,12 +53,16 @@
                         <div class="form-group">
                             <input type="password" class="form-control" id="loginPassInput" placeholder="رمز عبور">
                         </div>
-                        <a href="forget-email.html">رمز عبور را فراموش کرده ام!</a>
+                        <a href="forget-password.html">رمز عبور را فراموش کرده ام!</a>
                         <span id="error-msg" class="error-msg" style="display:none">
                             <i class="fa fa-times" aria-hidden="true"></i>
                               ایمیل یا نام کاربری صحیح نمی باشد!
                         </span>
-                            <button type="submit" class="btn btn-primary btn-rec">ورود</button>
+                        <div>
+                            <button id="verify" type="submit" class="btn btn-primary btn-rec">ورود</button>
+                            <span class="loader" style="display:none"></span>
+                        </div>
+
                     </form>
                 </div>
             </div>
