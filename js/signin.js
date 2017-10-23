@@ -1,21 +1,32 @@
-userName = $('#loginUserNameInput');
-pass = $('#loginPassInput');
-localStorage.getItem
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+var userName = $('#loginUserNameInput');
+var pass = $('#loginPassInput');
+
 function LogIn(){
   var data = {
-    username : userName,
-    password : pass,
+    username : userName.val(),
+    password : pass.val(),
   }
+  console.log("LOGINNNN : ", data);
   $.ajax({
-    type : "GET",
+    type : "POST",
     url: 'api/v1/auth/token/obtain/',
     data: data,
     success : function (result){
       localStorage.setItem('current_login_token' , result.token);
-      window.location.href = "after-signin.html";
+      window.location.href = "dashboard.html";
     },
-    error : function (result) {
-      if(result.username === "This field is required."){
+    error : function (err) {
+      if(err.responseJSON.username &&  err.responseJSON.username.contains("This field is required.")){
         $('#errorBox').remove();
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -30,7 +41,7 @@ function LogIn(){
         $(errorMessage).prepend(errorCross);
         $('#signUpForm').append(errorBox);
       }
-      if(result.password === "This field is required."){
+      if(err.responseJSON.password &&  err.responseJSON.password.contains("This field is required.")){
         $('#errorBox').remove();
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -45,7 +56,7 @@ function LogIn(){
         $(errorMessage).prepend(errorCross);
         $('#signUpForm').append(errorBox);
       }
-      if(result.non_field_errors === "Unable to log in with provided credentials."){
+      if(err.responseJSON.non_field_errors &&  err.responseJSON.non_field_errors.contains("Unable to log in with provided credentials.")){
         $('#errorBox').remove();
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');
