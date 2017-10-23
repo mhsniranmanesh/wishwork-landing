@@ -220,7 +220,7 @@ function sendSkillsToServer() {
   }
   $.ajax({
     type: "POST",
-    url: 'api/v1/skills/',
+    url: 'api/v1/skills/add/translation/',
     dataType: 'json',
     headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')}
     data: freelancersSkills,
@@ -228,7 +228,7 @@ function sendSkillsToServer() {
       // window.location.href = "signup-freelancer-infos.html";
     },
     error: function(err) {
-
+        
     },
   });
 }
