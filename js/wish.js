@@ -519,7 +519,7 @@ function sendForm2DataToServer() {
     else{
         signUpDataPage2and1.is_freelancer = false;
     }
-    console.log(signUpDataPage2and1);
+  //  console.log(signUpDataPage2and1);
     $.ajax({
         type:  "POST",
         url: 'api/v1/profiles/',

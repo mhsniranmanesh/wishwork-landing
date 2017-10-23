@@ -220,16 +220,17 @@ function sendSkillsToServer() {
   }
   $.ajax({
     type: "POST",
-    url: 'http://rest.learncode.academy/api/learncode/amirh',
+    url: 'api/v1/skills/',
     dataType: 'json',
+    headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')}
     data: freelancersSkills,
     success: function(result) {
       // window.location.href = "signup-freelancer-infos.html";
     },
-    error: function(data) {
+    error: function(err) {
 
     },
-  })
+  });
 }
 // function sendInfoAndSkillsOfFreelancerDataToServer(){
 //   var signUpDataInfoAndSkills ={

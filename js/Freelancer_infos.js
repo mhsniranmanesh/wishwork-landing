@@ -151,6 +151,7 @@ function sendInfoFreelancerToSever(){
     type: "POST",
     url: 'http://rest.learncode.academy/api/learncode/amirh',
     dataType:'json',
+    headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')},
     data : freelancerInfo,
     success : function (data) {
         //console.log('mersii!');
