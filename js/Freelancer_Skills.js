@@ -181,7 +181,6 @@ function gotonext() {
 //                  Ajax
 //-------------------------------------------------
 
-
 function sendSkillsToServer() {
   var selectedFatherTag;
   //console.log(skills);
@@ -207,6 +206,7 @@ function sendSkillsToServer() {
   if (arrayOfFatherTags.indexOf(3) !== -1) {
     isGeneral = true;
   }
+
   console.log(isMedical, isTechnical, isLegal, isGeneral);
   // var i = 0;
   // for(i ; i<)

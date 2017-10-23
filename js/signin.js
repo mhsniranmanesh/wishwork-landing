@@ -60,6 +60,21 @@ function LogIn(){
         $(errorMessage).prepend(errorCross);
         $('#signUpForm').append(errorBox);
       }
+      else {
+        var errorCross = document.createElement('i');
+        errorCross.setAttribute('class', 'fa fa-times-circle');
+        errorCross.setAttribute('aria-hidden', 'true');
+        var errorBox = document.createElement('span');
+        errorBox.setAttribute('id' ,'errorBoxx');
+        errorBox.setAttribute('class' , 'error-msg');
+        errorBox.appendChild(errorCross);
+        var errorMessage = document.createElement('span');
+        errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
+        errorBox.appendChild(errorMessage);
+        $(errorMessage).prepend(errorCross);
+        $('#signup-form').append(errorBox)
+
+      }
     }
   });
 }

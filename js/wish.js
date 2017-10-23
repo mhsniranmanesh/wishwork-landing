@@ -525,7 +525,7 @@ function sendForm2DataToServer() {
         },
         error : function (data) {
             console.log('erorr' ,data);
-            console.log('data.responseJSON',data.responseJSON);
+            console.log('data.responseJSON', data.responseJSON);
             if(data.responseJSON.username === "This field may not be blank."){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
@@ -723,6 +723,20 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signup-form').append(errorBox);
             }
+            else {
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('id' ,'errorBoxx');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signup-form').append(errorBox);
+            }
 
         }
     });
@@ -763,7 +777,18 @@ function checkUserNameAndPasswordValidation() {
     },
         error : function(err) {
             console.log('User Exists:', err);
-
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
+            errorBox.setAttribute('id' ,'errorBoxx');
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#signup-form').append(errorBox)
 
         }
     });
