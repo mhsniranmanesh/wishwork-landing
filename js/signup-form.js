@@ -298,6 +298,7 @@ function gotonext2(){
 
 function sendForm2DataToServer() {
   var mobileNumberForSendToServer = sendMobileNumberToServer(mobileNumber.val());
+  $('#loader').show();
   //console.log(mobileNumberForSendToServer);
     var username  = localStorage.getItem('username');
     var password = localStorage.getItem('password');
@@ -328,6 +329,7 @@ function sendForm2DataToServer() {
 
         },
         error : function (data) {
+          $('#loader').hide();
           $('.error-msg').remove();
           //  console.log('erorr' ,data);
           //  console.log('data.responseJSON',data.responseJSON);

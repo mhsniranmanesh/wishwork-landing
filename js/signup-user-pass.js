@@ -186,6 +186,7 @@ var checkPassword = function(passText){
   //------------------------------------------------------------------------------
 
 function checkUserNameAndPasswordValidation() {
+      $('#loader').show();
       var validationURL = 'api/v1/profiles/userexists/' + $('#signupUsernameInput').val();
       $('#errorBox').remove();
       var signUpDataPage2and1 = {
@@ -218,6 +219,7 @@ function checkUserNameAndPasswordValidation() {
 
       },
           error : function(err) {
+              $('#loader').hide();
             //  console.log('User Exists:', err);
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
