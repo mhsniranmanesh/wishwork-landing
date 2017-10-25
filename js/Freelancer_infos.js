@@ -160,7 +160,7 @@ function sendInfoFreelancerToSever(){
   }
   $.ajax({
     type: "POST",
-    url: '192.168.1.43:8000/api/v1/profiles/update-infos/',
+    url: 'api/v1/profiles/update-infos/',
     processData: false,
     headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
     data : freelancerInfo,
