@@ -528,7 +528,7 @@ function sendForm2DataToServer() {
               errorMessage.innerHTML = 'خطا: اکانت با این ایمیل موجود است'
               errorBox.appendChild(errorMessage);
               $(errorMessage).prepend(errorCross);
-              $('#signup-form').append(errorBox);
+              $('#signUpForm').append(errorBox);
             }
             else {
               var errorCross = document.createElement('i');
@@ -542,7 +542,7 @@ function sendForm2DataToServer() {
               errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
               errorBox.appendChild(errorMessage);
               $(errorMessage).prepend(errorCross);
-              $('#signup-form').append(errorBox);
+              $('#signUpForm').append(errorBox);
             }
 
         }

@@ -62,6 +62,15 @@ SITE.fileInputs = function (){
 
 $('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
 
+var fd = new FormData();
+var file_data = $('.file-wrapper input[type="file"]')[0].files;
+for(var i = 0;i<file_data.length;i++){
+    fd.append("file_"+i, file_data[i]);
+}
+var other_data = $('form').serializeArray();
+$.each(other_data,function(key,input){
+    fd.append(input.name,input.value);
+});
 function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -142,7 +151,6 @@ $('#submitButton').click(function(){
 
 function sendInfoFreelancerToSever(){
   var freelancerInfo = {
-    freelancer_image : freelancerImage,
     title : title,
     bio : bio,
     job : job,
@@ -151,16 +159,10 @@ function sendInfoFreelancerToSever(){
   }
   $.ajax({
     type: "POST",
-<<<<<<< HEAD
     url: '/api/v1/profiles/update-infos/',
     processData: false,
     headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')},
-=======
-    url: 'http://rest.learncode.academy/api/learncode/amirh',
-    dataType:'json',
-    headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
->>>>>>> 5d1c50c5f896bbd95c5cf0f84ae6f0c7aba6d536
-    data : freelancerInfo,
+    data : freelancerInfo + freelancerImage,
     contentType: false,
     processData:false,
     success : function (data) {
