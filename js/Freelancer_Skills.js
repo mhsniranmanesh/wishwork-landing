@@ -250,26 +250,26 @@ function sendSkillsToServer() {
   //console.log(isMedical, isTechnical, isLegal, isGeneral);
   // var i = 0;
   // for(i ; i<)
-  //console.log(skillsServer);
   var freelancersSkills = {
-    category: 'translation',
     is_general: isGeneral,
     is_legal: isLegal,
     is_medical: isMedical,
     is_technical: isTechnical,
-    languageset: skillsServer,
-  }
+    language_set: skillsServer,
+  };
+  console.log(freelancersSkills);
   $.ajax({
     type: "POST",
     url: 'api/v1/skills/add/translation/',
     dataType: 'json',
-    headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')}
+    headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
     data: freelancersSkills,
     success: function(result) {
-       window.location.href = "signup-freelancer-infos.html";
+      window.location.href = "signup-freelancer-infos.html";
+      // console.log("RESULT:", result);
     },
     error: function(err) {
-
+      console.log("Error Adding Skill: ", err);
     },
   });
 }

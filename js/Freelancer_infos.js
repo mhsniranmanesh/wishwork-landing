@@ -151,8 +151,10 @@ function sendInfoFreelancerToSever(){
     type: "POST",
     url: 'http://rest.learncode.academy/api/learncode/amirh',
     dataType:'json',
-    headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')},
+    headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
     data : freelancerInfo,
+    contentType: false,
+    processData:false,
     success : function (data) {
         //console.log('mersii!');
         window.location.href = "after-signin.html";
