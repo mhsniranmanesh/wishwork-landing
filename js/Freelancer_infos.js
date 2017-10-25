@@ -161,7 +161,7 @@ function sendInfoFreelancerToSever(){
     type: "POST",
     url: '/api/v1/profiles/update-infos/',
     processData: false,
-    headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')},
+    headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
     data : freelancerInfo + freelancerImage,
     contentType: false,
     processData:false,
