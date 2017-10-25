@@ -151,6 +151,7 @@ $('#submitButton').click(function(){
 
 function sendInfoFreelancerToSever(){
   var freelancerInfo = {
+    profile_picture: freelancerImage,
     title : title,
     bio : bio,
     job : job,
@@ -159,10 +160,10 @@ function sendInfoFreelancerToSever(){
   }
   $.ajax({
     type: "POST",
-    url: 'api/v1/profiles/update-infos/',
+    url: '192.168.1.43:8000/api/v1/profiles/update-infos/',
     processData: false,
     headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
-    data : freelancerInfo + freelancerImage,
+    data : freelancerInfo,
     contentType: false,
     processData:false,
     success : function (data) {
