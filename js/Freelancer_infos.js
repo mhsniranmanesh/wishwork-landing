@@ -33,7 +33,8 @@ $(function() {
   checkUserLogin();
 });
 
-var aboutFreelancer = $('#aboutFreelancer').val();
+var title = $('#title').val();
+var bio = $('#bio').val();
 var job = $('#job').val();
 var degree = $('#degree').val();
 var university = $('#university').val();
@@ -88,7 +89,7 @@ function readURL(input) {
       $('.fa-level-up').remove();
       $('.fa-times').remove();
       $('#imageAlert').text('اندازه ی فایل شما مناسب می باشد').css('color' , 'green');
-      freelancerImage = $('#imgInp') ;
+      freelancerImage = input.files[0] ;
       console.log(freelancerImage);
     }
     else if(imageSizeValidation === false && imageTypeValidation === true){
@@ -142,15 +143,16 @@ $('#submitButton').click(function(){
 function sendInfoFreelancerToSever(){
   var freelancerInfo = {
     freelancer_image : freelancerImage,
-    about_freelancer : aboutFreelancer,
-    job : university,
+    title : title,
+    bio : bio,
+    job : job,
     degree : degree,
     university : university,
   }
   $.ajax({
     type: "POST",
-    url: 'http://rest.learncode.academy/api/learncode/amirh',
-    dataType:'json',
+    url: '/api/v1/profiles/update-infos/',
+    processData: false,
     headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')},
     data : freelancerInfo,
     success : function (data) {
