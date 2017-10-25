@@ -151,10 +151,18 @@ function sendInfoFreelancerToSever(){
   }
   $.ajax({
     type: "POST",
+<<<<<<< HEAD
     url: '/api/v1/profiles/update-infos/',
     processData: false,
     headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')},
+=======
+    url: 'http://rest.learncode.academy/api/learncode/amirh',
+    dataType:'json',
+    headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
+>>>>>>> 5d1c50c5f896bbd95c5cf0f84ae6f0c7aba6d536
     data : freelancerInfo,
+    contentType: false,
+    processData:false,
     success : function (data) {
         //console.log('mersii!');
         window.location.href = "after-signin.html";
