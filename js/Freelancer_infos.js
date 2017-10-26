@@ -159,7 +159,7 @@ function sendInfoFreelancerToSever(){
     degree : degree,
     university : university,
   }
-  var freelancerInfoAndImage;
+  var freelancerInfoAndImage = {};
   freelancerInfoAndImage.push.apply(freelancerInfoAndImage , fd );
   freelancerInfoAndImage.push.apply(freelancerInfoAndImage , freelancerInfo);
   console.log('freelancerInfoAndImage' , freelancerInfoAndImage);
