@@ -63,12 +63,13 @@ SITE.fileInputs = function (){
 $('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
 
 
-var fd = new FormData();
-var file_data = $('.file-wrapper input[type="file"]')[0].files;
-for(var i = 0;i<1;i++){
-    fd.append("profile_picture" , file_data[i]);
-}
+
 function readURL(input) {
+  var fd = new FormData();
+  var file_data = $('.file-wrapper input[type="file"]')[0].files;
+  for(var i = 0;i<1;i++){
+      fd.append("profile_picture" , file_data[i]);
+    }
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     var imageSizeValidation ;
@@ -158,7 +159,9 @@ function sendInfoFreelancerToSever(){
     degree : degree,
     university : university,
   }
-  var freelancerInfoAndImage = freelancerInfo.push.apply(freelancerInfo , fd )
+  var freelancerInfoAndImage;
+  freelancerInfoAndImage.push.apply(freelancerInfoAndImage , fd );
+  freelancerInfoAndImage.push.apply(freelancerInfoAndImage , freelancerInfo);
   console.log('freelancerInfoAndImage' , freelancerInfoAndImage);
   $.ajax({
     type: "POST",
