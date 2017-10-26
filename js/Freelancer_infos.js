@@ -164,7 +164,7 @@ var other_data = $('form').formToJson();
  });
 function sendInfoFreelancerToSever(){
 
-  var freelancerInfo = {
+  // var freelancerInfo = {
   //   profile_picture: freelancerImage,
   //   title : title,
   //   bio : bio,
