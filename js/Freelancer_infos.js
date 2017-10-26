@@ -1,3 +1,12 @@
+function formToJson(nameForm)
+{
+ var jsonForm={};
+ $("input", $(nameForm)).each(function(index){
+   jsonForm[$(this).attr("id")] = this.value;
+ })
+ return jsonForm;
+};
+
 function checkUserLogin(){
   var username = localStorage.getItem('current_login_username')
   var token = localStorage.getItem('current_login_token')
@@ -61,15 +70,12 @@ SITE.fileInputs = function (){
 
 
 $('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
-
+var fd = new FormData();
+var file_data = $('.file-wrapper input[type="file"]')[0].files;
 
 
 function readURL(input) {
-  var fd = new FormData();
-  var file_data = $('.file-wrapper input[type="file"]')[0].files;
-  for(var i = 0;i<1;i++){
-      fd.append("profile_picture" , file_data[i]);
-    }
+
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     var imageSizeValidation ;
@@ -99,6 +105,10 @@ function readURL(input) {
       $('#imageAlert').text('اندازه ی فایل شما مناسب می باشد').css('color' , 'green');
       freelancerImage = input.files[0] ;
       console.log(freelancerImage);
+
+        for(var i = 0;i<1;i++){
+            fd.append("profile_picture" , file_data[i]);
+          }
 
     }
     else if(imageSizeValidation === false && imageTypeValidation === true){
@@ -148,27 +158,30 @@ $(".uploader").change(function(){
 $('#submitButton').click(function(){
 	//window.location.href = "signup-verification-msg.html";
 })
-
+var other_data = $('form').formToJson();
+ $.each(other_data,function(key,input){
+     fd.append(input.id,input.value);
+ });
 function sendInfoFreelancerToSever(){
 
   var freelancerInfo = {
-  //  profile_picture: freelancerImage,
-    title : title,
-    bio : bio,
-    job : job,
-    degree : degree,
-    university : university,
-  }
-  var freelancerInfoAndImage = {};
-  freelancerInfoAndImage.push.apply(freelancerInfoAndImage , fd );
-  freelancerInfoAndImage.push.apply(freelancerInfoAndImage , freelancerInfo);
-  console.log('freelancerInfoAndImage' , freelancerInfoAndImage);
+  //   profile_picture: freelancerImage,
+  //   title : title,
+  //   bio : bio,
+  //   job : job,
+  //   degree : degree,
+  //   university : university,
+  // }
+  // var freelancerInfoAndImage = {};
+  // freelancerInfoAndImage.push.apply(freelancerInfoAndImage , fd );
+  // freelancerInfoAndImage.push.apply(freelancerInfoAndImage , freelancerInfo);
+  // console.log('freelancerInfoAndImage' , freelancerInfoAndImage);
   $.ajax({
     type: "POST",
     url: 'api/v1/profiles/update-infos/',
     processData: false,
     headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
-    data : freelancerInfoAndImage,
+    data : fd,
     contentType: false,
     processData:false,
     success : function (data) {
