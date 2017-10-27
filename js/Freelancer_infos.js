@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-function formToJson(form) {
-  var jsonForm = {};
-  $("input", $('form')).each(function(index) {
-    jsonForm[$(this).attr("id")] = this.value;
-  })
-  return jsonForm;
-=======
 Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {
@@ -23,7 +15,6 @@ function formToJson(form)
    jsonForm[$(this).attr("id")] = this.value;
  })
  return jsonForm;
->>>>>>> 6973a851e7557097adaa15e1496a4f555ee427ef
 };
 
 function checkUserLogin() {
@@ -181,7 +172,7 @@ function sendInfoFreelancerToSever() {
   formData.append('degree', degree.val());
   formData.append('job', job.val());
   formData.append('university', university.val());
-  
+
 $.ajax({
   type: "POST",
   url: 'api/v1/profiles/update-infos/',
