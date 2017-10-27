@@ -1,7 +1,7 @@
-function formToJson(nameForm)
+function formToJson(form)
 {
  var jsonForm={};
- $("input", $(nameForm)).each(function(index){
+ $("input", $('form')).each(function(index){
    jsonForm[$(this).attr("id")] = this.value;
  })
  return jsonForm;
