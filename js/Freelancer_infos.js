@@ -159,11 +159,11 @@ $('#submitButton').click(function(){
 function sendInfoFreelancerToSever(){
 var profile_picture = $('input[id="imgInp"]').get(0).files[0];
 var formData = new FormData();
-formData.append('title', title);
-formData.append('bio', bio);
-formData.append('degree', degree);
-formData.append('job' , job);
-formData.append('university' , university);
+formData.append('title', title.val());
+formData.append('bio', bio.val());
+formData.append('degree', degree.val());
+formData.append('job' , job.val());
+formData.append('university' , university.val());
 
 $.ajax({
   type: "POST",
