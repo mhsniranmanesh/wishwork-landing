@@ -42,11 +42,11 @@ $(function() {
   checkUserLogin();
 });
 
-var title = $('#title').val();
-var bio = $('#bio').val();
-var job = $('#job').val();
-var degree = $('#degree').val();
-var university = $('#university').val();
+var title = $('#title');
+var bio = $('#bio')
+var job = $('#job');
+var degree = $('#degree');
+var university = $('#university');
 var freelancerImage = null ;
 var imageSizeValidation ;
 var imageTypeValidation ;
@@ -169,11 +169,13 @@ $.ajax({
   type: "POST",
   url: 'api/v1/profiles/update-infos/',
   data: formData,
+  headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
   contentType: false,
   processData: false,
   cache: false,
-  complete: function(data) {
-    alert("success");
+  success: function(data) {
+    // alert("success");
+    console.log("Success:", data);
   }
 });
 console.log(formData);
