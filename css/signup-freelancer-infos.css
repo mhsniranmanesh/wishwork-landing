@@ -251,6 +251,17 @@ section.signin .con-body .btn-rec {
     background-color: #014762;
     border-color: #014762;
 }
+span.error-msg {
+    display: block;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 0;
+    border: 3px solid #c52622;
+    color: #c52622;
+    font-weight: 500;
+    margin-top: 15px;
+    text-align: center;
+}
 
 .btn-rec .fa,
 .error-msg .fa {

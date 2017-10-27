@@ -331,6 +331,7 @@ function sendForm2DataToServer() {
         error : function (data) {
           $('#loader').hide();
           $('.error-msg').remove();
+          $('#errorBoxx').remove();
         //   console.log('erorr' ,data);
           //  console.log('data.responseJSON',data.responseJSON);
             if(data.responseJSON.username && data.responseJSON.username.contains("This field may not be blank.")){

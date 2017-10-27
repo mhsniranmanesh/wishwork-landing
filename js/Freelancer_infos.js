@@ -184,10 +184,11 @@ $.ajax({
   success: function(data) {
     // alert("success");
     console.log("Success:", data);
-  }
+  },
   error : function(data){
             console.log('err' , data);
           $('.error-msg').remove();
+          $('#errorBoxx').remove();
           if(data.responseJSON.bio && data.responseJSON.bio.contains("Ensure this field has no more than 3000 characters.")){
             $('.error-msg').remove();
             var errorCross = document.createElement('i');
@@ -262,25 +263,23 @@ $.ajax({
         errorBox.appendChild(errorMessage);
         $(errorMessage).prepend(errorCross);
         $('#freelancerInfoForm').append(errorBox);
-      } else {
-        $('.error-msg').remove();
+      }
+      else {
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');
         errorCross.setAttribute('aria-hidden', 'true');
         var errorBox = document.createElement('span');
-        //    errorBox.id = 'errorBox';
-        errorBox.setAttribute('class', 'error-msg');
+        errorBox.setAttribute('id' ,'errorBoxx');
+        errorBox.setAttribute('class' , 'error-msg');
         errorBox.appendChild(errorCross);
         var errorMessage = document.createElement('span');
-        errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجددا سعی کنید.'
+        errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
         errorBox.appendChild(errorMessage);
         $(errorMessage).prepend(errorCross);
-        $('#freelancerInfoForm').append(errorBox);
+        $('#signUpForm').append(errorBox);
       }
-
     }
   });
-  console.log(formData);
 }
 // function sendInfoFreelancerToSever(){
 //
