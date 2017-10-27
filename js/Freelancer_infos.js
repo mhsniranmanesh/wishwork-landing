@@ -48,8 +48,9 @@ var job = $('#job').val();
 var degree = $('#degree').val();
 var university = $('#university').val();
 var freelancerImage = null ;
-
-
+var imageSizeValidation ;
+var imageTypeValidation ;
+//var fd = new FormData();
 var SITE = SITE || {};
 SITE.fileInputs = function (){
   var $this = $(this),
@@ -70,16 +71,12 @@ SITE.fileInputs = function (){
 
 
 $('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
-var fd = new FormData();
-var file_data = $('.file-wrapper input[type="file"]')[0].files;
-
 
 function readURL(input) {
 
   if (input.files && input.files[0]) {
     var reader = new FileReader();
-    var imageSizeValidation ;
-    var imageTypeValidation ;
+
     var tmppath = URL.createObjectURL(event.target.files[0]);
     // Checking Size ;)
     console.log(event.target.files[0]);
@@ -104,11 +101,10 @@ function readURL(input) {
       $('.fa-times').remove();
       $('#imageAlert').text('اندازه ی فایل شما مناسب می باشد').css('color' , 'green');
       freelancerImage = input.files[0] ;
+      //fd.append("profile_picture", freelancerImage);
       console.log(freelancerImage);
+      //console.log('fucking fd' ,fd)
 
-        for(var i = 0;i<1;i++){
-            fd.append("profile_picture" , file_data[i]);
-          }
 
     }
     else if(imageSizeValidation === false && imageTypeValidation === true){
@@ -154,44 +150,165 @@ function readURL(input) {
 $(".uploader").change(function(){
   readURL(this);
 
+
 });
 $('#submitButton').click(function(){
 	//window.location.href = "signup-verification-msg.html";
+
 })
-var other_data = $('form').formToJson();
- $.each(other_data,function(key,input){
-     fd.append(input.id,input.value);
- });
 function sendInfoFreelancerToSever(){
+var profile_picture = $('input[id="imgInp"]').get(0).files[0];
+var formData = new FormData();
+formData.append('title', title);
+formData.append('bio', bio);
+formData.append('degree', degree);
+formData.append('job' , job);
+formData.append('university' , university);
 
-  // var freelancerInfo = {
-  //   profile_picture: freelancerImage,
-  //   title : title,
-  //   bio : bio,
-  //   job : job,
-  //   degree : degree,
-  //   university : university,
-  // }
-  // var freelancerInfoAndImage = {};
-  // freelancerInfoAndImage.push.apply(freelancerInfoAndImage , fd );
-  // freelancerInfoAndImage.push.apply(freelancerInfoAndImage , freelancerInfo);
-  // console.log('freelancerInfoAndImage' , freelancerInfoAndImage);
-  $.ajax({
-    type: "POST",
-    url: 'api/v1/profiles/update-infos/',
-    processData: false,
-    headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
-    data : fd,
-    contentType: false,
-    processData:false,
-    success : function (data) {
-        //console.log('mersii!');
-        window.location.href = "after-signin.html";
-
-    },
-    error : function(data){
-      console.log('erorr' ,data);
-
-    }
-  });
+$.ajax({
+  type: "POST",
+  url: 'api/v1/profiles/update-infos/',
+  data: formData,
+  contentType: false,
+  processData: false,
+  cache: false,
+  complete: function(data) {
+    alert("success");
+  }
+});
+console.log(formData);
 }
+// function sendInfoFreelancerToSever(){
+//
+//   console.log('fd',fd);
+//
+//
+//    var freelancerInfo = {
+//      //profile_picture: fd,
+//      title : title,
+//      bio : bio,
+//      job : job,
+//      degree : degree,
+//      university : university,
+//    }
+//
+//    var a = {};
+//    var y = 0;
+//    var x = 0;
+//    for(x ; x<5 ; x++){
+//      if(freelancerInfo[x] !== undefined){
+//        a[y] = freelancerInfo[x];
+//        y++;
+//      }
+//    }
+// //   fd.splice.apply(fd, a);
+//
+//    console.log('freelancerInfoAndImage' , fd);
+//   $.ajax({
+//     type: "POST",
+//     url: 'api/v1/profiles/update-infos/',
+//     processData: false,
+//     headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
+//     data : fd,
+//     contentType: false,
+//     success : function (data) {
+//         //console.log('mersii!');
+//         //window.location.href = "after-signin.html";
+//         console.log('success' , data)
+//     },
+//     error : function(data){
+//       console.log('erorr' ,data);
+//       $('.error-msg').remove();
+//       if(data.bio === "Ensure this field has no more than 3000 characters."){
+//         $('.error-msg').remove();
+//         var errorCross = document.createElement('i');
+//         errorCross.setAttribute('class', 'fa fa-times-circle');
+//         errorCross.setAttribute('aria-hidden', 'true');
+//         var errorBox = document.createElement('span');
+//     //    errorBox.id = 'errorBox';
+//         errorBox.setAttribute('class' , 'error-msg');
+//         errorBox.appendChild(errorCross);
+//         var errorMessage = document.createElement('span');
+//         errorMessage.innerHTML = 'خطا: خلاصه از فعالیت ها باید حداکثر شامل ۳۰۰۰ کاراکتر باشد.'
+//         errorBox.appendChild(errorMessage);
+//         $(errorMessage).prepend(errorCross);
+//         $('#freelancerInfoForm').append(errorBox);
+//       }
+//       if(data.title === "Ensure this field has no more than 150 characters."){
+//         $('.error-msg').remove();
+//         var errorCross = document.createElement('i');
+//         errorCross.setAttribute('class', 'fa fa-times-circle');
+//         errorCross.setAttribute('aria-hidden', 'true');
+//         var errorBox = document.createElement('span');
+//     //    errorBox.id = 'errorBox';
+//         errorBox.setAttribute('class' , 'error-msg');
+//         errorBox.appendChild(errorCross);
+//         var errorMessage = document.createElement('span');
+//         errorMessage.innerHTML = 'خطا: عنوان حرفه ای شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
+//         errorBox.appendChild(errorMessage);
+//         $(errorMessage).prepend(errorCross);
+//         $('#freelancerInfoForm').append(errorBox);
+//       }
+//       if(data.job === "Ensure this field has no more than 150 characters."){
+//         $('.error-msg').remove();
+//         var errorCross = document.createElement('i');
+//         errorCross.setAttribute('class', 'fa fa-times-circle');
+//         errorCross.setAttribute('aria-hidden', 'true');
+//         var errorBox = document.createElement('span');
+//     //    errorBox.id = 'errorBox';
+//         errorBox.setAttribute('class' , 'error-msg');
+//         errorBox.appendChild(errorCross);
+//         var errorMessage = document.createElement('span');
+//         errorMessage.innerHTML =  'خطا: شغل شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
+//         errorBox.appendChild(errorMessage);
+//         $(errorMessage).prepend(errorCross);
+//         $('#freelancerInfoForm').append(errorBox);
+//       }
+//       if(data.degree === "Ensure this field has no more than 150 characters."){
+//         $('.error-msg').remove();
+//         var errorCross = document.createElement('i');
+//         errorCross.setAttribute('class', 'fa fa-times-circle');
+//         errorCross.setAttribute('aria-hidden', 'true');
+//         var errorBox = document.createElement('span');
+//     //    errorBox.id = 'errorBox';
+//         errorBox.setAttribute('class' , 'error-msg');
+//         errorBox.appendChild(errorCross);
+//         var errorMessage = document.createElement('span');
+//         errorMessage.innerHTML =  'خطا: تحصیلات شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
+//         errorBox.appendChild(errorMessage);
+//         $(errorMessage).prepend(errorCross);
+//         $('#freelancerInfoForm').append(errorBox);
+//       }
+//       if(data.university === "Ensure this field has no more than 150 characters."){
+//         $('.error-msg').remove();
+//         var errorCross = document.createElement('i');
+//         errorCross.setAttribute('class', 'fa fa-times-circle');
+//         errorCross.setAttribute('aria-hidden', 'true');
+//         var errorBox = document.createElement('span');
+//     //    errorBox.id = 'errorBox';
+//         errorBox.setAttribute('class' , 'error-msg');
+//         errorBox.appendChild(errorCross);
+//         var errorMessage = document.createElement('span');
+//         errorMessage.innerHTML =  'خطا: دانشگاه شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
+//         errorBox.appendChild(errorMessage);
+//         $(errorMessage).prepend(errorCross);
+//         $('#freelancerInfoForm').append(errorBox);
+//       }
+//       else{
+//         $('.error-msg').remove();
+//         var errorCross = document.createElement('i');
+//         errorCross.setAttribute('class', 'fa fa-times-circle');
+//         errorCross.setAttribute('aria-hidden', 'true');
+//         var errorBox = document.createElement('span');
+//     //    errorBox.id = 'errorBox';
+//         errorBox.setAttribute('class' , 'error-msg');
+//         errorBox.appendChild(errorCross);
+//         var errorMessage = document.createElement('span');
+//         errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجددا سعی کنید.'
+//         errorBox.appendChild(errorMessage);
+//         $(errorMessage).prepend(errorCross);
+//         $('#freelancerInfoForm').append(errorBox);
+//       }
+//     }
+//   });
+// }
