@@ -1,9 +1,29 @@
+<<<<<<< HEAD
 function formToJson(form) {
   var jsonForm = {};
   $("input", $('form')).each(function(index) {
     jsonForm[$(this).attr("id")] = this.value;
   })
   return jsonForm;
+=======
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function formToJson(form)
+{
+ var jsonForm={};
+ $("input", $('form')).each(function(index){
+   jsonForm[$(this).attr("id")] = this.value;
+ })
+ return jsonForm;
+>>>>>>> 6973a851e7557097adaa15e1496a4f555ee427ef
 };
 
 function checkUserLogin() {
@@ -153,7 +173,6 @@ $('#submitButton').click(function() {
   //window.location.href = "signup-verification-msg.html";
 
 })
-
 function sendInfoFreelancerToSever() {
   var profile_picture = $('input[id="imgInp"]').get(0).files[0];
   var formData = new FormData();
@@ -162,89 +181,88 @@ function sendInfoFreelancerToSever() {
   formData.append('degree', degree.val());
   formData.append('job', job.val());
   formData.append('university', university.val());
-
-  $.ajax({
-    type: "POST",
-    url: 'api/v1/profiles/update-infos/',
-    data: formData,
-    headers: {
-      "Authorization": "JWT " + localStorage.getItem('current_login_token')
-    },
-    contentType: false,
-    processData: false,
-    cache: false,
-    success: function(data) {
-      console.log("Success:", data);
-    },
-    error: function(data) {
-      console.log('err', data);
-      $('.error-msg').remove();
-      if (data.bio === "Ensure this field has no more than 3000 characters.") {
-        $('.error-msg').remove();
-        var errorCross = document.createElement('i');
-        errorCross.setAttribute('class', 'fa fa-times-circle');
-        errorCross.setAttribute('aria-hidden', 'true');
-        var errorBox = document.createElement('span');
+  
+$.ajax({
+  type: "POST",
+  url: 'api/v1/profiles/update-infos/',
+  data: formData,
+  headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
+  contentType: false,
+  processData: false,
+  cache: false,
+  success: function(data) {
+    // alert("success");
+    console.log("Success:", data);
+  }
+  error : function(data){
+            console.log('err' , data);
+          $('.error-msg').remove();
+          if(data.responseJSON.bio && data.responseJSON.bio.contains("Ensure this field has no more than 3000 characters.")){
+            $('.error-msg').remove();
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
         //    errorBox.id = 'errorBox';
-        errorBox.setAttribute('class', 'error-msg');
-        errorBox.appendChild(errorCross);
-        var errorMessage = document.createElement('span');
-        errorMessage.innerHTML = 'خطا: خلاصه از فعالیت ها باید حداکثر شامل ۳۰۰۰ کاراکتر باشد.'
-        errorBox.appendChild(errorMessage);
-        $(errorMessage).prepend(errorCross);
-        $('#freelancerInfoForm').append(errorBox);
-      }
-      if (data.title === "Ensure this field has no more than 150 characters.") {
-        $('.error-msg').remove();
-        var errorCross = document.createElement('i');
-        errorCross.setAttribute('class', 'fa fa-times-circle');
-        errorCross.setAttribute('aria-hidden', 'true');
-        var errorBox = document.createElement('span');
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML = 'خطا: خلاصه از فعالیت ها باید حداکثر شامل ۳۰۰۰ کاراکتر باشد.'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#freelancerInfoForm').append(errorBox);
+          }
+          if(data.responseJSON.title && data.responseJSON.title.contains("Ensure this field has no more than 150 characters.")){
+            $('.error-msg').remove();
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
         //    errorBox.id = 'errorBox';
-        errorBox.setAttribute('class', 'error-msg');
-        errorBox.appendChild(errorCross);
-        var errorMessage = document.createElement('span');
-        errorMessage.innerHTML = 'خطا: عنوان حرفه ای شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
-        errorBox.appendChild(errorMessage);
-        $(errorMessage).prepend(errorCross);
-        $('#freelancerInfoForm').append(errorBox);
-      }
-      if (data.job === "Ensure this field has no more than 150 characters.") {
-        $('.error-msg').remove();
-        var errorCross = document.createElement('i');
-        errorCross.setAttribute('class', 'fa fa-times-circle');
-        errorCross.setAttribute('aria-hidden', 'true');
-        var errorBox = document.createElement('span');
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML = 'خطا: عنوان حرفه ای شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#freelancerInfoForm').append(errorBox);
+          }
+          if(data.responseJSON.job && data.responseJSON.job.contains( "Ensure this field has no more than 150 characters.")){
+            $('.error-msg').remove();
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
         //    errorBox.id = 'errorBox';
-        errorBox.setAttribute('class', 'error-msg');
-        errorBox.appendChild(errorCross);
-        var errorMessage = document.createElement('span');
-        errorMessage.innerHTML = 'خطا: شغل شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
-        errorBox.appendChild(errorMessage);
-        $(errorMessage).prepend(errorCross);
-        $('#freelancerInfoForm').append(errorBox);
-      }
-      if (data.degree === "Ensure this field has no more than 150 characters.") {
-        $('.error-msg').remove();
-        var errorCross = document.createElement('i');
-        errorCross.setAttribute('class', 'fa fa-times-circle');
-        errorCross.setAttribute('aria-hidden', 'true');
-        var errorBox = document.createElement('span');
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML =  'خطا: شغل شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#freelancerInfoForm').append(errorBox);
+          }
+          if(data.responseJSON.degree && data.responseJSON.degree.contains("Ensure this field has no more than 150 characters.")){
+            $('.error-msg').remove();
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
         //    errorBox.id = 'errorBox';
-        errorBox.setAttribute('class', 'error-msg');
-        errorBox.appendChild(errorCross);
-        var errorMessage = document.createElement('span');
-        errorMessage.innerHTML = 'خطا: تحصیلات شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
-        errorBox.appendChild(errorMessage);
-        $(errorMessage).prepend(errorCross);
-        $('#freelancerInfoForm').append(errorBox);
-      }
-      if (data.university === "Ensure this field has no more than 150 characters.") {
-        $('.error-msg').remove();
-        var errorCross = document.createElement('i');
-        errorCross.setAttribute('class', 'fa fa-times-circle');
-        errorCross.setAttribute('aria-hidden', 'true');
-        var errorBox = document.createElement('span');
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML =  'خطا: تحصیلات شما باید حداکثر شامل ۱۵۰ کاراکتر باشد.'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#freelancerInfoForm').append(errorBox);
+          }
+          if(data.responseJSON.university && data.responseJSON.university.contains("Ensure this field has no more than 150 characters.")){
+            $('.error-msg').remove();
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
         //    errorBox.id = 'errorBox';
         errorBox.setAttribute('class', 'error-msg');
         errorBox.appendChild(errorCross);
