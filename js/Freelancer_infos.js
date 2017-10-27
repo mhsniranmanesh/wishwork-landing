@@ -1,3 +1,13 @@
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function formToJson(form)
 {
  var jsonForm={};
@@ -180,7 +190,7 @@ $.ajax({
   error : function(data){
             console.log('err' , data);
           $('.error-msg').remove();
-          if(data.bio === "Ensure this field has no more than 3000 characters."){
+          if(data.responseJSON.bio && data.responseJSON.bio.contains("Ensure this field has no more than 3000 characters.")){
             $('.error-msg').remove();
             var errorCross = document.createElement('i');
             errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -195,7 +205,7 @@ $.ajax({
             $(errorMessage).prepend(errorCross);
             $('#freelancerInfoForm').append(errorBox);
           }
-          if(data.title === "Ensure this field has no more than 150 characters."){
+          if(data.responseJSON.title && data.responseJSON.title.contains("Ensure this field has no more than 150 characters.")){
             $('.error-msg').remove();
             var errorCross = document.createElement('i');
             errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -210,7 +220,7 @@ $.ajax({
             $(errorMessage).prepend(errorCross);
             $('#freelancerInfoForm').append(errorBox);
           }
-          if(data.job === "Ensure this field has no more than 150 characters."){
+          if(data.responseJSON.job && data.responseJSON.job.contains( "Ensure this field has no more than 150 characters.")){
             $('.error-msg').remove();
             var errorCross = document.createElement('i');
             errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -225,7 +235,7 @@ $.ajax({
             $(errorMessage).prepend(errorCross);
             $('#freelancerInfoForm').append(errorBox);
           }
-          if(data.degree === "Ensure this field has no more than 150 characters."){
+          if(data.responseJSON.degree && data.responseJSON.degree.contains("Ensure this field has no more than 150 characters.")){
             $('.error-msg').remove();
             var errorCross = document.createElement('i');
             errorCross.setAttribute('class', 'fa fa-times-circle');
@@ -240,7 +250,7 @@ $.ajax({
             $(errorMessage).prepend(errorCross);
             $('#freelancerInfoForm').append(errorBox);
           }
-          if(data.university === "Ensure this field has no more than 150 characters."){
+          if(data.responseJSON.university && data.responseJSON.university.contains("Ensure this field has no more than 150 characters.")){
             $('.error-msg').remove();
             var errorCross = document.createElement('i');
             errorCross.setAttribute('class', 'fa fa-times-circle');
