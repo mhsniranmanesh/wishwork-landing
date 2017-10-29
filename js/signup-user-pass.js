@@ -23,6 +23,9 @@ $(function() {
 
 //------------------------------------------------------
 var checkUserName = function (userText){
+  if(userText.match(/^[0-9a-zA-Z-_]+$/)) {
+      return "okusername";
+    }
     if (userText.search(/[!\@\#\$\%\^\&\*\(\)\+\;\']/) != -1)
         return "نام کاربری شما دارای نماد های نامعتبر است";
     if(userText.length > 50){
@@ -31,18 +34,16 @@ var checkUserName = function (userText){
     if(userText === ""){
         return "لطفا نام کاربری خود را وارد کنید."
     }
-    if(userText.match(/^[0-9a-zA-Z]/)){
-        return "okusername";
-      }
-    else
+    else{
         return " نام کاربری شما دارای نماد های نامعتبر است(نام کاربری باید تنها شامل حروف انگلیسی باشد";
-
+      }
 }
 
 // username on keypress error
 username.on('input' ,function (){
+  var usnm = this.value;
 	if(this.value !== undefined) {
-        var UserNameX = checkUserName(this.value)
+        var UserNameX = checkUserName(usnm);
 
         if (UserNameX !== "okusername") {
             $('#form-control-feedback-username').show()
@@ -186,6 +187,7 @@ var checkPassword = function(passText){
   //------------------------------------------------------------------------------
 
 function checkUserNameAndPasswordValidation() {
+      $('#loader').show();
       var validationURL = 'api/v1/profiles/userexists/' + $('#signupUsernameInput').val();
       $('#errorBox').remove();
       var signUpDataPage2and1 = {
@@ -218,6 +220,7 @@ function checkUserNameAndPasswordValidation() {
 
       },
           error : function(err) {
+              $('#loader').hide();
             //  console.log('User Exists:', err);
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');

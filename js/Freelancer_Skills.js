@@ -68,6 +68,7 @@ function add_translation_tags() {
   skill.to = TT;
   skillServer.from = TF;
   skillServer.to = TT;
+
   skill.text = ' از ' + skill.from + ' به ' + skill.to;
   if (translatefrom.selectedIndex === 0 || translateto.selectedIndex === 0) {
     $('#ErrorMessage').show();
@@ -80,6 +81,44 @@ function add_translation_tags() {
   var counter = 0;
 
   if (!is_skill_present(skill) && translatefrom.selectedIndex != 0 && translateto.selectedIndex != 0 && TT != TF) {
+    if(skillServer.from === 'فارسی'){
+      skillServer.from = 1;
+    }
+    if(skillServer.from=== 'انگلیسی'){
+      skillServer.from = 2;
+    }
+    if(skillServer.from === 'فرانسوی'){
+      skillServer.from = 3;
+    }
+    if(skillServer.from ==='عربی'){
+      skillServer.from = 4;
+    }
+    if(skillServer.from ==='اسپانیایی'){
+      skillServer.from = 5;
+    }
+    if(skillServer.from==='آلمانی'){
+      skillServer.from = 6;
+    }
+    if(skillServer.to === 'فارسی'){
+      skillServer.to = 1;
+    }
+    if(skillServer.to=== 'انگلیسی'){
+      skillServer.to = 2;
+    }
+    if(skillServer.to === 'فرانسوی'){
+      skillServer.to = 3;
+    }
+    if(skillServer.to ==='عربی'){
+      skillServer.to = 4;
+    }
+    if(skillServer.to ==='اسپانیایی'){
+      skillServer.to = 5;
+    }
+    if(skillServer.to==='آلمانی'){
+      skillServer.to = 6;
+    }
+
+    //console.log(TF);
     $('#ErrorMessage').hide();
     skills.push(skill);
     skillsServer.push(skillServer);
@@ -188,9 +227,9 @@ function sendSkillsToServer() {
   var arrayOfFatherTags = [];
   for (selectedFatherTag = 0; selectedFatherTag < 4; selectedFatherTag++) {
     if (fatherTag.options[selectedFatherTag].selected === true) {
-      console.log(selectedFatherTag);
+      //console.log(selectedFatherTag);
       arrayOfFatherTags.push(selectedFatherTag);
-      console.log(arrayOfFatherTags);
+    //  console.log(arrayOfFatherTags);gi
 
     }
   }
@@ -207,28 +246,30 @@ function sendSkillsToServer() {
     isGeneral = true;
   }
 
-  console.log(isMedical, isTechnical, isLegal, isGeneral);
+
+  //console.log(isMedical, isTechnical, isLegal, isGeneral);
   // var i = 0;
   // for(i ; i<)
   var freelancersSkills = {
-    category: 'translation',
     is_general: isGeneral,
     is_legal: isLegal,
     is_medical: isMedical,
     is_technical: isTechnical,
-    languageset: skillsServer,
-  }
+    language_set: skillsServer,
+  };
+  console.log(freelancersSkills);
   $.ajax({
     type: "POST",
-    url: 'api/v1/skills/',
+    url: 'api/v1/skills/add/translation/',
     dataType: 'json',
-    headers: {"Authorization": "JWT " localStorage.getItem('current_login_token')}
+    headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
     data: freelancersSkills,
     success: function(result) {
-      // window.location.href = "signup-freelancer-infos.html";
+      window.location.href = "signup-freelancer-infos.html";
+      // console.log("RESULT:", result);
     },
     error: function(err) {
-
+      console.log("Error Adding Skill: ", err);
     },
   });
 }

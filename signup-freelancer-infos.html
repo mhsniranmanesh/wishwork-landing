@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/fontiran.css">
   <!-- Custom styles for this template -->
   <link href="css/signup-freelancer-infos.css" rel="stylesheet">
-
+  <link href="css/signup-freelancer-infos.css" rel='stylesheet'>
 
 </head>
 <div id="wrapper">
@@ -57,7 +57,7 @@
                           <h4>اطلاعات شخصی خود را تکمیل کنید.</h4>
                       </div> -->
                   <div class="con-body">
-                    <form class="signup-form" action="javascript:void(0);" >
+                    <form id="freelancerInfoForm" class="signup-form" action="javascript:sendInfoFreelancerToSever();" >
                       <div class="input-group">
                         <label for="profilePicture" class="col-form-label">
                                       عکس خود را آپلود کنید.
@@ -102,7 +102,7 @@
                         <label for="" class="col-form-label">
                                      عنوان حرفه ای خود را انتخاب کنید
                                   </label>
-                        <input type="text" class="form-control" id="Career" placeholder="مثال: مترجم فارسی به انگلیسی">
+                        <input type="text" class="form-control" id="title" placeholder="مثال: مترجم فارسی به انگلیسی">
                         <br />
                         <label for="" class="col-form-label">
                                       خلاصه ای از فعالیت هایتان را بنویسید
@@ -113,7 +113,7 @@
                                           <span class="quote"> برداشت اول کارفرما از شما در این بخش شکل می گیرد؛ پس بیشتر به مهارت های اصلی، تجربیات و علایق خود بپردازید.</span>
                                     </label>
 
-                        <textarea type="text" class="form-control" id="aboutFreelancer" placeholder="۵۰۰ کلمه برای مشخص کردن تفاوتتان فرصت دارید"></textarea>
+                        <textarea type="text" class="form-control" id="bio" placeholder="۵۰۰ کلمه برای مشخص کردن تفاوتتان فرصت دارید"></textarea>
                       </div>
                       <div class="input-group">
                         <label for="" class="col-form-label">

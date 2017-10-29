@@ -298,6 +298,7 @@ function gotonext2(){
 
 function sendForm2DataToServer() {
   var mobileNumberForSendToServer = sendMobileNumberToServer(mobileNumber.val());
+  $('#loader').show();
   //console.log(mobileNumberForSendToServer);
     var username  = localStorage.getItem('username');
     var password = localStorage.getItem('password');
@@ -328,8 +329,10 @@ function sendForm2DataToServer() {
 
         },
         error : function (data) {
+          $('#loader').hide();
           $('.error-msg').remove();
-          //  console.log('erorr' ,data);
+          $('#errorBoxx').remove();
+        //   console.log('erorr' ,data);
           //  console.log('data.responseJSON',data.responseJSON);
             if(data.responseJSON.username && data.responseJSON.username.contains("This field may not be blank.")){
               $('.error-msg').remove();
@@ -526,7 +529,7 @@ function sendForm2DataToServer() {
               errorMessage.innerHTML = 'خطا: اکانت با این ایمیل موجود است'
               errorBox.appendChild(errorMessage);
               $(errorMessage).prepend(errorCross);
-              $('#signup-form').append(errorBox);
+              $('#signUpForm').append(errorBox);
             }
             else {
               var errorCross = document.createElement('i');
@@ -540,7 +543,7 @@ function sendForm2DataToServer() {
               errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
               errorBox.appendChild(errorMessage);
               $(errorMessage).prepend(errorCross);
-              $('#signup-form').append(errorBox);
+              $('#signUpForm').append(errorBox);
             }
 
         }
