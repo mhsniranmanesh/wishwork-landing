@@ -19,13 +19,13 @@ function checkUserLogin(){
       },
       error: function(err) {
         console.log('LOGIN FAILED: ', err)
-        // window.location.href = 'signin.html'
+        window.location.href = 'signin.html'
       }
     });
   }
   else {
     console.log('LOGIN FAILED: No token');
-    // window.location.href = 'signin.html'
+    window.location.href = 'signin.html'
   }
 }
 
