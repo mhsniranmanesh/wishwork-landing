@@ -23,7 +23,7 @@ $(function() {
 
 //------------------------------------------------------
 var checkUserName = function (userText){
-  if(userText.match(/^([a-zA-Z0-9]+)$/)) {
+  if(userText.match(/^[0-9a-zA-Z-_]+$/)) {
       return "okusername";
     }
     if (userText.search(/[!\@\#\$\%\^\&\*\(\)\+\;\']/) != -1)
