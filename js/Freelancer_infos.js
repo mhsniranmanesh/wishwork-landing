@@ -167,12 +167,18 @@ $('#submitButton').click(function() {
 function sendInfoFreelancerToSever() {
   var profile_picture = $('input[id="imgInp"]').get(0).files[0];
   var formData = new FormData();
-  formData.append('title', title.val());
-  formData.append('bio', bio.val());
-  formData.append('degree', degree.val());
-  formData.append('job', job.val());
-  formData.append('university', university.val());
-  formData.append('profile_picture', profile_picture);
+  if(title.val() !== "")
+    formData.append('title', title.val());
+  if(bio.val() !== "")
+    formData.append('bio', bio.val());
+  if(degree.val() !== "")
+    formData.append('degree', degree.val());
+  if(job.val() !== "")
+    formData.append('job', job.val());
+  if(university.val() !== "")
+    formData.append('university', university.val());
+  if(profile_picture !== undefined)
+    formData.append('profile_picture', profile_picture);
 
 $.ajax({
   type: "POST",
