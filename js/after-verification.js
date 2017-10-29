@@ -23,12 +23,21 @@ $(function() {
       });
       localStorage.setItem('current_login_username', result.username)
       localStorage.setItem('current_login_token', result.token)
+      localStorage.setItem('is_freelancer', result.is_freelancer)
       localStorage.setItem('current_login_first_name', result.first_name)
       localStorage.setItem('current_login_last_name', result.last_name)
+      if(result.is_freelancer === '1'){
       window.setTimeout(function(){
         window.location.href = "signup-freelancer-skills.html";
       }, 2000);
+    }
+    if(result.is_freelancer === '0'){
+      window.setTimeout(function(){
+        window.location.href = "dashboard.html";
+      }, 2000);
+    }
     },
+
     error: function(err) {
       console.log('Error: ', err);
       $("#body3").fadeOut(500, function() {

@@ -165,6 +165,7 @@ $('#submitButton').click(function() {
 
 })
 function sendInfoFreelancerToSever() {
+  $('#loader').show();
   var profile_picture = $('input[id="imgInp"]').get(0).files[0];
   var formData = new FormData();
   formData.append('title', title.val());
@@ -186,6 +187,7 @@ $.ajax({
     console.log("Success:", data);
   },
   error : function(data){
+            $('#loader').hide();
             console.log('err' , data);
           $('.error-msg').remove();
           $('#errorBoxx').remove();
