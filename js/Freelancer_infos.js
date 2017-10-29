@@ -172,6 +172,7 @@ function sendInfoFreelancerToSever() {
   formData.append('degree', degree.val());
   formData.append('job', job.val());
   formData.append('university', university.val());
+  formData.append('profile_picture', profile_picture);
 
 $.ajax({
   type: "POST",
@@ -182,8 +183,8 @@ $.ajax({
   processData: false,
   cache: false,
   success: function(data) {
-    // alert("success");
     console.log("Success:", data);
+    window.location.href = 'dashboard.html';
   },
   error : function(data){
             console.log('err' , data);
