@@ -221,6 +221,7 @@ function gotonext() {
 //-------------------------------------------------
 
 function sendSkillsToServer() {
+  $('#loader').show();
   var selectedFatherTag;
   //console.log(skills);
   //console.log(skillsServer);
@@ -269,6 +270,7 @@ function sendSkillsToServer() {
       // console.log("RESULT:", result);
     },
     error: function(err) {
+      $("#loader").hide();
       console.log("Error Adding Skill: ", err);
     },
   });
