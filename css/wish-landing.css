@@ -123,11 +123,29 @@ section h3.section-subheading {
     letter-spacing: 1px;
     color: white;
     text-transform: uppercase;
+    width: 90px;
 }
 
 #mainNav .navbar-nav .nav-item a.nav-link.active {
     color: #014762;
 }
+
+.btn-signin-home{
+  background-color: #018abe;
+  border-color: #018abe;
+}
+
+.btn-signin{
+  background-color: #018abe;
+  border-color: #018abe;
+}
+
+@media(min-width: 770px){
+  .btn-signin-home{
+    display: none;
+  }
+}
+
 
 
 #mainNav {
