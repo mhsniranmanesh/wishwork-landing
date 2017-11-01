@@ -1,2 +1,2 @@
 var Email = localStorage.getItem('EmailVerification');
-document.getElementById('EmailofClientOrFreelancer').innerHTML = Email;
+$('#EmailofClientOrFreelancer').append(Email);

@@ -334,6 +334,7 @@ function sendForm2DataToServer() {
           $('#errorBoxx').remove();
         //   console.log('erorr' ,data);
           //  console.log('data.responseJSON',data.responseJSON);
+          if(data.responseJSON){
             if(data.responseJSON.username && data.responseJSON.username.contains("This field may not be blank.")){
               $('.error-msg').remove();
               var errorCross = document.createElement('i');
@@ -531,6 +532,22 @@ function sendForm2DataToServer() {
               $(errorMessage).prepend(errorCross);
               $('#signUpForm').append(errorBox);
             }
+            else {
+              var errorCross = document.createElement('i');
+              errorCross.setAttribute('class', 'fa fa-times-circle');
+              errorCross.setAttribute('aria-hidden', 'true');
+              var errorBox = document.createElement('span');
+              errorBox.setAttribute('id' ,'errorBoxx');
+              errorBox.setAttribute('class' , 'error-msg');
+              errorBox.appendChild(errorCross);
+              var errorMessage = document.createElement('span');
+              errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
+              errorBox.appendChild(errorMessage);
+              $(errorMessage).prepend(errorCross);
+              $('#signUpForm').append(errorBox);
+            }
+
+          }
             else {
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');

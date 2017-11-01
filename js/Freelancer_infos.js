@@ -198,6 +198,23 @@ $.ajax({
             console.log('err' , data);
           $('.error-msg').remove();
           $('#errorBoxx').remove();
+          if(data.responseJSON){
+
+          if(data.responseJSON.profile_picture && data.responseJSON.profile_picture.contains("Upload a valid image. The file you uploaded was either not an image or a corrupted image.")){
+            $('.error-msg').remove();
+            var errorCross = document.createElement('i');
+            errorCross.setAttribute('class', 'fa fa-times-circle');
+            errorCross.setAttribute('aria-hidden', 'true');
+            var errorBox = document.createElement('span');
+        //    errorBox.id = 'errorBox';
+            errorBox.setAttribute('class' , 'error-msg');
+            errorBox.appendChild(errorCross);
+            var errorMessage = document.createElement('span');
+            errorMessage.innerHTML = 'خطا: لطفا فایل عکس خود را صحیح آپلود کنید'
+            errorBox.appendChild(errorMessage);
+            $(errorMessage).prepend(errorCross);
+            $('#freelancerInfoForm').append(errorBox);
+          }
           if(data.responseJSON.bio && data.responseJSON.bio.contains("Ensure this field has no more than 3000 characters.")){
             $('.error-msg').remove();
             var errorCross = document.createElement('i');
@@ -273,6 +290,21 @@ $.ajax({
         $(errorMessage).prepend(errorCross);
         $('#freelancerInfoForm').append(errorBox);
       }
+      else {
+        var errorCross = document.createElement('i');
+        errorCross.setAttribute('class', 'fa fa-times-circle');
+        errorCross.setAttribute('aria-hidden', 'true');
+        var errorBox = document.createElement('span');
+        errorBox.setAttribute('id' ,'errorBoxx');
+        errorBox.setAttribute('class' , 'error-msg');
+        errorBox.appendChild(errorCross);
+        var errorMessage = document.createElement('span');
+        errorMessage.innerHTML = 'خطا در اتصال به سرور ، لطفا مجدد تلاش کنید.'
+        errorBox.appendChild(errorMessage);
+        $(errorMessage).prepend(errorCross);
+        $('#signUpForm').append(errorBox);
+      }
+    }
       else {
         var errorCross = document.createElement('i');
         errorCross.setAttribute('class', 'fa fa-times-circle');

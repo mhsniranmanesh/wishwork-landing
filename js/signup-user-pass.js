@@ -200,6 +200,7 @@ function checkUserNameAndPasswordValidation() {
           data: signUpDataPage2and1,
           success : function (result) {
             $('#errorBoxx').remove();
+            $('#loader').hide();
             if(result.username === "A user with that username already exists."){
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
