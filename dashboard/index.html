@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../static/img/tab-img.png"/>
+    <title>داشبورد شما | ویش ورک</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap-RTL CSS -->
+    <link href="../static/vendor/bootstrap-rtl/css/bootstrap-rtl.min.css" rel="stylesheet">
+    <!-- Bootstrap-Select -->
+    <link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom fonts for this template -->
+    <link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Plugin CSS -->
+    <link href="../static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../static/css/fontiran.css" rel="stylesheet">
+    <link href="../static/css/wish.css" rel="stylesheet">
+    <link href="../static/css/wish-dash.css" rel="stylesheet">
+    <link href="../static/css/after-signin.css" rel="stylesheet">
+
+</head>
+
+<body class="fixed-nav" id="page-top">
+  <div class="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+              <img src="../static/img/nav-logo.png" height="30" class="d-inline-block align-top" alt="our logo. A shake hand that is like two wings too means that we fly high together">
+              <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-sidenav">
+                    <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="داشبورد">
+                        <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">داشبورد</span>
+                  </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="پروژه">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#">
+                          <i class="fa fa-fw fa-tasks"></i>
+                          <span class="nav-link-text">پروژه</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse">
+                            <li>
+                                <a href="#">ایجاد پروژه</a>
+                                </li>
+                                <li>
+                                <a href="#">دریافت پروژه</a>
+                            </li>
+                            <li>
+                                <a href="#">کنترل پروژه</a>
+                            </li>
+                            <li>
+                                <a href="#">پروژه های سابق</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="پروفایل">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#">
+                          <i class="fa fa-fw fa-user"></i>
+                          <span class="nav-link-text">پروفایل</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="profileComponents">
+                            <li>
+                                <a href="#">ویرایش اطلاعات</a>
+                            </li>
+                            <li>
+                                <a href="#">اطلاعیه ها</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-sidenav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-right"></i>
+                  </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-right">
+                    <form class="form-inline">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="جستجو..." aria-label="">
+                          <div class="input-group-btn">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-search"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-left">
+                              <a class="dropdown-item" href="#">در فریلنسر ها</a>
+                              <a class="dropdown-item" href="#">در پروژه ها</a>
+                              <div role="separator" class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">همه</a>
+                            </div>
+                          </div>
+                        </div>
+                    </form>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-fw fa-bell nav-icon"></i>
+                          <span class="d-lg-none">پیغام ها
+                            <span class="badge badge-pill badge-success">12</span>
+                          </span>
+                          <span class="new-indicator d-none d-lg-block">
+                            <i class="fa fa-fw fa-circle"></i>
+                            <span class="number">12</span>
+                          </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">اطلاعیه های جدید</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                                <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                                <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                                <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item small" href="#">
+                              تمام اطلاعیه ها
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <img class="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30" alt="تصویر شما که هنام ثبت نام آپلود کرده بودید">
+                          وحید علوی
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
+                            <a class="dropdown-item" href="#">خروج</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content-wrapper py-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dash-con dash-profile mb-4">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <img src="http://via.placeholder.com/125x125" class="rounded-circle" alet="عکس شما">
+                                <h5>وحید علوی</h5>
+                                <h6 class="dash-profile-stars">
+                              <i class="fa fa-star shine-on"></i>
+                              <i class="fa fa-star shine-on"></i>
+                              <i class="fa fa-star shine-on"></i>
+                              <i class="fa fa-star-o shine-on"></i>
+                              <i class="fa fa-star-o shine-on"></i>
+                            </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash-con dash-new-project con-body mb-4">
+                        <h5>ایجاد پروژه جدید</h5>
+                        <div class="dash-divider"></div>
+                        <form class="">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="" placeholder="عنوان پروژه">
+                            </div>
+                            <div class="input-group">
+                                <select class="selectpicker" data-style="form-control" id="" title="زمینه ترجمه را انتخاب کنید.">
+                                    <option>پزشکی</option>
+                                    <option>ادبی</option>
+                                    <option>سیاسی</option>
+                                    <option>ریاضی</option>
+                                    <option>شیمی</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <select class="selectpicker" data-style="form-control" id="" title="از زبان ...">
+                                    <option>فارسی</option>
+                                    <option>انگلیسی</option>
+                                    <option>فرانسوی</option>
+                                    <option>عربی</option>
+                                    <option>اسپانیایی</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <select class="selectpicker" data-style="form-control" id="" title="به زبان ...">
+                                    <option>فارسی</option>
+                                    <option>انگلیسی</option>
+                                    <option>فرانسوی</option>
+                                    <option>عربی</option>
+                                    <option>اسپانیایی</option>
+                                </select>
+                            </div>
+                        </form>
+                        <form action="#">
+                            <button type="submit" class="btn btn-primary btn-rec">
+                                ایجاد پروژه
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dash-con con-body dash-notif mb-4">
+                        <h5>اطلاعیه های جدید</h5>
+                        <div class="dash-divider"></div>
+                        <a class="notif" href="#">
+                            <span class="notif-cat notif-project">پروژه</span>
+                            <div class="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
+                            <span class="text-muted">12:12</span>
+                        </a>
+                        <div class="dash-divider"></div>
+                        <a class="notif" href="#">
+                            <span class="notif-cat notif-msg">پیام</span>
+                            <div class="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
+                            <span class="text-muted">12:12</span>
+                        </a>
+                        <div class="dash-divider"></div>
+                        <a class="notif" href="#">
+                            <span class="notif-cat notif-project">پروژه</span>
+                            <div class="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
+                            <span class="text-muted">12:12</span>
+                        </a>
+                        <button type="submit" class="btn btn-primary btn-rec">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i> بیشتر
+                        </button>
+                    </div>
+                    <div class="dash-con dash-recoms mb-4">
+                        <h5>پروژه های پیشنهادی</h5>
+                        <div class="dash-divider"></div>
+                        <div class="dash-recom-item price-good">
+                            <a href="#">
+                                <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
+                            </a>
+                            <span class="sub-heading">
+                              <a class="tag" href="#">#فارسی_به_انگلیسی</a>
+                              <a class="tag" href="#">#علمی</a>
+                              <a class="tag" href="#">#زیست_شناسی</a>
+                              <a class="tag" href="#">#میکرو_بیولوژی</a>
+                              <a class="tag" href="#">#فوری</a>
+                            </span>
+                            <div class="sub-heading">
+                                <i class="fa fa-user"></i> <a href="#">4/5</a>
+                                <i class="fa fa-usd"></i> 2,000,000 تومان
+                                <i class="fa fa-clock-o"></i> دو ساعت قبل
+                            </div>
+                        </div>
+                        <div class="dash-divider"></div>
+                        <div class="dash-recom-item price-fair">
+                            <a href="#">
+                                <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
+                            </a>
+                            <span class="sub-heading">
+                              <a class="tag" href="#">#فارسی_به_انگلیسی</a>
+                              <a class="tag" href="#">#علمی</a>
+                              <a class="tag" href="#">#زیست_شناسی</a>
+                              <a class="tag" href="#">#میکرو_بیولوژی</a>
+                              <a class="tag" href="#">#فوری</a>
+                            </span>
+                            <div class="sub-heading">
+                                <i class="fa fa-user"></i> <a href="#">4/5</a>
+                                <i class="fa fa-usd"></i> 2,000,000 تومان
+                                <i class="fa fa-clock-o"></i> دو ساعت قبل
+                            </div>
+                        </div>
+                        <div class="dash-divider"></div>
+                        <div class="dash-recom-item price-low">
+                            <a href="#">
+                                <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
+                            </a>
+                            <span class="sub-heading">
+                              <a class="tag" href="#">#فارسی_به_انگلیسی</a>
+                              <a class="tag" href="#">#علمی</a>
+                              <a class="tag" href="#">#زیست_شناسی</a>
+                              <a class="tag" href="#">#میکرو_بیولوژی</a>
+                              <a class="tag" href="#">#فوری</a>
+                            </span>
+                            <div class="sub-heading">
+                                <i class="fa fa-user"></i> <a href="#">4/5</a>
+                                <i class="fa fa-usd"></i> 2,000,000 تومان
+                                <i class="fa fa-clock-o"></i> دو ساعت قبل
+                            </div>
+                        </div>
+                        <form action="#">
+                            <button type="submit" class="btn btn-primary btn-rec">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i> بیشتر
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Scroll to Top Button -->
+    <a class="scroll-to-top" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  </div>
+
+
+
+  <!-- modallllllllllllllllllllllllllllllllllllllllllllllllll -->
+  <div id="myModal" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="row header">
+           <div class="col-sm-12 main-content">
+              <h5 style="line-height:1.5;">ما با تمام تلاش در حال طراحی صفحه شخصی شما هستیم! خبرتون می کنیم :)</h5>
+           </div>
+        </div>
+        <div class="row media">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+              <ul class="social">
+                	<li id="instagram"><a href="https://www.instagram.com/wish_work/"><i class="fa fa-instagram"></i></a></li>
+                	<li id="telegram"><a href="https://t.me/WishWork"><i class="fa fa-paper-plane"></i></a></li>
+                	<li id="linkedin"><a href="https://www.linkedin.com/company/18127878/"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+        		<ul class="info">
+          			<li><i class="fa fa-phone-square"></i>۰۲۱-۸۸۴۶۶۹۵۹</li>
+          			<li><i class="fa fa-map-marker"></i> تهران، زیر پل سیدخندان، کوچه همدانی، پلاک ۱۵، واحد ۷</li>
+          			<li><i class="fa fa-envelope"></i>info@wishwork.ir</li>
+        		</ul>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/popper/popper.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../static/vendor/chart.js/Chart.min.js"></script>
+    <script src="../static/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="../static/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="../static/vendor/persianumber/persianumber.min.js"></script>
+    <!-- Bootstrap-Select -->
+    <script src="../static/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="../static/js/wish-dash.js"></script>
+    <script src="../static/js/wish.js"></script>
+</body>
+
+</html>
