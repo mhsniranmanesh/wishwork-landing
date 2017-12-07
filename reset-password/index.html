@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/static/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/fontiran.css">
     <!-- Custom styles for this template -->
-    <link href="/static/css/signin.css" rel="stylesheet">
+    <link href="/static/css/reset-password.css" rel="stylesheet">
 </head>
 
 <div id=#wrapper>
@@ -40,23 +40,76 @@
             </div>
         </nav>
       </div>
-      <div id="body">
+
+
+      <div id="success"  >
+        <section class="signup-form">
+            <div class="container">
+                <div class="con-title">
+                    <h4>رمز عبور شما با موفقیت تغییر کرد</h4>
+                </div>
+                <div class="row con-body">
+                    <div class="col-md-12 email">
+                        <h1><i class="fa fa-check" aria-hidden="true"></i></h1>
+                        <h4>در حال انتقال به صفحه داشبورد</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+
+      <div id="invalid-token"  >
+        <section class="signup-form">
+            <div class="container">
+                <div class="con-title">
+                    <h4>متأسفانه لینک تأیید شما منقضی شده است :(</h4>
+                </div>
+                <div class="row con-body">
+                    <div class="col-md-12 email">
+                        <h1><i class="fa fa-times" aria-hidden="true"></i></h1>
+                        <!-- <h4>برای ارسال مجدد ایمیل <span style="border-bottom:2px solid #555;">کلیک کنید</span></h4> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+
+      <div id="processing">
+        <section class="signup-form">
+            <div class="container">
+              <div class="con-title">
+                  <h4>اطلاعات شما در حال بررسی می باشد</h4>
+              </div>
+              <div class="loader">
+                <div class="loader-wrapper">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+        </section>
+      </div>
+
+      <div id="password-form">
         <section class="signin user">
             <div class="container con">
                 <div class="con-title">
-                    <h4>مشکلی نیست! لطفا ایمیلتون رو وارد کنید.</h4>
+                    <h4>الان همه چیز درست میشه! لطفا رمزعبور مورد نظرتون رو وارد کنید.</h4>
                 </div>
                 <div class="con-body">
-                    <form id="signUpForm" class="signin" action="javascript: LogIn();">
+                    <form id="PasswordResetForm" class="signin" action="javascript: PasswordResetSubmit();">
                         <div class="form-group">
-                            <input type="username" class="form-control" id="loginUserNameInput" placeholder="ایمیل">
+                            <input type="password" class="form-control" id="passwordInput" placeholder="رمزعبور">
                         </div>
-
-                        <!-- not in signup release! -->
-                        <!-- <a href="forget-password.html">رمز عبور را فراموش کرده ام!</a> -->
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="repeatPasswordInput" placeholder="تکرار رمزعبور">
+                        </div>
                         <span id="error-msg" class="error-msg" style="display:none">
                             <i class="fa fa-times" aria-hidden="true"></i>
-                              ایمیل یا نام کاربری صحیح نمی باشد!
                         </span>
                         <div>
                             <button id="verify" type="submit" class="btn btn-primary btn-rec">تأیید</button>
@@ -114,7 +167,7 @@
 <script src="/static/vendor/popper/popper.min.js"></script>
 <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- Custom scripts for this template -->
-<script src="/static/js/signin.js"></script>
+<script src="/static/js/reset-password.js"></script>
 </body>
 
 </html>
