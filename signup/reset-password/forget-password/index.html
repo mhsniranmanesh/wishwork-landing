@@ -44,19 +44,14 @@
         <section class="signin user">
             <div class="container con">
                 <div class="con-title">
-                    <h4>بریم سراغ کار!</h4>
+                    <h4>مشکلی نیست! لطفا ایمیلتون رو وارد کنید.</h4>
                 </div>
                 <div class="con-body">
                     <form id="signUpForm" class="signin" action="javascript: LogIn();">
                         <div class="form-group">
-                            <input type="username" class="form-control" id="loginUserNameInput" placeholder="نام کاربری">
+                            <input type="username" class="form-control" id="loginUserNameInput" placeholder="ایمیل">
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="loginPassInput" placeholder="رمز عبور">
-                        </div>
-                        <div>
-                          <a href="/signup/reset-password/forget-password/index.html">رمز عبورتان را فراموش کرده اید؟</a>
-                        </div>
+
                         <!-- not in signup release! -->
                         <!-- <a href="forget-password.html">رمز عبور را فراموش کرده ام!</a> -->
                         <span id="error-msg" class="error-msg" style="display:none">
@@ -64,7 +59,7 @@
                               ایمیل یا نام کاربری صحیح نمی باشد!
                         </span>
                         <div>
-                            <button id="verify" type="submit" class="btn btn-primary btn-rec">ورود</button>
+                            <button id="verify" type="submit" class="btn btn-primary btn-rec">تأیید</button>
                             <span class="loader" style="display:none"></span>
                         </div>
 
