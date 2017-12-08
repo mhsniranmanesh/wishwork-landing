@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/static/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/fontiran.css">
     <!-- Custom styles for this template -->
-    <link href="/static/css/signin.css" rel="stylesheet">
+    <link href="/static/css/forget-password.css" rel="stylesheet">
 </head>
 
 <div id=#wrapper>
@@ -40,7 +40,7 @@
             </div>
         </nav>
       </div>
-      <div id="email-section" style="display:none">
+      <div id="email-section">
         <section class="signin user">
             <div class="container con">
                 <div class="con-title">
@@ -48,15 +48,19 @@
                 </div>
                 <div class="con-body">
                     <form id="forgetPasswordForm" class="signin" action="javascript: forgetPasswordSubmit();">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="loginEmailInput" placeholder="ایمیل">
+                      <div class="form-group alert" id = "eml">
+                            <input type="email" class="form-control form-control-danger" id="emailInput" placeholder="ایمیل" >
+                            <div id ="EmailError" class="form-control-feedback alert-set" Style="display:none">
+                                <i class="fa fa-exclamation-triangle" aria-hidden="ture"></i>
+                                <span id="emailTextError">        این ایمیل قبلا ثبت شده است! </span>
+                            </div>
                         </div>
                         <span id="error-msg" class="error-msg" style="display:none">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </span>
                         <div>
                             <button id="verify" type="submit" class="btn btn-primary btn-rec">تأیید</button>
-                            <span class="loader" style="display:none"></span>
+                            <span id="loader" class="loader" style="display:none"></span>
                         </div>
 
                     </form>
@@ -65,7 +69,7 @@
         </section>
       </div>
 
-      <div id="success-section" >
+      <div id="success-section" style="display:none">
         <section class="signup-form">
             <div class="container">
                 <div class="con-title">
