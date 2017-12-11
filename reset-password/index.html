@@ -20,7 +20,7 @@
 </head>
 
 <div id=#wrapper>
-  <div id=#header>
+    <div id=#header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
@@ -41,95 +41,97 @@
         </nav>
       </div>
 
-
-      <div id="success"  style="display:none">
-        <section class="signup-form">
-            <div class="container">
-                <div class="con-title">
-                    <h4>رمز عبور شما با موفقیت تغییر کرد</h4>
-                </div>
-                <div class="row con-body">
-                    <div class="col-md-12 email">
-                        <h1><i class="fa fa-check" aria-hidden="true"></i></h1>
-                        <h4>در حال انتقال به صفحه داشبورد</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-      </div>
-
-      <div id="invalid-token"  style="display:none">
-        <section class="signup-form">
-            <div class="container">
-                <div class="con-title">
-                    <h4>متاسفانه لینک بازیابی رمز عبور منقضی شده است</h4>
-                    <h4>لطفا برای دریافت لینک جدید دوباره اقدام نمایید</h4>
-                </div>
-                <div class="row con-body">
-                    <div class="col-md-12 email">
-                        <h1><i class="fa fa-times" aria-hidden="true"></i></h1>
-                        <!-- <h4>برای ارسال مجدد ایمیل <span style="border-bottom:2px solid #555;">کلیک کنید</span></h4> -->
-                    </div>
-                </div>
-            </div>
-        </section>
-      </div>
-
-      <div id="processing">
-        <section class="signup-form">
-            <div class="container">
-              <div class="con-title">
-                  <h4>اطلاعات شما در حال بررسی می باشد</h4>
-              </div>
-              <div class="loader">
-                <div class="loader-wrapper">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-        </section>
-      </div>
-
-      <div id="password-form" style="display:none">
-        <section class="signin user">
-            <div class="container con">
-                <div class="con-title">
-                    <h4>الان همه چیز درست میشه! لطفا رمزعبور مورد نظرتون رو وارد کنید.</h4>
-                </div>
-                <div class="con-body">
-                    <form id="PasswordResetForm" class="signin" action="javascript: PasswordResetSubmit();">
-                      <div id="password" class="form-group alert">
-                          <input type="password" class="form-control form-control-danger" id="passwordInput" placeholder="رمز عبور" >
-                          <div id="form-control-feedback-pass" class="form-control-feedback alert-set" style="display:none;">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                            <span id="passwordTextError"></span></div>
-                      </div>
-                      <div id="repeatPassword" class="form-group alert">
-                          <input type="password" class="form-control form-control-danger" id="repeatPasswordInput" placeholder="تکرار رمز عبور" >
-                          <div id="form-control-feedback-repeat-pass" class="form-control-feedback alert-set" style="display:none;">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                            <span id="repeatPasswordTextError"></span></div>
-                      </div>
-                      <div  id = "error-msg" style="display:none;">
-                        <span  id = "error-msg-text" class="error-msg">
-                          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                        </span>
-                      </div>
-                        <div>
-                            <button id="verify" type="submit" class="btn btn-primary btn-rec">تأیید</button>
-                            <span id="loader" class="loader" style="display:none"></span>
+              <div id="success" style="display:none;" >
+                <section class="signup-form">
+                    <div class="container">
+                        <div class="con-title">
+                            <h4>رمز عبور شما با موفقیت تغییر کرد</h4>
                         </div>
+                        <div class="row con-body">
+                            <div class="col-md-12 email">
+                                <h1><i class="fa fa-check" aria-hidden="true"></i></h1>
+                                <h4>در حال انتقال به صفحه داشبورد</h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+              </div>
 
-                    </form>
-                </div>
-            </div>
-        </section>
-      </div>
+
+              <div id="invalid-token" style="display:none;" >
+                <section class="signup-form">
+                    <div class="container">
+                        <div class="con-title">
+                            <h4>متاسفانه لینک بازیابی رمز عبور منقضی شده است</h4>
+                            <h4>لطفا برای دریافت لینک جدید دوباره اقدام نمایید</h4>
+                        </div>
+                        <div class="row con-body">
+                            <div class="col-md-12 email">
+                                <h1><i class="fa fa-times" aria-hidden="true"></i></h1>
+                                <!-- <h4>برای ارسال مجدد ایمیل <span style="border-bottom:2px solid #555;">کلیک کنید</span></h4> -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+              </div>
+
+              <div id="processing" style="display:none;">
+                <section class="signup-form">
+                    <div class="container">
+                      <div class="con-title">
+                          <h4>اطلاعات شما در حال بررسی می باشد</h4>
+                      </div>
+                      <div class="loaderdot">
+                        <div class="loader-wrapper">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                      </div>
+                    </div>
+                </section>
+              </div>
+
+        <div id="body">
+              <div id="password-form"  >
+                <section class="signin user">
+                    <div class="container con">
+                        <div class="con-title">
+                            <h4>الان همه چیز درست میشه! لطفا رمزعبور مورد نظرتون رو وارد کنید.</h4>
+                        </div>
+                        <div class="con-body">
+                            <form id="PasswordResetForm" class="signin" action="javascript: PasswordResetSubmit();">
+                              <div id="password" class="form-group alert">
+                                  <input type="password" class="form-control form-control-danger" id="passwordInput" placeholder="رمز عبور" >
+                                  <div id="form-control-feedback-pass" class="form-control-feedback alert-set" >
+                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    <span id="passwordTextError"></span></div>
+                              </div>
+                              <div id="repeatPassword" class="form-group alert">
+                                  <input type="password" class="form-control form-control-danger" id="repeatPasswordInput" placeholder="تکرار رمز عبور" >
+                                  <div id="form-control-feedback-repeat-pass" class="form-control-feedback alert-set">
+                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    <span id="repeatPasswordTextError"></span></div>
+                              </div>
+                              <div  id = "error-msg" >
+                                <span  id = "error-msg-text" class="error-msg">
+                                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                                <div>
+                                    <button id="verify" type="submit" class="btn btn-primary btn-rec">تأیید</button>
+                                    <span id="loader" class="loader" ></span>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </section>
+              </div>
+        </div>
 
 
         <!-- footer -->
@@ -169,7 +171,6 @@
                 </div>
             </div>
           </div>
-        </div>
 </div>
 <!-- Bootstrap core JavaScript -->
 <script src="/static/vendor/jquery/jquery.min.js"></script>
