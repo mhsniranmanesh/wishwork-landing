@@ -30,8 +30,8 @@ Email.on('blur' , function(){
 });
 
 function forgetPasswordSubmit(){
-  $('.error-msg').remove();
-  $('#errorBoxx').remove();
+  $('.error-msg').hide();
+  $('#errorBoxx').hide();
     var emailText = Email.val();
     if(emailText !=="" && validateEmail(emailText) === true){
         sendFormDataToServer();
