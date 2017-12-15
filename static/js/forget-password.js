@@ -75,7 +75,7 @@ function sendFormDataToServer() {
           if(data.responseJSON && data.responseJSON.message){
             var err = data.responseJSON.message;
             if(err === "This field may not be blank."){
-              $('.error-msg').remove();
+              $('.error-msg').hide();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
@@ -90,7 +90,7 @@ function sendFormDataToServer() {
               $('#forgetPasswordForm').append(errorBox)
             }
             else if(err === 'Enter a valid email address.'){
-              $('.error-msg').remove();
+              $('.error-msg').hide();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
@@ -105,7 +105,7 @@ function sendFormDataToServer() {
               $('#forgetPasswordForm').append(errorBox)
             }
             else if(err === 'User does not exist'){
-              $('.error-msg').remove();
+              $('.error-msg').hide();
               var errorCross = document.createElement('i');
               errorCross.setAttribute('class', 'fa fa-times-circle');
               errorCross.setAttribute('aria-hidden', 'true');
