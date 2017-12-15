@@ -77,7 +77,7 @@ var checkPassword = function(passText){
          return "پسورد شما باید حداکثر شامل ۵۰ حرف باشد";
 
        }
-  else if (passText.search(/[!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
+  else if (passText.search(/[!\#\$\%\^\&\*\(\)\+]/) != -1) {
          return "پسورد شما دارای نماد های نامعتبر است";
     }
     if(passText.search(/[\u0600-\u06FF]/) != -1) {
