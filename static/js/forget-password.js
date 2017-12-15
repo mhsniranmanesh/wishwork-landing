@@ -10,6 +10,14 @@ function validateEmail(email) {
 
 Email.on('input' , function(){
 	var checkMail = this.value;
+	if(validateEmail(checkMail)){
+		$('#EmailError').css('display' , 'none');
+        $('#eml').removeClass('has-danger');
+	}
+});
+
+Email.on('blur' , function(){
+	var checkMail = this.value;
 	if(!validateEmail(checkMail)){
 		$('#EmailError').show();
         $('#eml').addClass('has-danger');
