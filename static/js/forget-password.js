@@ -64,7 +64,7 @@ function sendFormDataToServer() {
         error : function (data) {
           console.log('ERRORORR:', data);
           $('#loader').hide();
-          if(data.responseJSON.message){
+          if(data.responseJSON && data.responseJSON.message){
             var err = data.responseJSON.message;
             if(err === "This field may not be blank."){
               $('.error-msg').remove();
