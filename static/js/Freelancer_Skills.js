@@ -264,7 +264,8 @@ function sendSkillsToServer() {
     url: '/api/v1/skills/add/translation/',
     dataType: 'json',
     headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
-    data: freelancersSkills,
+    contentType: "application/json",
+    data: JSON.stringify(freelancersSkills),
     success: function(result) {
       window.location.href = "/signup/infos";
       // console.log("RESULT:", result);
