@@ -133,7 +133,7 @@ function add_translation_tags() {
     removeButton.setAttribute('class', 'fa fa-times-circle');
     removeButton.setAttribute('aria-hidden', 'true');
     child.className = "col-sm-6";
-    childInnerText.setAttribute('style', 'font-family:FontAwesome;')
+    childInnerText.setAttribute('style', 'font-family:FontAwesome;');
     //childInnerText =   skill.text;
     childInnerText.dir = "rtl";
     childInnerText.className = "form-control tag";
@@ -153,7 +153,7 @@ function add_translation_tags() {
     $(removeButton).click(function() {
       remove_tag(skill);
       remove_tag_server(skillServer);
-    })
+    });
     counter++;
   }
 
