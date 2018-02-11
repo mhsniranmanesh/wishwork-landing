@@ -191,7 +191,7 @@ $.ajax({
   cache: false,
   success: function(data) {
     console.log("Success:", data);
-    window.location.href = '/dashboard';
+    // window.location.href = '/dashboard';
   },
   error : function(data){
             $('#loader').hide();
