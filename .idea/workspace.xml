@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7b0294-2935-4445-9a9c-d5624f5effa7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/apple-touch-icon-retina.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/apple-touch-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/dashboard-loading.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dashboard/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/img/1.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legal/index.html" afterPath="$PROJECT_DIR$/legal/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forget-password/index.html" afterPath="$PROJECT_DIR$/forget-password/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/Freelancer_Skills.js" afterPath="$PROJECT_DIR$/static/js/Freelancer_Skills.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/Freelancer_infos.js" afterPath="$PROJECT_DIR$/static/js/Freelancer_infos.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/forget-password.js" afterPath="$PROJECT_DIR$/static/js/forget-password.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/reset-password.js" afterPath="$PROJECT_DIR$/static/js/reset-password.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,7 +30,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/signup/infos/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1278">
+            <state relative-caret-position="0">
               <caret line="71" column="32" lean-forward="false" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
               <folding />
             </state>
@@ -32,12 +42,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1728">
               <caret line="96" column="5" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="96" selection-end-column="5" />
-              <folding />
+              <folding>
+                <marker date="1518718613613" expanded="true" signature="4729:12465" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="5546:5630" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="5656:12457" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="5833:11785" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="6022:6758" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="6883:7637" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="7765:8517" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="8642:9385" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="9515:10262" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="10400:11113" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="11125:11779" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="11797:12451" ph="{...}" />
+                <marker date="1518718613613" expanded="true" signature="12466:18375" ph="//..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/legal/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="907">
@@ -47,21 +71,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/signup/skills/index.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/forget-password/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="52" lean-forward="false" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
+            <state relative-caret-position="468">
+              <caret line="26" column="52" lean-forward="false" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="IMG_2665.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/IMG_2665.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/signup/username/index.html">
+        <entry file="file://$PROJECT_DIR$/signup/skills/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
-              <caret line="28" column="56" lean-forward="false" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+              <caret line="28" column="52" lean-forward="false" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -97,27 +128,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reset-password/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="26" column="52" lean-forward="false" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/signup/form/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="27" column="54" lean-forward="false" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Head</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -130,7 +146,6 @@
         <option value="$PROJECT_DIR$/static/js/Freelancer_infos.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/about/index.html" />
-        <option value="$PROJECT_DIR$/dashboard/index.html" />
         <option value="$PROJECT_DIR$/forget-password/index.html" />
         <option value="$PROJECT_DIR$/login/index.html" />
         <option value="$PROJECT_DIR$/reset-password/index.html" />
@@ -142,6 +157,7 @@
         <option value="$PROJECT_DIR$/signup/verify-email/index.html" />
         <option value="$PROJECT_DIR$/signup/index.html" />
         <option value="$PROJECT_DIR$/legal/index.html" />
+        <option value="$PROJECT_DIR$/dashboard/index.html" />
       </list>
     </option>
   </component>
@@ -179,65 +195,6 @@
             <path>
               <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
               <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="about" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="forget-password" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="legal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="reset-password" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="signup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="signup" type="462c0819:PsiDirectoryNode" />
-              <item name="form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="signup" type="462c0819:PsiDirectoryNode" />
-              <item name="infos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="signup" type="462c0819:PsiDirectoryNode" />
-              <item name="skills" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wish-work-landing" type="462c0819:PsiDirectoryNode" />
-              <item name="signup" type="462c0819:PsiDirectoryNode" />
-              <item name="username" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="wish-work-landing" type="b2602c69:ProjectViewProjectNode" />
@@ -292,18 +249,17 @@
       <workItem from="1514910308289" duration="1679000" />
       <workItem from="1515087366679" duration="2179000" />
       <workItem from="1518698971146" duration="1212000" />
-      <workItem from="1518714350610" duration="3251000" />
+      <workItem from="1518714350610" duration="3689000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16106000" />
+    <option name="totallyTimeSpent" value="16544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18395196" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18395196" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -332,14 +288,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/legal/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/signup/infos/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -384,6 +332,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="26" column="52" lean-forward="false" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -436,7 +385,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding />
+          <folding>
+            <marker date="1518718613613" expanded="true" signature="4729:12465" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="5546:5630" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="5656:12457" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="5833:11785" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="6022:6758" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="6883:7637" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="7765:8517" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="8642:9385" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="9515:10262" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="10400:11113" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="11125:11779" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="11797:12451" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="12466:18375" ph="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -591,24 +554,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forget-password/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="52" lean-forward="false" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="26" column="52" lean-forward="false" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -652,14 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/signup/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/signup/skills/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -670,7 +612,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/signup/infos/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
+        <state relative-caret-position="0">
           <caret line="71" column="32" lean-forward="false" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
           <folding />
         </state>
@@ -680,14 +622,57 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1728">
           <caret line="96" column="5" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="96" selection-end-column="5" />
-          <folding />
+          <folding>
+            <marker date="1518718613613" expanded="true" signature="4729:12465" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="5546:5630" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="5656:12457" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="5833:11785" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="6022:6758" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="6883:7637" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="7765:8517" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="8642:9385" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="9515:10262" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="10400:11113" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="11125:11779" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="11797:12451" ph="{...}" />
+            <marker date="1518718613613" expanded="true" signature="12466:18375" ph="//..." />
+          </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/IMG_2665.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/legal/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="907">
           <caret line="302" column="12" lean-forward="false" selection-start-line="302" selection-start-column="12" selection-end-line="302" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forget-password/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="52" lean-forward="false" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/signup/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3899">
+          <caret line="336" column="18" lean-forward="true" selection-start-line="336" selection-start-column="18" selection-end-line="336" selection-end-column="18" />
           <folding />
         </state>
       </provider>

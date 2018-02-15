@@ -64,12 +64,12 @@ function add_translation_tags() {
   var TTvalue = translateto.options[translateto.selectedIndex].value;
   var skillServer = {};
   var skill = {};
-  skill.from = TF;
-  skill.to = TT;
-  skillServer.from = TF;
-  skillServer.to = TT;
+  skill.from_language = TF;
+  skill.to_language = TT;
+  skillServer.from_language = TF;
+  skillServer.to_language = TT;
 
-  skill.text = ' از ' + skill.from + ' به ' + skill.to;
+  skill.text = ' از ' + skill.from_language + ' به ' + skill.to_language;
   if (translatefrom.selectedIndex === 0 || translateto.selectedIndex === 0) {
     $('#ErrorMessage').show();
     $('#errorText').text('لطفا زبان خود را انتخاب کنید!');
@@ -81,41 +81,41 @@ function add_translation_tags() {
   var counter = 0;
 
   if (!is_skill_present(skill) && translatefrom.selectedIndex != 0 && translateto.selectedIndex != 0 && TT != TF) {
-    if(skillServer.from === 'فارسی'){
-      skillServer.from = 1;
+    if(skillServer.from_language === 'فارسی'){
+      skillServer.from_language = 1;
     }
-    if(skillServer.from=== 'انگلیسی'){
-      skillServer.from = 2;
+    if(skillServer.from_language=== 'انگلیسی'){
+      skillServer.from_language = 2;
     }
-    if(skillServer.from === 'فرانسوی'){
-      skillServer.from = 3;
+    if(skillServer.from_language === 'فرانسوی'){
+      skillServer.from_language = 3;
     }
-    if(skillServer.from ==='عربی'){
-      skillServer.from = 4;
+    if(skillServer.from_language ==='عربی'){
+      skillServer.from_language = 4;
     }
-    if(skillServer.from ==='اسپانیایی'){
-      skillServer.from = 5;
+    if(skillServer.from_language ==='اسپانیایی'){
+      skillServer.from_language = 5;
     }
-    if(skillServer.from==='آلمانی'){
-      skillServer.from = 6;
+    if(skillServer.from_language==='آلمانی'){
+      skillServer.from_language = 6;
     }
-    if(skillServer.to === 'فارسی'){
-      skillServer.to = 1;
+    if(skillServer.to_language === 'فارسی'){
+      skillServer.to_language = 1;
     }
-    if(skillServer.to=== 'انگلیسی'){
-      skillServer.to = 2;
+    if(skillServer.to_language=== 'انگلیسی'){
+      skillServer.to_language = 2;
     }
-    if(skillServer.to === 'فرانسوی'){
-      skillServer.to = 3;
+    if(skillServer.to_language === 'فرانسوی'){
+      skillServer.to_language = 3;
     }
-    if(skillServer.to ==='عربی'){
-      skillServer.to = 4;
+    if(skillServer.to_language ==='عربی'){
+      skillServer.to_language = 4;
     }
-    if(skillServer.to ==='اسپانیایی'){
-      skillServer.to = 5;
+    if(skillServer.to_language ==='اسپانیایی'){
+      skillServer.to_language = 5;
     }
-    if(skillServer.to==='آلمانی'){
-      skillServer.to = 6;
+    if(skillServer.to_language==='آلمانی'){
+      skillServer.to_language = 6;
     }
 
     //console.log(TF);
@@ -163,7 +163,8 @@ function add_translation_tags() {
 function is_skill_present(skill) {
   for (var i = 0; i < skills.length; i++) {
 
-    if (skills[i].from === skill.from && skills[i].to === skill.to) {
+    if (skills[i].from_language === skill.from_language &&
+      skills[i].to_language === skill.to_language) {
       return true;
     }
   }
@@ -173,7 +174,8 @@ function is_skill_present(skill) {
 function is_skillServer_present(skill) {
   for (var i = 0; i < skillsServer.length; i++) {
 
-    if (skillsServer[i].from === skillServer.from && skillsServer[i].to === skillServer.to) {
+    if (skillsServer[i].from_language === skillServer.from_language &&
+      skillsServer[i].to_language === skillServer.to_language) {
       return true;
     }
   }
@@ -182,7 +184,8 @@ function is_skillServer_present(skill) {
 
 function remove_tag(skill) {
   for (var i = 0; i < skills.length; i++) {
-    if (skills[i].from === skill.from && skills[i].to === skill.to) {
+    if (skills[i].from_language === skill.from_language &&
+      skills[i].to_language === skill.to_language) {
       skills[i].htmlElement.remove();
       skills.splice(i, 1);
     }
@@ -191,7 +194,8 @@ function remove_tag(skill) {
 
 function remove_tag_server(skillServer) {
   for (var i = 0; i < skillsServer.length; i++) {
-    if (skillsServer[i].from === skillServer.from && skillsServer[i].to === skillServer.to) {
+    if (skillsServer[i].from_language === skillServer.from_language &&
+      skillsServer[i].to_language === skillServer.to_language) {
       skillsServer.splice(i, 1);
     }
   }
@@ -264,7 +268,8 @@ function sendSkillsToServer() {
     url: '/api/v1/skills/add/translation/',
     dataType: 'json',
     headers: {"Authorization": "JWT " + localStorage.getItem('current_login_token')},
-    data: freelancersSkills,
+    contentType: "application/json",
+    data: JSON.stringify(freelancersSkills),
     success: function(result) {
       window.location.href = "/signup/infos";
       // console.log("RESULT:", result);

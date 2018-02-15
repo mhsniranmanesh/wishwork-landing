@@ -69,28 +69,36 @@ var checkPassword = function(passText){
   }
 
 // on keypress error
-  password.on('input' ,function(){
-  	var passStatus = checkPassword(this.value);
-  	if (passStatus === "okpass"){
-  		$('#form-control-feedback-pass').hide();
-      $('#password').removeClass('has-danger');
-    }
-  	else if(passStatus === "لطفا پسورد خود را انگلیسی وارد نمایید!"){
-  		$('#form-control-feedback-pass').show();
-      $('#passwordTextError').text(passStatus);
-  		$('#password').addClass('has-danger');
-    }
-    else if(passStatus === "پسورد شما دارای نماد های نامعتبر است"){
-      $('#passwordTextError').text(passStatus);
-      $('#form-control-feedback-pass').show();
-      $('#password').addClass('has-danger');
-    }
-    else{
-      $('#passwordTextError').text(passStatus);
-      $('#form-control-feedback-pass').show();
-      $('#password').addClass('has-danger');
-    }
-  });
+password.on('blur' ,function(){
+  var passStatus = checkPassword(this.value);
+  if (passStatus === "okpass"){
+    $('#form-control-feedback-pass').hide();
+    $('#password').removeClass('has-danger');
+  }
+  else if(passStatus === "لطفا پسورد خود را انگلیسی وارد نمایید!"){
+    $('#form-control-feedback-pass').show();
+    $('#passwordTextError').text(passStatus);
+    $('#password').addClass('has-danger');
+  }
+  else if(passStatus === "پسورد شما دارای نماد های نامعتبر است"){
+    $('#passwordTextError').text(passStatus);
+    $('#form-control-feedback-pass').show();
+    $('#password').addClass('has-danger');
+  }
+  else{
+    $('#passwordTextError').text(passStatus);
+    $('#form-control-feedback-pass').show();
+    $('#password').addClass('has-danger');
+  }
+});
+
+password.on('input' ,function(){
+  var passStatus = checkPassword(this.value);
+  if (passStatus === "okpass"){
+    $('#form-control-feedback-pass').hide();
+    $('#password').removeClass('has-danger');
+  }
+});
 
   function PasswordResetSubmit(){
       var validityPass = checkPassword(password.val());
@@ -140,7 +148,6 @@ function sendPasswordToServer() {
             });
           },
           error : function(err) {
-              console.log(err)
               $('#loader').hide();
               if(err.responseJSON && err.responseJSON.password && err.responseJSON.password.contains(
                 "Ensure this field has at least 8 characters.")){
