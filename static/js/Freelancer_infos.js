@@ -6,16 +6,16 @@ Array.prototype.contains = function(obj) {
         }
     }
     return false;
-}
+};
 
 function formToJson(form)
 {
  var jsonForm={};
  $("input", $('form')).each(function(index){
    jsonForm[$(this).attr("id")] = this.value;
- })
+ });
  return jsonForm;
-};
+}
 
 function checkUserLogin() {
   var username = localStorage.getItem('current_login_username')

@@ -6,8 +6,13 @@ Array.prototype.contains = function(obj) {
         }
     }
     return false;
+};
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
-
 var userName = $('#loginUserNameInput');
 var pass = $('#loginPassInput');
 
@@ -54,8 +59,8 @@ function LogInSendDataToServer(){
 
   var data = {
     username : userName.val(),
-    password : pass.val(),
-  }
+    password : pass.val()
+  };
 //  console.log("LOGINNNN : ", data);
   $.ajax({
     type : "POST",
@@ -63,7 +68,20 @@ function LogInSendDataToServer(){
     data: data,
     success : function (result){
       localStorage.setItem('current_login_token' , result.token);
-      window.location.href = "/dashboard";
+      if(getUrlParameter('url') === '' || getUrlParameter('url') === 'dashboard') {
+          window.location.href = "/dashboard";
+      }
+      else if(getUrlParameter('url')==='account/cash'){
+          window.location.href = "/account/cash";
+      }
+      else if(getUrlParameter('url')==='project/control'){
+          window.location.href = "/project/control";
+          console.log('hi');
+      }
+      else{
+          window.location.href = "/dashboard";
+
+      }
     },
     error : function (err) {
   //    $('.error-msg').remove();
